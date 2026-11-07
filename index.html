@@ -1,0 +1,3863 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <title>Helix – Create, Design, Publish</title>
+ 	
+  <script src="https://cdn.tailwindcss.com"></script>
+ 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ 
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+ 
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            helix: {
+              cream: '#F6ECD8',
+              ivory: '#FFFAF1',
+              terracotta: '#A84F39',
+              brown: '#29221F',
+              muted: '#62574B',
+              green: '#718475',
+              border: '#D9C7A9',
+              gold: '#C7A66A'
+            }
+          },
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+            display: ['Playfair Display', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+ 
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+ 
+    html {
+      scroll-behavior: smooth;
+    }
+ 
+    body {
+      margin: 0;
+      background: #F6ECD8;
+      color: #29221F;
+      font-family: 'DM Sans', sans-serif;
+    }
+ 
+    .display-font {
+      font-family: 'Playfair Display', serif;
+    }
+ 
+    .hero-underline {
+      width: 100%;
+      height: 20px;
+      display: block;
+    }
+ 
+    .step-card {
+      transition: all 0.25s ease;
+    }
+ 
+    .step-card:hover {
+      border-color: #A84F39;
+      transform: translateY(-3px);
+      background: #FFFAF1;
+    }
+ 
+    .access-button {
+      transition: all 0.2s ease;
+    }
+ 
+    .access-button:hover {
+      background: #873D2B;
+      transform: translateY(-1px);
+    }
+ 
+    .nav-link {
+      transition: color 0.2s ease;
+    }
+ 
+    .nav-link:hover {
+      color: #A84F39;
+    }
+ 
+    @media (max-width: 640px) {
+      .hero-title {
+        letter-spacing: -1.2px;
+      }
+    }
+ 
+ 
+    
+/* AUDIENCE LABEL ANIMATION */
+.audience-label {
+  display: inline-flex;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 9px 12px;
+  border-top: 1px solid #D9C7A9;
+  border-bottom: 1px solid #D9C7A9;
+}
+ 
+.audience-label span {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 100%;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #40372E;
+  animation: typingReveal 4.5s steps(52, end) infinite;
+}
+ 
+.audience-label span::after {
+  content: '';
+  display: inline-block;
+  width: 1px;
+  height: 11px;
+  margin-left: 4px;
+  vertical-align: middle;
+  background: #A84F39;
+  animation: cursorBlink 0.8s step-end infinite;
+}
+ 
+@keyframes typingReveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+ 
+  70%, 90% {
+    clip-path: inset(0 0 0 0);
+  }
+ 
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+ 
+@keyframes cursorBlink {
+  50% {
+    opacity: 0;
+  }
+}
+ 
+@media (min-width: 640px) {
+  .audience-label span {
+    font-size: 11px;
+  }
+}
+ 
+@media (prefers-reduced-motion: reduce) {
+  .audience-label span,
+  .audience-label span::after {
+    animation: none;
+  }
+ 
+  .audience-label span {
+    clip-path: none;
+  }
+}
+ 
+ .showcase-frame {
+      position: relative;
+      background: #FFFAF1;
+      border: 1px solid #D9C7A9;
+      padding: 10px;
+      box-shadow: 0 15px 35px rgba(75, 53, 30, 0.12);
+    }
+ 
+    .showcase-frame::before,
+    .showcase-frame::after {
+      content: '';
+      position: absolute;
+      width: 75px;
+      height: 17px;
+      background: rgba(199, 166, 106, 0.38);
+      z-index: 2;
+    }
+ 
+    .showcase-frame::before {
+      top: -6px;
+      left: -18px;
+      transform: rotate(-30deg);
+    }
+ 
+    .showcase-frame::after {
+      top: -6px;
+      right: -18px;
+      transform: rotate(30deg);
+    }
+ 
+    .access-btn {
+      background: #A84F39;
+      transition: all 0.25s ease;
+    }
+ 
+    .access-btn:hover {
+      background: #873D2B;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(168, 79, 57, 0.18);
+    }
+ 
+    .decorative-line {
+      background: #D9C7A9;
+    }
+ 
+    @media (prefers-reduced-motion: reduce) {
+      .access-btn {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+ 
+<body>
+ 
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="bg-[#29221F] px-3 py-2 text-center">
+    <p class="text-[9px] font-bold tracking-wide text-[#FFFAF1] sm:text-[10px]">
+      ✦ SPECIAL LAUNCH OFFER
+      <span class="text-[#C7A66A]">✦</span>
+      Get Instant Access Today — One-Time Payment — PLR Rights Included
+      <span class="text-[#C7A66A]">✦</span>
+    </p>
+  </div>
+ 
+ 
+  <!-- NAVIGATION -->
+  <header class="border-b border-[#E5D8C3] bg-[#FFFAF1]">
+ 
+    <div class="mx-auto flex max-w-[1250px] items-center justify-between px-5 py-3 sm:px-8 lg:px-10">
+ 
+      <!-- HELIX BRAND -->
+      <a href="#" class="flex items-center gap-3">
+ 
+        <!-- BOOK LOGO -->
+        <svg
+          width="43"
+          height="48"
+          viewBox="0 0 48 52"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="shrink-0"
+        >
+          <path
+            d="M24 18C17 8 8 10 5 12V40C12 36 19 39 24 47C29 39 36 36 43 40V12C40 10 31 8 24 18Z"
+            stroke="#718475"
+            stroke-width="2"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M24 18V46M8 17V35M40 17V35"
+            stroke="#718475"
+            stroke-width="1.6"
+          />
+          <path
+            d="M24 3L26 9L32 11L26 13L24 19L22 13L16 11L22 9L24 3Z"
+            fill="#A84F39"
+          />
+          <path
+            d="M12 5L13.5 9L17 10L13.5 11.5L12 15L10.5 11.5L7 10L10.5 9L12 5Z"
+            fill="#C7A66A"
+          />
+          <circle cx="37" cy="7" r="2" fill="#C7A66A"/>
+        </svg>
+ 
+        <div>
+          <h1 class="display-font text-[29px] font-bold leading-none tracking-tight text-[#29221F]">
+            Helix
+          </h1>
+ 
+          <p class="mt-1 text-[9px] font-extrabold uppercase tracking-[0.15em] text-[#A84F39]">
+            Create · Design · Publish
+          </p>
+        </div>
+ 
+      </a>
+ 
+ 
+      <!-- DESKTOP NAVIGATION -->
+      <nav class="hidden items-center gap-8 lg:flex">
+ 
+        <a href="#collection" class="nav-link text-[12px] font-semibold text-[#29221F]">
+          The Collection
+        </a>
+ 
+        <a href="#how-it-works" class="nav-link text-[12px] font-semibold text-[#29221F]">
+          How It Works
+        </a>
+ 
+        <a href="#benefits" class="nav-link text-[12px] font-semibold text-[#29221F]">
+          PLR Rights
+        </a>
+ 
+        <a href="#faq" class="nav-link text-[12px] font-semibold text-[#29221F]">
+          FAQ
+        </a>
+ 
+        <a
+          href="#access"
+          class="access-button rounded-xl bg-[#A84F39] px-7 py-3 text-[12px] font-extrabold text-white shadow-sm"
+        >
+          Get Access <span class="ml-1">→</span>
+        </a>
+ 
+      </nav>
+ 
+ 
+      <!-- MOBILE ACCESS BUTTON -->
+      <a
+        href="#access"
+        class="access-button rounded-lg bg-[#A84F39] px-4 py-3 text-[11px] font-bold text-white lg:hidden"
+      >
+        Get Access →
+      </a>
+ 
+    </div>
+ 
+  </header>
+ 
+ 
+  <!-- HERO SECTION -->
+  <main>
+ 
+    <section class="relative overflow-hidden bg-[#F6ECD8] px-5 pb-12 pt-11 sm:px-8 sm:pb-16 sm:pt-12">
+ 
+      <div class="mx-auto max-w-[1100px] text-center">
+ 
+ 
+        <!-- INTRODUCTION -->
+        <p class="display-font text-[17px] font-semibold text-[#A84F39] sm:text-[22px]">
+          One Idea, Multiple Creative Possibilities...
+        </p>
+ 
+ 
+        <!-- DECORATIVE DIVIDER -->
+        <div class="mt-5 flex items-center justify-center gap-3">
+ 
+          <span class="h-px w-24 bg-[#718475]"></span>
+ 
+          <span class="text-[17px] text-[#718475]">✦</span>
+ 
+          <span class="h-px w-24 bg-[#718475]"></span>
+ 
+        </div>
+ 
+ 
+       
+<!-- ANIMATED AUDIENCE LABEL -->
+<div class="mt-6 flex justify-center">
+ 
+  <div class="audience-label">
+ 
+    <span>
+      FOR ETSY SELLERS · KDP CREATORS · JUNK JOURNAL LOVERS
+    </span>
+ 
+  </div>
+ 
+</div>
+ 
+ 
+ 
+        <!-- MAIN HEADLINE -->
+        <h2 class="hero-title display-font mx-auto mt-6 max-w-[1000px] text-[34px] font-extrabold leading-[1.2] text-[#29221F] sm:text-[46px] lg:text-[52px]">
+ 
+          Turn One Idea Into Complete
+ 
+          <br class="hidden sm:block">
+ 
+          Creative Projects With
+ 
+          <span class="text-[#A84F39]">
+            Just One Prompt!
+          </span>
+ 
+        </h2>
+ 
+ 
+        <!-- CURVED UNDERLINE -->
+        <div class="mx-auto -mt-1 w-[280px] sm:w-[420px]">
+ 
+          <svg
+            class="hero-underline"
+            viewBox="0 0 420 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 15C100 -1 315 -1 417 15"
+              stroke="#718475"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+ 
+        </div>
+ 
+ 
+        <!-- MAIN DESCRIPTION -->
+        <p class="mx-auto mt-5 max-w-[800px] text-[14px] font-medium leading-[1.85] text-[#383129] sm:text-[17px]">
+ 
+          Create funny pet junk journal kits, coloring books, comic books,
+          story prompts, book covers, infographics, and complete book content
+          from a single idea.
+ 
+        </p>
+ 
+ 
+        <!-- SUPPORTING DESCRIPTION -->
+        <p class="mx-auto mt-4 max-w-[780px] text-[12px] leading-[1.9] text-[#62574B] sm:text-[14px]">
+ 
+          Generate coordinated prompts, creative designs, and structured book
+          content with specialized tools — without complicated prompt writing,
+          API keys, separate AI credits, or monthly software fees.
+ 
+        </p>
+ 
+ 
+        <!-- THREE STEP PROCESS -->
+        <div
+          id="how-it-works"
+          class="mx-auto mt-8 flex max-w-[900px] flex-col items-center justify-center gap-3 sm:flex-row sm:gap-3"
+        >
+ 
+          <!-- STEP ONE -->
+          <div class="step-card flex min-h-[53px] w-full max-w-[225px] items-center justify-center rounded-xl border border-[#D5B58B] bg-[#FFFAF1]/70 px-5 py-3">
+ 
+            <span class="text-[12px] font-bold text-[#29221F]">
+              01. Choose Your Tool
+            </span>
+ 
+          </div>
+ 
+ 
+          <span class="hidden text-[21px] text-[#718475] sm:block">→</span>
+ 
+          <span class="text-[18px] text-[#718475] sm:hidden">↓</span>
+ 
+ 
+          <!-- STEP TWO -->
+          <div class="step-card flex min-h-[53px] w-full max-w-[225px] items-center justify-center rounded-xl border border-[#D5B58B] bg-[#FFFAF1]/70 px-5 py-3">
+ 
+            <span class="text-[12px] font-bold text-[#29221F]">
+              02. Enter Your Idea
+            </span>
+ 
+          </div>
+ 
+ 
+          <span class="hidden text-[21px] text-[#718475] sm:block">→</span>
+ 
+          <span class="text-[18px] text-[#718475] sm:hidden">↓</span>
+ 
+ 
+          <!-- STEP THREE -->
+          <div class="step-card flex min-h-[53px] w-full max-w-[265px] items-center justify-center rounded-xl border border-[#D5B58B] bg-[#FFFAF1]/70 px-5 py-3">
+ 
+            <span class="text-[12px] font-bold text-[#29221F]">
+              03. Generate Your Creation
+            </span>
+ 
+          </div>
+ 
+        </div>
+ 
+ 
+        <!-- BENEFITS / TRUST INDICATORS -->
+        <div
+          id="benefits"
+          class="mx-auto mt-8 flex max-w-[1150px] flex-wrap items-center justify-center gap-x-5 gap-y-4"
+        >
+ 
+          <span class="flex items-center gap-2 text-[10px] font-semibold text-[#40372E]">
+            <span class="text-[#718475]">✓</span>
+            Multiple Creative Tools
+          </span>
+ 
+          <span class="hidden h-6 w-px bg-[#D9C7A9] sm:block"></span>
+ 
+          <span class="flex items-center gap-2 text-[10px] font-semibold text-[#40372E]">
+            <span class="text-[#718475]">✓</span>
+            No Complicated Prompt Writing
+          </span>
+ 
+          <span class="hidden h-6 w-px bg-[#D9C7A9] sm:block"></span>
+ 
+          <span class="flex items-center gap-2 text-[10px] font-semibold text-[#40372E]">
+            <span class="text-[#718475]">✓</span>
+            No API Key Required
+          </span>
+ 
+          <span class="hidden h-6 w-px bg-[#D9C7A9] sm:block"></span>
+ 
+          <span class="flex items-center gap-2 text-[10px] font-semibold text-[#40372E]">
+            <span class="text-[#718475]">✓</span>
+            No Separate AI Credits Required
+          </span>
+ 
+          <span class="hidden h-6 w-px bg-[#D9C7A9] sm:block"></span>
+ 
+          <span class="flex items-center gap-2 text-[10px] font-semibold text-[#40372E]">
+            <span class="text-[#718475]">✓</span>
+            No Monthly Software Fee
+          </span>
+ 
+          <span class="hidden h-6 w-px bg-[#D9C7A9] sm:block"></span>
+ 
+          <span class="flex items-center gap-2 text-[10px] font-semibold text-[#40372E]">
+            <span class="text-[#718475]">✓</span>
+            One-Time Payment
+          </span>
+ 
+          <span class="hidden h-6 w-px bg-[#D9C7A9] sm:block"></span>
+ 
+          <span class="flex items-center gap-2 text-[10px] font-semibold text-[#40372E]">
+            <span class="text-[#718475]">✓</span>
+            PLR Rights Included
+          </span>
+ 
+        </div>
+ 
+ 
+        <!-- BOTTOM DECORATIVE ELEMENT -->
+        <div class="mt-9 flex items-center justify-center gap-4">
+ 
+          <span class="h-px w-16 bg-[#718475]"></span>
+ 
+          <span class="text-[17px] text-[#718475]">✦</span>
+ 
+          <span class="h-px w-16 bg-[#718475]"></span>
+ 
+        </div>
+ 
+      </div>
+ 
+    </section>
+ 
+ 
+ 
+   
+<!-- HELIX CREATIVE SHOWCASE -->
+<section class="w-full overflow-hidden bg-[#F6ECD8] px-5 pt-5 pb-10 sm:px-8 sm:pt-8 sm:pb-14">
+ 
+  <div class="mx-auto w-full max-w-[1150px] min-w-0">
+ 
+    <!-- PRODUCT SHOWCASE IMAGE -->
+    <div class="mx-auto w-full max-w-[820px] min-w-0">
+ 
+      <div class="showcase-frame w-full min-w-0">
+ 
+        <img
+          src="https://i.ibb.co/MxdMbZQF/helix-image.png"
+          alt="Helix creative collection featuring junk journals, coloring books, comics, story prompts, book covers, infographics and complete book content"
+          class="block h-auto w-full max-w-full"
+          loading="lazy"
+        >
+ 
+      </div>
+ 
+    </div>
+ 
+    <!-- BOTTOM MESSAGE -->
+    <div class="mx-auto mt-5 w-full max-w-[800px] min-w-0 text-center sm:mt-6">
+ 
+      <div class="flex items-center justify-center gap-3">
+        <span class="decorative-line h-px w-12"></span>
+        <span class="text-sm text-[#A84F39]">✦</span>
+        <span class="decorative-line h-px w-12"></span>
+      </div>
+ 
+      <!-- SMALL TAGLINE BELOW SHOWCASE IMAGE -->
+      <div class="mt-5 w-full min-w-0 text-center sm:mt-6">
+ 
+        <p class="display-font text-[13px] font-semibold tracking-wide text-[#A84F39] sm:text-[15px]">
+          One Idea. Multiple Creations. Endless Possibilities.
+        </p>
+ 
+        <!-- CTA BUTTON -->
+        <div class="mt-5">
+ 
+          <a
+            href="#access"
+            class="access-btn inline-flex max-w-full items-center justify-center gap-3 rounded-lg px-8 py-4 text-sm font-extrabold text-white shadow-md"
+          >
+            Get Instant Access
+            <span class="text-[#F6ECD8]">– $17</span>
+            <span>→</span>
+          </a>
+ 
+          <p class="mt-3 text-[10px] font-semibold tracking-wide text-[#62574B]">
+            ONE-TIME PAYMENT · PLR RIGHTS INCLUDED
+          </p>
+ 
+        </div>
+ 
+      </div>
+ 
+    </div>
+ 
+  </div>
+ 
+</section>
+ 
+ 
+ 
+ 
+ 
+
+<!-- AI SUBSCRIPTION COST COMPARISON -->
+<section id="subscription-comparison" class="w-full overflow-hidden px-5 py-10 sm:px-8 sm:py-14">
+  <div class="mx-auto max-w-[1050px]">
+    <div class="mb-4 flex items-center justify-center gap-3">
+      <span class="h-px w-9 bg-[#C7A66A] sm:w-14"></span>
+      <span class="text-[10px] font-bold uppercase tracking-[0.22em] text-[#718475] sm:text-xs">✦ The Cost of AI Creativity ✦</span>
+      <span class="h-px w-9 bg-[#C7A66A] sm:w-14"></span>
+    </div>
+ 
+    <div class="mx-auto max-w-[780px] text-center">
+      <h2 class="display-font text-3xl font-bold leading-tight text-[#29221F] sm:text-4xl">
+        Why Pay <span class="text-[#A84F39]">Every Month?</span>
+      </h2>
+      <p class="mx-auto mt-4 max-w-2xl text-sm leading-7 text-[#62574B] sm:text-base">
+        Many popular AI tools charge recurring subscription fees for expanded access to text or image generation.
+        Helix gives you a guided creative workflow for a <strong>one-time $17 payment</strong>—no Helix monthly subscription.
+      </p>
+    </div>
+ 
+    <div class="mt-8 overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] shadow-sm">
+      <div class="border-b border-[#D9C7A9] bg-[#F1E5D1] px-4 py-4 text-center sm:px-6">
+        <h3 class="display-font text-xl font-bold text-[#29221F] sm:text-2xl">Popular AI Subscription Prices</h3>
+        <p class="mt-1 text-xs text-[#62574B]">Maximum advertised paid-plan prices · monthly billing · USD · plans and limits vary</p>
+      </div>
+ 
+      <div class="overflow-x-auto">
+        <table class="w-full min-w-[540px] text-left text-sm">
+          <thead class="bg-[#FFFAF1] text-[10px] uppercase tracking-wider text-[#8A7966]">
+            <tr>
+              <th class="px-4 py-3 sm:px-6">AI Platform</th>
+              <th class="px-4 py-3">Highest paid plan</th>
+              <th class="px-4 py-3 sm:px-6">Maximum monthly price</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#D9C7A9] text-[#40372E]">
+            <tr><td class="px-4 py-3 font-semibold sm:px-6">ChatGPT (OpenAI)</td><td class="px-4 py-3">Pro</td><td class="px-4 py-3 font-bold sm:px-6">$200/month</td></tr>
+            <tr><td class="px-4 py-3 font-semibold sm:px-6">Google Gemini</td><td class="px-4 py-3">Google AI Ultra</td><td class="px-4 py-3 font-bold sm:px-6">$249.99/month</td></tr>
+            <tr><td class="px-4 py-3 font-semibold sm:px-6">Midjourney</td><td class="px-4 py-3">Mega</td><td class="px-4 py-3 font-bold sm:px-6">$120/month</td></tr>
+            <tr><td class="px-4 py-3 font-semibold sm:px-6">Adobe Firefly</td><td class="px-4 py-3">Premium</td><td class="px-4 py-3 font-bold sm:px-6">$199.99/month</td></tr>
+            <tr><td class="px-4 py-3 font-semibold sm:px-6">Leonardo AI</td><td class="px-4 py-3">Ultimate</td><td class="px-4 py-3 font-bold sm:px-6">$48/month</td></tr>
+          </tbody>
+        </table>
+      </div>
+ 
+      <div class="border-t border-[#D9C7A9] bg-[#F6ECD8] px-4 py-4 text-center sm:px-6">
+        <p class="text-xs leading-6 text-[#62574B]">
+          Prices shown represent the highest advertised individual paid-plan tiers identified for each platform,
+          not equivalent feature-for-feature comparisons. Enterprise plans, regional pricing, taxes, and billing
+          options may differ. Prices and plan limits can change; check each provider’s official pricing page.
+        </p>
+      </div>
+    </div>
+ 
+    <div class="mt-6 grid gap-4 sm:grid-cols-2">
+      <div class="rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-5 text-center">
+        <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-[#8A7966]">Typical subscription model</p>
+        <p class="display-font mt-2 text-3xl font-bold text-[#29221F]">$10–$20+</p>
+        <p class="mt-2 text-xs leading-5 text-[#62574B]">Pay again every month to keep your paid plan active.</p>
+      </div>
+      <div class="rounded-xl border-2 border-[#A84F39] bg-[#FFFAF1] p-5 text-center">
+        <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-[#A84F39]">Helix · one-time purchase</p>
+        <p class="display-font mt-2 text-3xl font-bold text-[#A84F39]">$17 <span class="text-base font-semibold">once</span></p>
+        <p class="mt-2 text-xs leading-5 text-[#62574B]"><strong>Buy once, and Helix access is yours forever</strong> under the applicable product terms. No recurring Helix monthly fee.</p>
+      </div>
+    </div>
+ 
+    <p class="mx-auto mt-5 max-w-2xl text-center text-xs leading-6 text-[#62574B]">
+      Helix’s one-time purchase is for the Helix product itself. Any third-party AI service, platform, or optional tool
+      you choose to use separately may have its own fees, usage limits, or terms.
+    </p>
+ 
+    <div class="mt-6 text-center">
+      <a href="#access" class="access-btn inline-flex items-center justify-center gap-2 rounded-lg px-7 py-3.5 text-sm font-extrabold text-white shadow-md">
+        Get Helix for $17 — Pay Once <span>→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+ 
+<!-- HELIX WHAT'S INSIDE SECTION -->
+<section class="w-full overflow-hidden px-5 py-10 sm:px-8 sm:py-14">
+ 
+  <div class="mx-auto w-full max-w-[1150px]">
+ 
+    <!-- SECTION LABEL -->
+    <div class="mb-4 flex items-center justify-center gap-3">
+      <span class="h-px w-9 bg-[#C7A66A] sm:w-14"></span>
+      <span class="text-[10px] font-bold uppercase tracking-[0.22em] text-[#718475] sm:text-xs">
+        ✦ What's Inside ✦
+      </span>
+      <span class="h-px w-9 bg-[#C7A66A] sm:w-14"></span>
+    </div>
+ 
+    <!-- MAIN HEADING -->
+    <div class="mx-auto max-w-[800px] text-center">
+ 
+     <h2 class="display-font whitespace-nowrap text-center text-[clamp(17px,4.5vw,48px)] font-bold leading-tight tracking-tight text-[#29221F]">
+  8 Creative Tools.
+  <span class="text-[#A84F39]"> Endless Possibilities.</span>
+</h2>
+ 
+      <!-- DESCRIPTION -->
+      <p class="mx-auto mt-5 max-w-[720px] text-sm leading-7 text-[#62574B] sm:text-base sm:leading-7">
+        Not just a prompt generator. A complete creative studio for books, comics, coloring pages, infographics, and more.
+      </p>
+ 
+      <p class="mx-auto mt-3 max-w-[720px] text-sm leading-7 text-[#62574B] sm:text-base sm:leading-7">
+        Turn one idea into coordinated prompts, creative designs, and structured book content with tools built for your projects.
+      </p>
+ 
+    </div>
+ 
+ 
+    <!-- FEATURE GRID -->
+    <div class="mx-auto mt-10 grid max-w-[1050px] grid-cols-2 gap-x-4 gap-y-7 sm:mt-12 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-8 lg:grid-cols-6 lg:gap-5">
+ 
+      <!-- FEATURE 1: CREATIVE TOOLS -->
+      <div class="flex min-w-0 flex-col items-center text-center">
+ 
+        <div class="flex h-24 w-24 items-center justify-center rounded-full border border-[#718475]/40 bg-[#718475]/15 sm:h-28 sm:w-28">
+ 
+          <svg viewBox="0 0 64 64" class="h-12 w-12 sm:h-14 sm:w-14" fill="none" stroke="#A84F39" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="8" y="12" width="48" height="34" rx="3"/>
+            <path d="M4 51h56l-5 5H9z"/>
+            <path d="M32 20c-5 0-8 4-8 8 0 3 1 5 4 7v4h8v-4c3-2 4-4 4-7 0-4-3-8-8-8z"/>
+            <path d="M29 42h6M30 45h4M32 15v-3M20 20l-2-2M44 20l2-2"/>
+          </svg>
+ 
+        </div>
+ 
+        <div class="mt-2 flex min-h-[58px] w-full items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-2 py-2 shadow-sm">
+          <p class="display-font text-[11px] font-bold uppercase leading-4 text-[#29221F] sm:text-xs">
+            8 Creative<br>Tools
+          </p>
+        </div>
+ 
+        <span class="mt-1.5 text-xs text-[#718475]">✦</span>
+ 
+      </div>
+ 
+ 
+      <!-- FEATURE 2: ONE IDEA -->
+      <div class="flex min-w-0 flex-col items-center text-center">
+ 
+        <div class="flex h-24 w-24 items-center justify-center rounded-full border border-[#A84F39]/40 bg-[#A84F39]/10 sm:h-28 sm:w-28">
+ 
+          <svg viewBox="0 0 64 64" class="h-12 w-12 sm:h-14 sm:w-14" fill="none" stroke="#A84F39" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M32 13v-5M18 19l-3-3M46 19l3-3M13 32H8M56 32h-5"/>
+            <path d="M32 18c-8 0-13 6-13 13 0 5 3 9 7 12v6h12v-6c4-3 7-7 7-12 0-7-5-13-13-13z"/>
+            <path d="M27 52h10M29 56h6"/>
+            <path d="M32 25v13M32 33l-5-4M32 33l5-4"/>
+          </svg>
+ 
+        </div>
+ 
+        <div class="mt-2 flex min-h-[58px] w-full items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-2 py-2 shadow-sm">
+          <p class="display-font text-[11px] font-bold uppercase leading-4 text-[#29221F] sm:text-xs">
+            One Idea<br>To Get Started
+          </p>
+        </div>
+ 
+        <span class="mt-1.5 text-xs text-[#718475]">✦</span>
+ 
+      </div>
+ 
+ 
+      <!-- FEATURE 3: PROMPTS & DESIGNS -->
+      <div class="flex min-w-0 flex-col items-center text-center">
+ 
+        <div class="flex h-24 w-24 items-center justify-center rounded-full border border-[#718475]/40 bg-[#718475]/15 sm:h-28 sm:w-28">
+ 
+          <svg viewBox="0 0 64 64" class="h-12 w-12 sm:h-14 sm:w-14" fill="none" stroke="#A84F39" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="10" y="8" width="38" height="48" rx="3"/>
+            <path d="M18 20h22M18 28h22M18 36h14M18 44h12" stroke="#C7A66A"/>
+            <path d="M42 43l12-19 5 3-12 19-7 4z"/>
+            <path d="M42 43l5 3M54 24l3-4 5 3-3 4"/>
+          </svg>
+ 
+        </div>
+ 
+        <div class="mt-2 flex min-h-[58px] w-full items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-2 py-2 shadow-sm">
+          <p class="display-font text-[11px] font-bold uppercase leading-4 text-[#29221F] sm:text-xs">
+            Prompts &<br>Designs
+          </p>
+        </div>
+ 
+        <span class="mt-1.5 text-xs text-[#718475]">✦</span>
+ 
+      </div>
+ 
+ 
+      <!-- FEATURE 4: BOOKS & COMICS -->
+      <div class="flex min-w-0 flex-col items-center text-center">
+ 
+        <div class="flex h-24 w-24 items-center justify-center rounded-full border border-[#A84F39]/40 bg-[#A84F39]/10 sm:h-28 sm:w-28">
+ 
+          <svg viewBox="0 0 64 64" class="h-12 w-12 sm:h-14 sm:w-14" fill="none" stroke="#A84F39" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 17l34-9 8 5-34 10z"/>
+            <path d="M12 17v10l8 5 34-10V13"/>
+            <path d="M12 27v10l8 5 34-10V23"/>
+            <path d="M12 37v10l8 5 34-10V33"/>
+            <path d="M20 32v10M20 42v10" stroke="#C7A66A"/>
+          </svg>
+ 
+        </div>
+ 
+        <div class="mt-2 flex min-h-[58px] w-full items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-2 py-2 shadow-sm">
+          <p class="display-font text-[11px] font-bold uppercase leading-4 text-[#29221F] sm:text-xs">
+            Books &<br>Comics
+          </p>
+        </div>
+ 
+        <span class="mt-1.5 text-xs text-[#718475]">✦</span>
+ 
+      </div>
+ 
+ 
+      <!-- FEATURE 5: COLORING & INFOGRAPHICS -->
+      <div class="flex min-w-0 flex-col items-center text-center">
+ 
+        <div class="flex h-24 w-24 items-center justify-center rounded-full border border-[#718475]/40 bg-[#718475]/15 sm:h-28 sm:w-28">
+ 
+          <svg viewBox="0 0 64 64" class="h-12 w-12 sm:h-14 sm:w-14" fill="none" stroke="#A84F39" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="10" y="8" width="32" height="45" rx="2" transform="rotate(-8 10 8)"/>
+            <path d="M24 23c0-4 3-7 7-7s7 3 7 7c0 3-2 5-7 5s-7-2-7-5z"/>
+            <path d="M31 28v13M24 34h14M31 41c-6 0-9 4-9 8M31 41c6 0 9 4 9 8"/>
+            <path d="M47 39l8 4-12 17-8-4z"/>
+            <path d="M35 56l-1 5 6-1"/>
+          </svg>
+ 
+        </div>
+ 
+        <div class="mt-2 flex min-h-[58px] w-full items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-1.5 py-2 shadow-sm">
+          <p class="display-font text-[10px] font-bold uppercase leading-4 text-[#29221F] sm:text-[11px]">
+            Coloring Pages &<br>Infographics
+          </p>
+        </div>
+ 
+        <span class="mt-1.5 text-xs text-[#718475]">✦</span>
+ 
+      </div>
+ 
+ 
+      <!-- FEATURE 6: NO API KEY -->
+      <div class="flex min-w-0 flex-col items-center text-center">
+ 
+        <div class="flex h-24 w-24 items-center justify-center rounded-full border border-[#A84F39]/40 bg-[#A84F39]/10 sm:h-28 sm:w-28">
+ 
+          <svg viewBox="0 0 64 64" class="h-12 w-12 sm:h-14 sm:w-14" fill="none" stroke="#A84F39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="32" cy="32" r="23"/>
+            <path d="M17 47L47 17"/>
+            <circle cx="25" cy="25" r="5"/>
+            <circle cx="39" cy="39" r="5"/>
+            <path d="M25 20v-3M20 25h-3M39 34v-3M34 39h-3"/>
+          </svg>
+ 
+        </div>
+ 
+        <div class="mt-2 flex min-h-[58px] w-full items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-2 py-2 shadow-sm">
+          <p class="display-font text-[11px] font-bold uppercase leading-4 text-[#29221F] sm:text-xs">
+            No API Key<br>Required
+          </p>
+        </div>
+ 
+        <span class="mt-1.5 text-xs text-[#718475]">✦</span>
+ 
+      </div>
+ 
+    </div>
+ 
+  </div>
+ 
+</section>
+ 
+ 
+ 
+ 
+ 
+<!-- HELIX CREATED WITH THE APP SECTION -->
+<section class="w-full overflow-hidden px-5 py-12 sm:px-8 sm:py-16">
+ 
+  <div class="mx-auto w-full max-w-[1150px]">
+ 
+    <!-- SECTION LABEL -->
+    <div class="mb-4 flex items-center justify-center gap-3">
+      <span class="h-px w-9 bg-[#C7A66A] sm:w-14"></span>
+      <span class="text-[10px] font-bold uppercase tracking-[0.22em] text-[#718475] sm:text-xs">
+        ✦ Created With The App ✦
+      </span>
+      <span class="h-px w-9 bg-[#C7A66A] sm:w-14"></span>
+    </div>
+ 
+    <!-- SECTION HEADING -->
+    <div class="mx-auto max-w-[760px] text-center">
+ 
+      <h2 class="display-font text-3xl font-bold leading-tight text-[#29221F] sm:text-4xl md:text-5xl">
+        Real Creations.
+        <span class="text-[#A84F39]">Multiple Possibilities.</span>
+      </h2>
+ 
+      <p class="mx-auto mt-5 max-w-[720px] text-sm leading-7 text-[#62574B] sm:text-base">
+        See what you can create with the studio. Explore sample coloring pages, comic books, book covers, infographics, junk journal designs, and book content generated with the tools.
+      </p>
+ 
+    </div>
+ 
+ 
+   
+<!-- SAMPLE CREATIONS GRID -->
+<div class="mt-10 grid grid-cols-1 gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
+ 
+  <!-- SAMPLE 1: FUNNY PET JOURNAL -->
+  <article class="group min-w-0">
+    <div class="relative overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-2 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+      <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#E9D9BB]">
+        <img
+          src="images/vintage funny pet junk journals.png"
+          alt="Vintage funny pet junk journal sample"
+          class="h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]"
+          loading="lazy"
+        >
+      </div>
+      <div class="absolute left-4 top-4 rounded-full border border-[#D9C7A9] bg-[#FFFAF1]/95 px-2.5 py-1">
+        <span class="text-[9px] font-bold uppercase tracking-wider text-[#A84F39]">01</span>
+      </div>
+    </div>
+    <div class="mt-3 text-center">
+      <p class="display-font text-xs font-bold text-[#29221F] sm:text-sm">Funny Pet Journal</p>
+      <p class="mt-1 text-[10px] text-[#718475]">Junk Journal Collection</p>
+    </div>
+  </article>
+ 
+  <!-- SAMPLE 2: PET JOURNAL PAGES -->
+  <article class="group min-w-0">
+    <div class="relative overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-2 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+      <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#E9D9BB]">
+        <img
+          src="images/vintage funny pet journal page.png"
+          alt="Vintage funny pet journal page sample"
+          class="h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]"
+          loading="lazy"
+        >
+      </div>
+      <div class="absolute left-4 top-4 rounded-full border border-[#D9C7A9] bg-[#FFFAF1]/95 px-2.5 py-1">
+        <span class="text-[9px] font-bold uppercase tracking-wider text-[#A84F39]">02</span>
+      </div>
+    </div>
+    <div class="mt-3 text-center">
+      <p class="display-font text-xs font-bold text-[#29221F] sm:text-sm">Pet Journal Pages</p>
+      <p class="mt-1 text-[10px] text-[#718475]">Vintage Paper Designs</p>
+    </div>
+  </article>
+ 
+  <!-- SAMPLE 3: COLORING BOOK -->
+  <article class="group min-w-0">
+    <div class="relative overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-2 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+      <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#E9D9BB]">
+        <img
+          src="images/vintage coloring book.png"
+          alt="Vintage botanical coloring book sample"
+          class="h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]"
+          loading="lazy"
+        >
+      </div>
+      <div class="absolute left-4 top-4 rounded-full border border-[#D9C7A9] bg-[#FFFAF1]/95 px-2.5 py-1">
+        <span class="text-[9px] font-bold uppercase tracking-wider text-[#A84F39]">03</span>
+      </div>
+    </div>
+    <div class="mt-3 text-center">
+      <p class="display-font text-xs font-bold text-[#29221F] sm:text-sm">Coloring Book</p>
+      <p class="mt-1 text-[10px] text-[#718475]">Illustrated Coloring Pages</p>
+    </div>
+  </article>
+ 
+  <!-- SAMPLE 4: COMIC BOOK -->
+  <article class="group min-w-0">
+    <div class="relative overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-2 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+      <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#E9D9BB]">
+        <img
+          src="images/comic.jfif"
+          alt="Vintage comic book sample"
+          class="h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]"
+          loading="lazy"
+        >
+      </div>
+      <div class="absolute left-4 top-4 rounded-full border border-[#D9C7A9] bg-[#FFFAF1]/95 px-2.5 py-1">
+        <span class="text-[9px] font-bold uppercase tracking-wider text-[#A84F39]">04</span>
+      </div>
+    </div>
+    <div class="mt-3 text-center">
+      <p class="display-font text-xs font-bold text-[#29221F] sm:text-sm">Comic Book</p>
+      <p class="mt-1 text-[10px] text-[#718475]">Illustrated Storytelling</p>
+    </div>
+  </article>
+ 
+  <!-- SAMPLE 5: STORY PROMPTS -->
+  <article class="group min-w-0">
+    <div class="relative overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-2 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+      <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#E9D9BB]">
+        <img
+          src="images/story book.png"
+          alt="Vintage story prompt sample"
+          class="h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]"
+          loading="lazy"
+        >
+      </div>
+      <div class="absolute left-4 top-4 rounded-full border border-[#D9C7A9] bg-[#FFFAF1]/95 px-2.5 py-1">
+        <span class="text-[9px] font-bold uppercase tracking-wider text-[#A84F39]">05</span>
+      </div>
+    </div>
+    <div class="mt-3 text-center">
+      <p class="display-font text-xs font-bold text-[#29221F] sm:text-sm">Story Prompts</p>
+      <p class="mt-1 text-[10px] text-[#718475]">Creative Writing Ideas</p>
+    </div>
+  </article>
+ 
+  <!-- SAMPLE 6: BOOK COVER -->
+  <article class="group min-w-0">
+    <div class="relative overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-2 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+      <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#E9D9BB]">
+        <img
+          src="images/book cover 11.png"
+          alt="Vintage illustrated book cover sample"
+          class="h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]"
+          loading="lazy"
+        >
+      </div>
+      <div class="absolute left-4 top-4 rounded-full border border-[#D9C7A9] bg-[#FFFAF1]/95 px-2.5 py-1">
+        <span class="text-[9px] font-bold uppercase tracking-wider text-[#A84F39]">06</span>
+      </div>
+    </div>
+    <div class="mt-3 text-center">
+      <p class="display-font text-xs font-bold text-[#29221F] sm:text-sm">Book Cover</p>
+      <p class="mt-1 text-[10px] text-[#718475]">Editorial Cover Design</p>
+    </div>
+  </article>
+ 
+  <!-- SAMPLE 7: INFOGRAPHIC -->
+  <article class="group min-w-0">
+    <div class="relative overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-2 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+      <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#E9D9BB]">
+        <img
+          src="images/Infographic 1.png"
+          alt="Vintage illustrated infographic sample"
+          class="h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]"
+          loading="lazy"
+        >
+      </div>
+      <div class="absolute left-4 top-4 rounded-full border border-[#D9C7A9] bg-[#FFFAF1]/95 px-2.5 py-1">
+        <span class="text-[9px] font-bold uppercase tracking-wider text-[#A84F39]">07</span>
+      </div>
+    </div>
+    <div class="mt-3 text-center">
+      <p class="display-font text-xs font-bold text-[#29221F] sm:text-sm">Infographic</p>
+      <p class="mt-1 text-[10px] text-[#718475]">Vintage Visual Guides</p>
+    </div>
+  </article>
+ 
+  <!-- SAMPLE 8: KDP BOOK CONTENT -->
+  <article class="group min-w-0">
+    <div class="relative overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-2 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+      <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#E9D9BB]">
+        <img
+          src="images/kdp book content.png"
+          alt="Vintage KDP book interior sample"
+          class="h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]"
+          loading="lazy"
+        >
+      </div>
+      <div class="absolute left-4 top-4 rounded-full border border-[#D9C7A9] bg-[#FFFAF1]/95 px-2.5 py-1">
+        <span class="text-[9px] font-bold uppercase tracking-wider text-[#A84F39]">08</span>
+      </div>
+    </div>
+    <div class="mt-3 text-center">
+      <p class="display-font text-xs font-bold text-[#29221F] sm:text-sm">KDP Book Content</p>
+      <p class="mt-1 text-[10px] text-[#718475]">Ready-to-Structure Pages</p>
+    </div>
+  </article>
+ 
+</div>
+</section>
+ 
+ 
+ 
+ 
+<!-- Why This Studio Stands Out -->
+<div class="mb-12 sm:mb-14">
+  <div class="mb-6 text-center">
+    <h3 class="display-font text-2xl font-bold text-[#29221F] sm:text-3xl">
+      Why This Creative Studio Stands Out
+    </h3>
+    <div class="mx-auto mt-3 h-px w-16 bg-[#C7A66A]"></div>
+  </div>
+ 
+  <!-- Single Supporting Product Image -->
+  <div class="mx-auto mb-7 max-w-4xl overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-2 shadow-[0_8px_24px_rgba(41,34,31,0.07)] sm:mb-8 sm:p-3">
+    <img
+      src="images/dashboard.jfif"
+      alt="Preview of the Helix creative studio showing its collection of creative tools and features"
+      class="block h-auto w-full rounded-lg object-contain"
+      loading="lazy"
+    />
+  </div>
+ 
+  <div class="mx-auto grid max-w-4xl grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3">
+ 
+    <!-- Feature 1 -->
+    <div class="group relative flex items-center gap-3 overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-3.5 py-3 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_7px_18px_rgba(41,34,31,0.08)]">
+      <span class="absolute bottom-0 left-0 h-[2px] w-0 bg-[#A84F39] transition-all duration-300 group-hover:w-full"></span>
+      <span class="display-font text-lg font-bold text-[#C7A66A] transition-transform duration-300 group-hover:scale-110">01</span>
+      <div class="h-8 w-px bg-[#D9C7A9]"></div>
+      <div class="min-w-0 flex-1">
+        <h4 class="display-font text-sm font-bold text-[#29221F]">
+          Multiple Tools in One Place
+        </h4>
+        <p class="mt-0.5 text-xs leading-5 text-[#62574B]">
+          Access eight specialized tools for different creative projects.
+        </p>
+      </div>
+      <span class="text-lg text-[#A84F39] opacity-60 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">↗</span>
+    </div>
+ 
+    <!-- Feature 2 -->
+    <div class="group relative flex items-center gap-3 overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-3.5 py-3 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_7px_18px_rgba(41,34,31,0.08)]">
+      <span class="absolute bottom-0 left-0 h-[2px] w-0 bg-[#A84F39] transition-all duration-300 group-hover:w-full"></span>
+      <span class="display-font text-lg font-bold text-[#C7A66A] transition-transform duration-300 group-hover:scale-110">02</span>
+      <div class="h-8 w-px bg-[#D9C7A9]"></div>
+      <div class="min-w-0 flex-1">
+        <h4 class="display-font text-sm font-bold text-[#29221F]">
+          Start With One Idea
+        </h4>
+        <p class="mt-0.5 text-xs leading-5 text-[#62574B]">
+          Turn a simple concept into prompts, designs, or structured content.
+        </p>
+      </div>
+      <span class="text-lg text-[#A84F39] opacity-60 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">↗</span>
+    </div>
+ 
+    <!-- Feature 3 -->
+    <div class="group relative flex items-center gap-3 overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-3.5 py-3 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_7px_18px_rgba(41,34,31,0.08)]">
+      <span class="absolute bottom-0 left-0 h-[2px] w-0 bg-[#A84F39] transition-all duration-300 group-hover:w-full"></span>
+      <span class="display-font text-lg font-bold text-[#C7A66A] transition-transform duration-300 group-hover:scale-110">03</span>
+      <div class="h-8 w-px bg-[#D9C7A9]"></div>
+      <div class="min-w-0 flex-1">
+        <h4 class="display-font text-sm font-bold text-[#29221F]">
+          Less Prompt Writing
+        </h4>
+        <p class="mt-0.5 text-xs leading-5 text-[#62574B]">
+          Generate detailed prompts without starting from scratch.
+        </p>
+      </div>
+      <span class="text-lg text-[#A84F39] opacity-60 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">↗</span>
+    </div>
+ 
+    <!-- Feature 4 -->
+    <div class="group relative flex items-center gap-3 overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-3.5 py-3 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_7px_18px_rgba(41,34,31,0.08)]">
+      <span class="absolute bottom-0 left-0 h-[2px] w-0 bg-[#A84F39] transition-all duration-300 group-hover:w-full"></span>
+      <span class="display-font text-lg font-bold text-[#C7A66A] transition-transform duration-300 group-hover:scale-110">04</span>
+      <div class="h-8 w-px bg-[#D9C7A9]"></div>
+      <div class="min-w-0 flex-1">
+        <h4 class="display-font text-sm font-bold text-[#29221F]">
+          Create Coordinated Projects
+        </h4>
+        <p class="mt-0.5 text-xs leading-5 text-[#62574B]">
+          Develop themed pages, characters, illustrations, and content.
+        </p>
+      </div>
+      <span class="text-lg text-[#A84F39] opacity-60 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">↗</span>
+    </div>
+ 
+    <!-- Feature 5: One Column -->
+    <div class="group relative flex items-center gap-3 overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-3.5 py-3 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_7px_18px_rgba(41,34,31,0.08)]">
+      <span class="absolute bottom-0 left-0 h-[2px] w-0 bg-[#A84F39] transition-all duration-300 group-hover:w-full"></span>
+      <span class="display-font text-lg font-bold text-[#C7A66A] transition-transform duration-300 group-hover:scale-110">05</span>
+      <div class="h-8 w-px bg-[#D9C7A9]"></div>
+      <div class="min-w-0 flex-1">
+        <h4 class="display-font text-sm font-bold text-[#29221F]">
+          Support Your Publishing Goals
+        </h4>
+        <p class="mt-0.5 text-xs leading-5 text-[#62574B]">
+          Create resources for coloring books, comics, and KDP projects.
+        </p>
+      </div>
+      <span class="text-lg text-[#A84F39] opacity-60 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">↗</span>
+    </div>
+ 
+    <!-- Feature 6: Beside Feature 5 -->
+    <div class="group relative flex items-center gap-3 overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-3.5 py-3 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_7px_18px_rgba(41,34,31,0.08)]">
+      <span class="absolute bottom-0 left-0 h-[2px] w-0 bg-[#A84F39] transition-all duration-300 group-hover:w-full"></span>
+      <span class="display-font text-lg font-bold text-[#C7A66A] transition-transform duration-300 group-hover:scale-110">06</span>
+      <div class="h-8 w-px bg-[#D9C7A9]"></div>
+      <div class="min-w-0 flex-1">
+        <h4 class="display-font text-sm font-bold text-[#29221F]">
+          No Recurring Fees
+        </h4>
+        <p class="mt-0.5 text-xs leading-5 text-[#62574B]">
+          No monthly subscriptions or recurring payments to worry about.
+        </p>
+      </div>
+      <span class="text-lg text-[#A84F39] opacity-60 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">↗</span>
+    </div>
+ 
+    <!-- Feature 7: Full Width Below Features 5 and 6 -->
+    <div class="group relative flex items-center gap-3 overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-3.5 py-3 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_7px_18px_rgba(41,34,31,0.08)] sm:col-span-2">
+      <span class="absolute bottom-0 left-0 h-[2px] w-0 bg-[#A84F39] transition-all duration-300 group-hover:w-full"></span>
+      <span class="display-font text-lg font-bold text-[#C7A66A] transition-transform duration-300 group-hover:scale-110">07</span>
+      <div class="h-8 w-px bg-[#D9C7A9]"></div>
+      <div class="min-w-0 flex-1">
+        <h4 class="display-font text-sm font-bold text-[#29221F]">
+          Completely Free Forever
+        </h4>
+        <p class="mt-0.5 text-xs leading-5 text-[#62574B]">
+          Enjoy the creative tools without paying for access.
+        </p>
+      </div>
+      <span class="text-lg text-[#A84F39] opacity-60 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">↗</span>
+    </div>
+ 
+  </div>
+</div>
+ 
+ 
+ 
+<!-- What You Can Create -->
+<div class="px-1 py-7 sm:py-9">
+ 
+  <div class="mb-6 text-center">
+    <div class="mb-3 text-sm text-[#A84F39]">✦ EXPLORE THE POSSIBILITIES ✦</div>
+    <h3 class="display-font text-2xl font-bold text-[#29221F] sm:text-3xl">
+      What You Can Create
+    </h3>
+  </div>
+ 
+  <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+ 
+    <span class="rounded-lg border border-dashed border-[#A84F39] px-3.5 py-2 text-xs font-medium text-[#62574B] transition-all duration-300 hover:bg-[#F6ECD8] sm:text-sm">
+      ✦ Funny Pet Junk Journals
+    </span>
+ 
+    <span class="rounded-lg border border-dashed border-[#A84F39] px-3.5 py-2 text-xs font-medium text-[#62574B] transition-all duration-300 hover:bg-[#F6ECD8] sm:text-sm">
+      ✦ Coloring Books
+    </span>
+ 
+    <span class="rounded-lg border border-dashed border-[#A84F39] px-3.5 py-2 text-xs font-medium text-[#62574B] transition-all duration-300 hover:bg-[#F6ECD8] sm:text-sm">
+      ✦ Comic Books
+    </span>
+ 
+    <span class="rounded-lg border border-dashed border-[#A84F39] px-3.5 py-2 text-xs font-medium text-[#62574B] transition-all duration-300 hover:bg-[#F6ECD8] sm:text-sm">
+      ✦ Story Prompts
+    </span>
+<br>
+    <span class="rounded-lg border border-dashed border-[#A84F39] px-3.5 py-2 text-xs font-medium text-[#62574B] transition-all duration-300 hover:bg-[#F6ECD8] sm:text-sm">
+      ✦ Book Covers
+    </span>
+ 
+    <span class="rounded-lg border border-dashed border-[#A84F39] px-3.5 py-2 text-xs font-medium text-[#62574B] transition-all duration-300 hover:bg-[#F6ECD8] sm:text-sm">
+      ✦ Infographics
+    </span>
+ 
+    <span class="rounded-lg border border-dashed border-[#A84F39] px-3.5 py-2 text-xs font-medium text-[#62574B] transition-all duration-300 hover:bg-[#F6ECD8] sm:text-sm">
+      ✦ KDP Book Content
+    </span>
+ 
+    <span class="rounded-lg border border-dashed border-[#A84F39] px-3.5 py-2 text-xs font-medium text-[#62574B] transition-all duration-300 hover:bg-[#F6ECD8] sm:text-sm">
+      ✦ Written Content
+    </span>
+ 
+  </div>
+ 
+  <p class="mx-auto mt-7 max-w-2xl text-center text-sm font-medium leading-7 text-[#62574B] sm:text-base">
+    Choose your tool, enter your idea, and start creating with less effort.
+  </p>
+ 
+</div>
+ 
+ 
+ 
+ 
+ 
+ 
+<section id="creative-challenges" class="w-full overflow-hidden px-4 py-14 sm:px-6 sm:py-20">
+  <div class="mx-auto w-full max-w-6xl">
+ 
+    <!-- Section Heading -->
+    <div class="mx-auto mb-10 max-w-3xl text-center sm:mb-12">
+      <div class="mb-4 flex items-center justify-center gap-3">
+        <span class="decorative-line h-px w-10"></span>
+        <span class="text-xs font-semibold tracking-[0.2em] text-[#A84F39]">
+          ✦ SOUND FAMILIAR? ✦
+        </span>
+        <span class="decorative-line h-px w-10"></span>
+      </div>
+ 
+      <h2 class="display-font text-[clamp(28px,5vw,48px)] font-bold leading-tight tracking-tight text-[#29221F]">
+        Why Creating Multiple Projects With AI
+        <span class="text-[#A84F39]"> Isn't Always Simple</span>
+      </h2>
+ 
+      <p class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#62574B] sm:text-base">
+        Turning one idea into a book, comic, coloring book, infographic, or junk journal sounds easy.
+        But writing detailed prompts, organizing every element, and getting everything ready for your
+        project? That's where things can get tricky.
+      </p>
+    </div>
+ 
+    <!-- Challenges -->
+    <div class="mx-auto grid max-w-5xl grid-cols-1 gap-4 lg:grid-cols-3">
+ 
+      <!-- Challenge 1 -->
+      <article class="group relative flex flex-col overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(41,34,31,0.08)] sm:p-6">
+ 
+        <div class="mb-5 flex items-center justify-between">
+          <span class="display-font text-3xl font-bold text-[#D9C7A9]">01</span>
+          <span class="flex h-9 w-9 items-center justify-center rounded-full bg-[#F6ECD8] text-lg text-[#A84F39]">
+            ✎
+          </span>
+        </div>
+ 
+        <h3 class="display-font mb-3 text-xl font-bold leading-snug text-[#29221F]">
+          Every Project Needs Different Prompts
+        </h3>
+ 
+        <p class="text-sm leading-6 text-[#62574B]">
+          A coloring book needs illustration prompts. A comic needs characters, scenes, and panels.
+          A book needs structured content, while an infographic needs information arranged clearly.
+          Starting each project from scratch takes time.
+        </p>
+ 
+        <div class="my-5 h-px w-full bg-[#D9C7A9]"></div>
+ 
+        <div class="mt-auto rounded-lg border border-dashed border-[#A84F39]/50 bg-[#F6ECD8]/60 p-3.5">
+          <div class="mb-2 flex items-center gap-2">
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#A84F39] text-[11px] text-white">✓</span>
+            <span class="text-[10px] font-bold tracking-[0.14em] text-[#A84F39]">
+              THE SMARTER APPROACH
+            </span>
+          </div>
+          <p class="text-xs leading-5 text-[#62574B] sm:text-sm">
+            Dedicated tools help generate prompts, designs, and structured content based on the type of project you're creating.
+          </p>
+        </div>
+      </article>
+ 
+      <!-- Challenge 2 -->
+      <article class="group relative flex flex-col overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(41,34,31,0.08)] sm:p-6">
+ 
+        <div class="mb-5 flex items-center justify-between">
+          <span class="display-font text-3xl font-bold text-[#D9C7A9]">02</span>
+          <span class="flex h-9 w-9 items-center justify-center rounded-full bg-[#F6ECD8] text-lg text-[#A84F39]">
+            ✧
+          </span>
+        </div>
+ 
+        <h3 class="display-font mb-3 text-xl font-bold leading-snug text-[#29221F]">
+          One Idea Can Be Difficult to Develop
+        </h3>
+ 
+        <p class="text-sm leading-6 text-[#62574B]">
+          You may have a great story idea, a topic for an infographic, or a concept for a coloring book.
+          Turning that simple idea into detailed prompts, connected scenes, page concepts, or organized
+          content can require plenty of planning.
+        </p>
+ 
+        <div class="my-5 h-px w-full bg-[#D9C7A9]"></div>
+ 
+        <div class="mt-auto rounded-lg border border-dashed border-[#A84F39]/50 bg-[#F6ECD8]/60 p-3.5">
+          <div class="mb-2 flex items-center gap-2">
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#A84F39] text-[11px] text-white">✓</span>
+            <span class="text-[10px] font-bold tracking-[0.14em] text-[#A84F39]">
+              THE SMARTER APPROACH
+            </span>
+          </div>
+          <p class="text-xs leading-5 text-[#62574B] sm:text-sm">
+            Enter your idea and let the relevant tool help develop it into a detailed prompt pack or structured content for your chosen project.
+          </p>
+        </div>
+      </article>
+ 
+      <!-- Challenge 3 -->
+      <article class="group relative flex flex-col overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(41,34,31,0.08)] sm:p-6">
+ 
+        <div class="mb-5 flex items-center justify-between">
+          <span class="display-font text-3xl font-bold text-[#D9C7A9]">03</span>
+          <span class="flex h-9 w-9 items-center justify-center rounded-full bg-[#F6ECD8] text-lg text-[#A84F39]">
+            ❋
+          </span>
+        </div>
+ 
+        <h3 class="display-font mb-3 text-xl font-bold leading-snug text-[#29221F]">
+          Keeping Everything Organized Takes Work
+        </h3>
+ 
+        <p class="text-sm leading-6 text-[#62574B]">
+          Switching between different creative tasks, rewriting prompts, planning layouts, and organizing
+          content can slow you down. The more projects you create, the more difficult it can become to
+          manage everything efficiently.
+        </p>
+ 
+        <div class="my-5 h-px w-full bg-[#D9C7A9]"></div>
+ 
+        <div class="mt-auto rounded-lg border border-dashed border-[#A84F39]/50 bg-[#F6ECD8]/60 p-3.5">
+          <div class="mb-2 flex items-center gap-2">
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#A84F39] text-[11px] text-white">✓</span>
+            <span class="text-[10px] font-bold tracking-[0.14em] text-[#A84F39]">
+              THE SMARTER APPROACH
+            </span>
+          </div>
+          <p class="text-xs leading-5 text-[#62574B] sm:text-sm">
+            Access eight specialized creative tools in one studio for funny pet junk journals, coloring books, comics, story prompts, book covers, infographics, KDP book creation, and writing.
+          </p>
+        </div>
+      </article>
+ 
+    </div>
+ 
+    <!-- CTA -->
+    <div class="mt-10 text-center sm:mt-12">
+      <a
+        href="#access"
+        class="access-btn inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-lg bg-[#A84F39] px-7 py-4 text-sm font-bold text-[#FFFAF1] shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-[#8F3E2C] hover:shadow-lg sm:w-auto"
+      >
+        Get Instant Access – $17
+        <span class="text-lg">→</span>
+      </a>
+ 
+      <p class="mt-3 text-[10px] font-semibold tracking-[0.15em] text-[#62574B]">
+        ONE-TIME PAYMENT · INSTANT ACCESS
+      </p>
+    </div>
+ 
+  </div>
+</section>
+ 
+ 
+ 
+ 
+<!-- Why Create Section -->
+<section class="relative py-12 sm:py-16">
+ 
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+ 
+    <!-- Section Heading -->
+    <div class="mx-auto mb-10 max-w-3xl text-center sm:mb-12">
+ 
+      <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-[#A84F39]">
+        ✦ WHY CREATE? ✦
+      </p>
+ 
+      <h2 class="display-font text-3xl font-bold leading-tight tracking-tight text-[#29221F] sm:text-4xl lg:text-5xl">
+        One Simple Idea Can Become
+        <span class="text-[#A84F39]">Something Special.</span>
+      </h2>
+ 
+      <p class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#62574B] sm:text-base">
+        A story idea, a book concept, or a topic for an infographic is just the beginning. The right prompts, creative direction, and structure help turn that idea into something you can develop and use.
+      </p>
+ 
+      <div class="mx-auto mt-6 flex items-center justify-center gap-3">
+        <span class="h-px w-8 bg-[#C7A66A]"></span>
+        <span class="display-font text-sm font-semibold italic text-[#A84F39]">
+          ✦ Picture What You Could Create...
+        </span>
+        <span class="h-px w-8 bg-[#C7A66A]"></span>
+      </div>
+ 
+    </div>
+ 
+    <!-- Creative Possibilities -->
+    <div class="mx-auto mb-12 grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+ 
+      <div class="group overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:p-3">
+        <div class="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-md bg-[#F6ECD8]">
+          <span class="display-font text-4xl text-[#A84F39] transition-transform duration-300 group-hover:scale-110">✿</span>
+        </div>
+        <p class="mt-2 text-center text-xs font-semibold text-[#29221F]">Coloring Book</p>
+      </div>
+ 
+      <div class="group overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:p-3">
+        <div class="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-md bg-[#F6ECD8]">
+          <span class="display-font text-4xl text-[#A84F39] transition-transform duration-300 group-hover:scale-110">▤</span>
+        </div>
+        <p class="mt-2 text-center text-xs font-semibold text-[#29221F]">Comic Book</p>
+      </div>
+ 
+      <div class="group overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:p-3">
+        <div class="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-md bg-[#F6ECD8]">
+          <span class="display-font text-4xl text-[#A84F39] transition-transform duration-300 group-hover:scale-110">✎</span>
+        </div>
+        <p class="mt-2 text-center text-xs font-semibold text-[#29221F]">Story Prompts</p>
+      </div>
+ 
+      <div class="group overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:p-3">
+        <div class="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-md bg-[#F6ECD8]">
+          <span class="display-font text-4xl text-[#A84F39] transition-transform duration-300 group-hover:scale-110">▧</span>
+        </div>
+        <p class="mt-2 text-center text-xs font-semibold text-[#29221F]">Book Content</p>
+      </div>
+ 
+    </div>
+ 
+    <!-- Three-Step Creative Journey -->
+    <div class="relative mx-auto grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
+ 
+      <!-- Step 1 -->
+      <div class="relative flex flex-col rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(41,34,31,0.07)] sm:p-6">
+ 
+        <div class="mb-5 flex items-center justify-between">
+          <span class="display-font text-3xl font-bold text-[#C7A66A]">01</span>
+          <span class="rounded-full border border-[#D9C7A9] px-3 py-1 text-[9px] font-bold uppercase tracking-[0.18em] text-[#A84F39]">
+            The Beginning
+          </span>
+        </div>
+ 
+        <div class="mb-5 flex h-24 items-center justify-center rounded-lg bg-[#F6ECD8]">
+          <div class="text-center">
+            <span class="display-font text-4xl text-[#A84F39]">✧</span>
+            <p class="mt-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#62574B]">
+              Your imagination
+            </p>
+          </div>
+        </div>
+ 
+        <h3 class="display-font text-xl font-bold text-[#29221F]">
+          A Simple Idea
+        </h3>
+ 
+        <p class="mt-2 text-sm leading-6 text-[#62574B]">
+          You have a concept, but developing the prompts, content, and creative direction takes time.
+        </p>
+ 
+        <div class="mt-auto pt-5">
+          <div class="h-px w-full bg-[#D9C7A9]"></div>
+          <p class="mt-3 text-[10px] font-bold uppercase tracking-[0.16em] text-[#A84F39]">
+            Every project starts somewhere
+          </p>
+        </div>
+ 
+      </div>
+ 
+      <!-- Step 2 -->
+      <div class="relative flex flex-col rounded-xl border border-[#A84F39]/50 bg-[#FFFAF1] p-5 shadow-[0_5px_18px_rgba(41,34,31,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(41,34,31,0.07)] sm:p-6">
+ 
+        <div class="mb-5 flex items-center justify-between">
+          <span class="display-font text-3xl font-bold text-[#A84F39]">02</span>
+          <span class="rounded-full border border-[#A84F39]/40 bg-[#A84F39]/5 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.18em] text-[#A84F39]">
+            The Development
+          </span>
+        </div>
+ 
+        <div class="mb-5 flex h-24 items-center justify-center rounded-lg bg-[#F6ECD8]">
+          <div class="text-center">
+            <span class="display-font text-4xl text-[#A84F39]">✎</span>
+            <p class="mt-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#62574B]">
+              Prompts & direction
+            </p>
+          </div>
+        </div>
+ 
+        <h3 class="display-font text-xl font-bold text-[#29221F]">
+          A Developed Creative Project
+        </h3>
+ 
+        <p class="mt-2 text-sm leading-6 text-[#62574B]">
+          Turn your idea into detailed prompts, illustrations, story concepts, or structured book content with the right tool.
+        </p>
+ 
+        <div class="mt-auto pt-5">
+          <div class="h-px w-full bg-[#D9C7A9]"></div>
+          <p class="mt-3 text-[10px] font-bold uppercase tracking-[0.16em] text-[#A84F39]">
+            Give your idea direction
+          </p>
+        </div>
+ 
+      </div>
+ 
+      <!-- Step 3 -->
+      <div class="relative flex flex-col rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(41,34,31,0.07)] sm:p-6">
+ 
+        <div class="mb-5 flex items-center justify-between">
+          <span class="display-font text-3xl font-bold text-[#C7A66A]">03</span>
+          <span class="rounded-full border border-[#D9C7A9] px-3 py-1 text-[9px] font-bold uppercase tracking-[0.18em] text-[#A84F39]">
+            The Possibilities
+          </span>
+        </div>
+ 
+        <div class="mb-5 flex h-24 items-center justify-center rounded-lg bg-[#F6ECD8]">
+          <div class="text-center">
+            <span class="display-font text-4xl text-[#A84F39]">✧</span>
+            <p class="mt-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#62574B]">
+              Your creative workflow
+            </p>
+          </div>
+        </div>
+ 
+        <h3 class="display-font text-xl font-bold text-[#29221F]">
+          A Complete Creative Workflow
+        </h3>
+ 
+        <p class="mt-2 text-sm leading-6 text-[#62574B]">
+          Explore eight specialized tools for junk journals, coloring books, comics, story prompts, book covers, infographics, KDP books, and writing.
+        </p>
+ 
+        <div class="mt-auto pt-5">
+          <div class="h-px w-full bg-[#D9C7A9]"></div>
+          <p class="mt-3 text-[10px] font-bold uppercase tracking-[0.16em] text-[#A84F39]">
+            More ways to bring ideas to life
+          </p>
+        </div>
+ 
+      </div>
+ 
+    </div>
+ 
+  </div>
+</section>
+ 
+ 
+ 
+ 
+<!-- This Is The Goal / Secret To Better Creations -->
+<section class="relative py-12 sm:py-16">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+ 
+    <!-- Section Header -->
+    <div class="mx-auto mb-10 max-w-3xl text-center sm:mb-12">
+      <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-[#A84F39]">
+        ✦ THIS IS THE GOAL ✦
+      </p>
+ 
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#C7A66A]">
+        ✦ THE SECRET TO BETTER CREATIONS ✦
+      </p>
+ 
+      <h2 class="display-font text-3xl font-bold leading-tight tracking-tight text-[#29221F] sm:text-4xl lg:text-5xl">
+        One Idea. Detailed Prompts.
+        <span class="text-[#A84F39]">Creative Possibilities.</span>
+      </h2>
+ 
+      <p class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#62574B] sm:text-base">
+        Turn a simple idea into detailed prompts, coordinated designs, and structured content. Explore built-in prompt ideas, customize your creative direction, and develop projects with tools designed for different needs.
+      </p>
+    </div>
+ 
+    <!-- Main Content -->
+    <div class="grid items-start gap-7 lg:grid-cols-2 lg:gap-10">
+ 
+      <!-- Left: Benefits -->
+      <div class="min-w-0">
+ 
+        <div class="mb-5 flex items-center gap-3">
+          <span class="h-px w-8 bg-[#C7A66A]"></span>
+          <h3 class="display-font text-lg font-bold text-[#29221F]">
+            A Better Way to Develop Ideas
+          </h3>
+        </div>
+ 
+        <div class="space-y-3">
+ 
+          <!-- Benefit 1 -->
+          <div class="group flex gap-4 rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-4 transition-all duration-300 hover:border-[#A84F39] hover:shadow-[0_6px_18px_rgba(41,34,31,0.06)]">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F6ECD8] display-font text-sm font-bold text-[#A84F39] transition-colors group-hover:bg-[#A84F39] group-hover:text-white">
+              01
+            </div>
+            <div class="min-w-0">
+              <h4 class="display-font text-base font-bold text-[#29221F]">
+                Built-In Prompt Ideas
+              </h4>
+              <p class="mt-1 text-sm leading-6 text-[#62574B]">
+                Get inspiration for themes, stories, illustrations, and creative projects.
+              </p>
+            </div>
+          </div>
+ 
+          <!-- Benefit 2 -->
+          <div class="group flex gap-4 rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-4 transition-all duration-300 hover:border-[#A84F39] hover:shadow-[0_6px_18px_rgba(41,34,31,0.06)]">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F6ECD8] display-font text-sm font-bold text-[#A84F39] transition-colors group-hover:bg-[#A84F39] group-hover:text-white">
+              02
+            </div>
+            <div class="min-w-0">
+              <h4 class="display-font text-base font-bold text-[#29221F]">
+                Tailored Creative Direction
+              </h4>
+              <p class="mt-1 text-sm leading-6 text-[#62574B]">
+                Guide the style, layout, characters, colors, and content to suit your idea.
+              </p>
+            </div>
+          </div>
+ 
+          <!-- Benefit 3 -->
+          <div class="group flex gap-4 rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-4 transition-all duration-300 hover:border-[#A84F39] hover:shadow-[0_6px_18px_rgba(41,34,31,0.06)]">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F6ECD8] display-font text-sm font-bold text-[#A84F39] transition-colors group-hover:bg-[#A84F39] group-hover:text-white">
+              03
+            </div>
+            <div class="min-w-0">
+              <h4 class="display-font text-base font-bold text-[#29221F]">
+                Designed for Your Project
+              </h4>
+              <p class="mt-1 text-sm leading-6 text-[#62574B]">
+                Create prompts for junk journals, coloring books, comics, stories, book covers, and infographics.
+              </p>
+            </div>
+          </div>
+ 
+          <!-- Benefit 4 -->
+          <div class="group flex gap-4 rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-4 transition-all duration-300 hover:border-[#A84F39] hover:shadow-[0_6px_18px_rgba(41,34,31,0.06)]">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F6ECD8] display-font text-sm font-bold text-[#A84F39] transition-colors group-hover:bg-[#A84F39] group-hover:text-white">
+              04
+            </div>
+            <div class="min-w-0">
+              <h4 class="display-font text-base font-bold text-[#29221F]">
+                Structured Results
+              </h4>
+              <p class="mt-1 text-sm leading-6 text-[#62574B]">
+                Develop image prompts, story packs, infographic concepts, and organized book content.
+              </p>
+            </div>
+          </div>
+ 
+        </div>
+ 
+        <!-- Small Supporting Note -->
+        <div class="mt-5 flex items-start gap-3 border-l-2 border-[#C7A66A] py-2 pl-4">
+          <span class="text-lg text-[#A84F39]">✦</span>
+          <p class="text-xs leading-5 text-[#62574B]">
+            Start with your idea. Refine the direction. Develop the details for the project you want to create.
+          </p>
+        </div>
+ 
+      </div>
+ 
+      <!-- Right: Sample Master Prompt -->
+      <div class="min-w-0">
+ 
+        <div class="mb-5 flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <span class="h-px w-8 bg-[#C7A66A]"></span>
+            <h3 class="display-font text-lg font-bold text-[#29221F]">
+              See What a Detailed Prompt Looks Like
+            </h3>
+          </div>
+        </div>
+ 
+        <!-- Prompt Document -->
+        <div class="relative overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] shadow-[0_12px_30px_rgba(41,34,31,0.08)]">
+ 
+          <!-- Document Header -->
+          <div class="flex items-center justify-between border-b border-[#D9C7A9] bg-[#F6ECD8] px-4 py-3 sm:px-5">
+            <div>
+              <p class="text-[9px] font-bold uppercase tracking-[0.22em] text-[#A84F39]">
+                HELIX · PROMPT PREVIEW
+              </p>
+              <p class="display-font mt-1 text-sm font-bold text-[#29221F]">
+                Creative Project Blueprint
+              </p>
+            </div>
+ 
+            <div class="rounded-full border border-[#C7A66A] px-3 py-1 text-[9px] font-bold uppercase tracking-wider text-[#62574B]">
+              Sample
+            </div>
+          </div>
+ 
+          <!-- Prompt Content -->
+          <div class="space-y-4 p-4 sm:p-5">
+ 
+            <div>
+              <p class="mb-1 text-[9px] font-bold uppercase tracking-[0.2em] text-[#A84F39]">
+                SAMPLE MASTER PROMPT — EXCERPT
+              </p>
+              <div class="mb-3 h-px w-12 bg-[#C7A66A]"></div>
+            </div>
+ 
+            <div class="space-y-3 text-xs leading-6 text-[#62574B] sm:text-[13px]">
+ 
+              <p>
+                <strong class="font-bold text-[#29221F]">PROJECT:</strong>
+                Create a coordinated vintage funny pet junk journal collection.
+              </p>
+ 
+              <p>
+                <strong class="font-bold text-[#29221F]">THEME:</strong>
+                Mischievous cats enjoying a cozy autumn afternoon.
+              </p>
+ 
+              <p>
+                <strong class="font-bold text-[#29221F]">ART STYLE:</strong>
+                Vintage storybook illustration with hand-drawn ink lines, soft watercolor textures, warm autumn colors, and playful character expressions.
+              </p>
+ 
+              <p>
+                <strong class="font-bold text-[#29221F]">CHARACTERS:</strong>
+                Expressive cats wearing varied outfits and accessories, with consistent character styling throughout the collection.
+              </p>
+ 
+              <p>
+                <strong class="font-bold text-[#29221F]">PAGE ELEMENTS:</strong>
+                Decorative journal pages, writing sheets, tags, tickets, labels, and printable ephemera that complement the selected theme.
+              </p>
+ 
+              <p>
+                <strong class="font-bold text-[#29221F]">LAYOUT:</strong>
+                Keep each element clear, well-spaced, and suitable for its intended printable format.
+              </p>
+ 
+              <p>
+                <strong class="font-bold text-[#29221F]">AVOID:</strong>
+                Inconsistent illustration styles, unwanted text, distorted anatomy, cluttered layouts, and unnecessary decorative elements.
+              </p>
+ 
+              <p>
+                <strong class="font-bold text-[#29221F]">OUTPUT:</strong>
+                Generate coordinated image prompts for the selected theme, with clear instructions for each page or printable element.
+              </p>
+ 
+            </div>
+ 
+            <!-- Document Footer -->
+            <div class="border-t border-dashed border-[#D9C7A9] pt-4">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="text-[9px] font-bold uppercase tracking-[0.18em] text-[#A84F39]">
+                  IDEA → DIRECTION → PROMPTS
+                </span>
+                <span class="display-font text-xs italic text-[#C7A66A]">
+                  Create with intention.
+                </span>
+              </div>
+            </div>
+ 
+          </div>
+        </div>
+ 
+        <!-- Disclaimer -->
+        <p class="mt-4 text-center text-[11px] italic leading-5 text-[#62574B]">
+          A shortened example. Your generated prompts and instructions adapt to the tool, idea, and project you select.
+        </p>
+ 
+      </div>
+ 
+    </div>
+ 
+  </div>
+</section>
+ 
+ 
+ 
+ 
+ 
+ 
+<section class="px-4 py-16 sm:px-6 sm:py-20">
+  <div class="mx-auto max-w-7xl">
+ 
+    <!-- SECTION HEADER -->
+    <div class="mx-auto mb-12 max-w-3xl text-center sm:mb-14">
+      <p class="mb-3 text-[10px] font-bold tracking-[0.25em] text-[#A84F39] sm:text-xs">
+        ✦ WHAT YOU CAN CREATE ✦
+      </p>
+ 
+      <h2 class="display-font text-3xl font-bold leading-tight tracking-tight text-[#29221F] sm:text-4xl lg:text-5xl">
+        Eight Creative Tools.
+        <span class="text-[#A84F39]">Endless Things to Create.</span>
+      </h2>
+ 
+      <p class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#62574B] sm:text-base">
+        Explore funny pet junk journals, coloring books, comic books, story prompts, book covers, infographics, and complete KDP book projects. Each tool helps you turn an idea into creative designs, detailed prompts, or structured content for your next project.
+      </p>
+ 
+      <div class="decorative-line mx-auto mt-7 w-24"></div>
+    </div>
+ 
+ 
+    <!-- CREATIVE TOOL CARDS -->
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-7">
+ 
+ 
+      <!-- 01. FUNNY PET JUNK JOURNALS -->
+      <article class="group overflow-hidden rounded-2xl border border-[#D9C7A9] bg-[#FFFAF1] p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(41,34,31,0.08)] sm:p-5">
+ 
+        <div class="mb-4 flex items-center justify-between">
+          <span class="text-[10px] font-bold tracking-[0.2em] text-[#A84F39]">01 / CREATIVE TOOL</span>
+          <span class="rounded-full border border-[#D9C7A9] px-3 py-1 text-[9px] font-semibold tracking-wider text-[#62574B]">JUNK JOURNALS</span>
+        </div>
+ 
+        <div class="grid grid-cols-2 gap-2.5 sm:gap-3">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]">
+            <img src="images/pet journal 1.png" alt="Funny pet junk journal sample 1" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy">
+          </div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]">
+            <img src="images/Funny cat junck journal.jfif" alt="Funny pet junk journal sample 2" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy">
+          </div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]">
+            <img src="images/pet dog journal.png" alt="Funny pet junk journal sample 3" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy">
+          </div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]">
+            <img src="images/dog journal 2.png" alt="Funny pet junk journal sample 4" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy">
+          </div>
+        </div>
+ 
+        <div class="pt-5">
+          <h3 class="display-font text-2xl font-bold text-[#29221F]">Funny Pet Junk Journals</h3>
+          <h4 class="mt-2 text-sm font-bold text-[#A84F39]">Playful Pets. Vintage Charm. Coordinated Pages.</h4>
+          <p class="mt-3 text-sm leading-6 text-[#62574B]">
+            Create funny pet illustrations, decorative journal pages, writing sheets, background papers, tags, tickets, and printable elements that bring your junk journal theme together.
+          </p>
+          <p class="mt-4 border-t border-[#D9C7A9] pt-3 text-[10px] font-bold leading-5 tracking-wide text-[#8A725A]">
+            CHARACTER PAGES · WRITING SHEETS · BACKGROUND PAPERS · EPHEMERA
+          </p>
+        </div>
+      </article>
+ 
+ 
+      <!-- 02. COLORING BOOKS -->
+      <article class="group overflow-hidden rounded-2xl border border-[#D9C7A9] bg-[#FFFAF1] p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(41,34,31,0.08)] sm:p-5">
+ 
+        <div class="mb-4 flex items-center justify-between">
+          <span class="text-[10px] font-bold tracking-[0.2em] text-[#A84F39]">02 / CREATIVE TOOL</span>
+          <span class="rounded-full border border-[#D9C7A9] px-3 py-1 text-[9px] font-semibold tracking-wider text-[#62574B]">COLORING BOOKS</span>
+        </div>
+ 
+        <div class="grid grid-cols-2 gap-2.5 sm:gap-3">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/coloring 1.png" alt="Coloring book sample 1" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/coloring 2.png" alt="Coloring book sample 2" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/Animal coloring book (2).png" alt="Coloring book sample 3" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/Animal coloring book(3).png" alt="Coloring book sample 4" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+        </div>
+ 
+        <div class="pt-5">
+          <h3 class="display-font text-2xl font-bold text-[#29221F]">Coloring Books</h3>
+          <h4 class="mt-2 text-sm font-bold text-[#A84F39]">Turn Any Theme Into a Coloring Collection.</h4>
+          <p class="mt-3 text-sm leading-6 text-[#62574B]">
+            Develop coloring-page concepts and illustration prompts around your chosen theme, with designs suited to the coloring book you want to create.
+          </p>
+          <p class="mt-4 border-t border-[#D9C7A9] pt-3 text-[10px] font-bold leading-5 tracking-wide text-[#8A725A]">
+            CHARACTERS · SCENES · THEMED PAGES · COLORING COLLECTIONS
+          </p>
+        </div>
+      </article>
+ 
+ 
+      <!-- 03. COMIC BOOKS -->
+      <article class="group overflow-hidden rounded-2xl border border-[#D9C7A9] bg-[#FFFAF1] p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(41,34,31,0.08)] sm:p-5">
+ 
+        <div class="mb-4 flex items-center justify-between">
+          <span class="text-[10px] font-bold tracking-[0.2em] text-[#A84F39]">03 / CREATIVE TOOL</span>
+          <span class="rounded-full border border-[#D9C7A9] px-3 py-1 text-[9px] font-semibold tracking-wider text-[#62574B]">COMIC BOOKS</span>
+        </div>
+ 
+        <div class="grid grid-cols-2 gap-2.5 sm:gap-3">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/comic 1.png" alt="Comic book sample 1" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/comic 2.png" alt="Comic book sample 2" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/comic 3.png" alt="Comic book sample 3" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/comic 4.png" alt="Comic book sample 4" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+        </div>
+ 
+        <div class="pt-5">
+          <h3 class="display-font text-2xl font-bold text-[#29221F]">Comic Books</h3>
+          <h4 class="mt-2 text-sm font-bold text-[#A84F39]">Characters, Scenes, and Stories That Connect.</h4>
+          <p class="mt-3 text-sm leading-6 text-[#62574B]">
+            Build comic concepts with characters, storylines, scene descriptions, and panel-by-panel visual direction to help bring your ideas to life.
+          </p>
+          <p class="mt-4 border-t border-[#D9C7A9] pt-3 text-[10px] font-bold leading-5 tracking-wide text-[#8A725A]">
+            CHARACTERS · STORYLINES · PANELS · SCENES
+          </p>
+        </div>
+      </article>
+ 
+ 
+      <!-- 04. STORY PROMPT STUDIO -->
+      <article class="group overflow-hidden rounded-2xl border border-[#D9C7A9] bg-[#FFFAF1] p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(41,34,31,0.08)] sm:p-5">
+ 
+        <div class="mb-4 flex items-center justify-between">
+          <span class="text-[10px] font-bold tracking-[0.2em] text-[#A84F39]">04 / CREATIVE TOOL</span>
+          <span class="rounded-full border border-[#D9C7A9] px-3 py-1 text-[9px] font-semibold tracking-wider text-[#62574B]">STORYTELLING</span>
+        </div>
+ 
+        <div class="grid grid-cols-2 gap-2.5 sm:gap-3">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/studio 1.png" alt="Story prompt sample 1" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/studio 2.png" alt="Story prompt sample 2" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/studio 3.png" alt="Story prompt sample 3" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/studio 4.png" alt="Story prompt sample 4" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+        </div>
+ 
+        <div class="pt-5">
+          <h3 class="display-font text-2xl font-bold text-[#29221F]">Story Prompt Studio</h3>
+          <h4 class="mt-2 text-sm font-bold text-[#A84F39]">One Idea. A Complete Story-Prompt Pack.</h4>
+          <p class="mt-3 text-sm leading-6 text-[#62574B]">
+            Develop a simple concept into a structured writing and illustration prompt pack, giving your story a clearer direction from the opening idea to its visual world.
+          </p>
+          <p class="mt-4 border-t border-[#D9C7A9] pt-3 text-[10px] font-bold leading-5 tracking-wide text-[#8A725A]">
+            STORY IDEAS · WRITING PROMPTS · CHARACTER CONCEPTS · ILLUSTRATION PROMPTS
+          </p>
+        </div>
+      </article>
+ 
+ 
+      <!-- 05. BOOK COVER DESIGN GENERATOR -->
+      <article class="group overflow-hidden rounded-2xl border border-[#D9C7A9] bg-[#FFFAF1] p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(41,34,31,0.08)] sm:p-5">
+ 
+        <div class="mb-4 flex items-center justify-between">
+          <span class="text-[10px] font-bold tracking-[0.2em] text-[#A84F39]">05 / CREATIVE TOOL</span>
+          <span class="rounded-full border border-[#D9C7A9] px-3 py-1 text-[9px] font-semibold tracking-wider text-[#62574B]">BOOK COVERS</span>
+        </div>
+ 
+        <div class="grid grid-cols-2 gap-2.5 sm:gap-3">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/book cover 1.png" alt="Book cover sample 1" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/book cover 2.png" alt="Book cover sample 2" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/book cover 3.png" alt="Book cover sample 3" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/book cover 4.png" alt="Book cover sample 4" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+        </div>
+ 
+        <div class="pt-5">
+          <h3 class="display-font text-2xl font-bold text-[#29221F]">Book Cover Design Generator</h3>
+          <h4 class="mt-2 text-sm font-bold text-[#A84F39]">Give Your Book a Cover Worth Exploring.</h4>
+          <p class="mt-3 text-sm leading-6 text-[#62574B]">
+            Turn your book concept into a detailed cover-design direction, with ideas for the title, visual theme, imagery, and overall composition.
+          </p>
+          <p class="mt-4 border-t border-[#D9C7A9] pt-3 text-[10px] font-bold leading-5 tracking-wide text-[#8A725A]">
+            FICTION · NONFICTION · GENRE CONCEPTS · COVER DESIGNS
+          </p>
+        </div>
+      </article>
+ 
+ 
+      <!-- 06. INFOGRAPHIC PROMPT GENERATOR -->
+      <article class="group overflow-hidden rounded-2xl border border-[#D9C7A9] bg-[#FFFAF1] p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(41,34,31,0.08)] sm:p-5">
+ 
+        <div class="mb-4 flex items-center justify-between">
+          <span class="text-[10px] font-bold tracking-[0.2em] text-[#A84F39]">06 / CREATIVE TOOL</span>
+          <span class="rounded-full border border-[#D9C7A9] px-3 py-1 text-[9px] font-semibold tracking-wider text-[#62574B]">PROMPT DESIGN</span>
+        </div>
+ 
+        <div class="grid grid-cols-2 gap-2.5 sm:gap-3">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/info 1.png" alt="Infographic prompt sample 1" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/info 2.png" alt="Infographic prompt sample 2" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/info 3.png" alt="Infographic prompt sample 3" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/info 4.png" alt="Infographic prompt sample 4" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+        </div>
+ 
+        <div class="pt-5">
+          <h3 class="display-font text-2xl font-bold text-[#29221F]">Infographic Prompt Generator</h3>
+          <h4 class="mt-2 text-sm font-bold text-[#A84F39]">Make Your Next Visual Idea Easier to Plan.</h4>
+          <p class="mt-3 text-sm leading-6 text-[#62574B]">
+            Transform a topic into a structured infographic prompt with a clear subject, organized information, visual elements, and layout direction.
+          </p>
+          <p class="mt-4 border-t border-[#D9C7A9] pt-3 text-[10px] font-bold leading-5 tracking-wide text-[#8A725A]">
+            TOPICS · KEY POINTS · VISUAL DIRECTION · LAYOUT IDEAS
+          </p>
+        </div>
+      </article>
+ 
+ 
+      <!-- 07. INFOGRAPHIC GENERATOR -->
+      <article class="group overflow-hidden rounded-2xl border border-[#D9C7A9] bg-[#FFFAF1] p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(41,34,31,0.08)] sm:p-5">
+ 
+        <div class="mb-4 flex items-center justify-between">
+          <span class="text-[10px] font-bold tracking-[0.2em] text-[#A84F39]">07 / CREATIVE TOOL</span>
+          <span class="rounded-full border border-[#D9C7A9] px-3 py-1 text-[9px] font-semibold tracking-wider text-[#62574B]">INFOGRAPHICS</span>
+        </div>
+ 
+        <div class="grid grid-cols-2 gap-2.5 sm:gap-3">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/info pre 1.png" alt="Infographic sample 1" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/info pre 2.png" alt="Infographic sample 2" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/info pre 3.png" alt="Infographic sample 3" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/info pre 4.png" alt="Infographic sample 4" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+        </div>
+ 
+        <div class="pt-5">
+          <h3 class="display-font text-2xl font-bold text-[#29221F]">Infographic Generator</h3>
+          <h4 class="mt-2 text-sm font-bold text-[#A84F39]">Turn Information Into Engaging Visuals.</h4>
+          <p class="mt-3 text-sm leading-6 text-[#62574B]">
+            Create infographic designs that organize ideas, explain concepts, and present information in a visual format suited to your chosen topic.
+          </p>
+          <p class="mt-4 border-t border-[#D9C7A9] pt-3 text-[10px] font-bold leading-5 tracking-wide text-[#8A725A]">
+            EDUCATIONAL · BUSINESS · INFORMATIONAL · PROCESS-BASED
+          </p>
+        </div>
+      </article>
+ 
+ 
+      <!-- 08. KDP BOOK CREATION -->
+      <article class="group overflow-hidden rounded-2xl border border-[#D9C7A9] bg-[#FFFAF1] p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(41,34,31,0.08)] sm:p-5">
+ 
+        <div class="mb-4 flex items-center justify-between">
+          <span class="text-[10px] font-bold tracking-[0.2em] text-[#A84F39]">08 / CREATIVE TOOL</span>
+          <span class="rounded-full border border-[#D9C7A9] px-3 py-1 text-[9px] font-semibold tracking-wider text-[#62574B]">KDP PUBLISHING</span>
+        </div>
+ 
+        <div class="grid grid-cols-2 gap-2.5 sm:gap-3">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/book content 1.png" alt="KDP book sample 1" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/book content 2.png" alt="KDP book sample 2" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/book content 3.png" alt="KDP book sample 3" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#F6ECD8]"><img src="images/book content 4.png" alt="KDP book sample 4" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy"></div>
+        </div>
+ 
+        <div class="pt-5">
+          <h3 class="display-font text-2xl font-bold text-[#29221F]">KDP Book Creation Studio &amp; AI Writer</h3>
+          <h4 class="mt-2 text-sm font-bold text-[#A84F39]">From a Book Idea to Structured Content.</h4>
+          <p class="mt-3 text-sm leading-6 text-[#62574B]">
+            Develop book content, organized chapters, activities, page concepts, publishing metadata, and cover direction to help prepare your next KDP project for formatting.
+          </p>
+          <p class="mt-4 border-t border-[#D9C7A9] pt-3 text-[10px] font-bold leading-5 tracking-wide text-[#8A725A]">
+            BOOK CONTENT · CHAPTERS · ACTIVITIES · PAGE LAYOUTS · METADATA
+          </p>
+        </div>
+      </article>
+ 
+    </div>
+ 
+    <!-- SECTION FOOTER -->
+    <div class="mt-12 text-center">
+      <p class="text-[9px] font-bold tracking-[0.18em] text-[#8A725A] sm:text-[10px]">
+        ✦ BOOKS · COMICS · PRINTABLES · STORIES · INFOGRAPHICS · CREATIVE CONTENT ✦
+      </p>
+    </div>
+ 
+  </div>
+</section>
+ 
+ 
+ 
+ 
+<section class="px-4 py-16 sm:px-6 sm:py-20">
+  <div class="mx-auto max-w-7xl">
+ 
+    <!-- PART 1: PEEK INSIDE THE STUDIO -->
+    <div class="mb-20">
+ 
+      <div class="mx-auto mb-10 max-w-3xl text-center">
+        <p class="mb-3 text-[10px] font-bold tracking-[0.22em] text-[#A84F39] sm:text-xs">
+          ✦ ONE STUDIO · EIGHT TOOLS · MORE WAYS TO CREATE ✦
+        </p>
+ 
+        <p class="mb-3 text-[10px] font-bold tracking-[0.2em] text-[#8A725A]">
+          ✦ PEEK INSIDE THE STUDIO ✦
+        </p>
+ 
+        <h2 class="display-font text-3xl font-bold leading-tight text-[#29221F] sm:text-4xl lg:text-5xl">
+          One Idea.
+          <span class="text-[#A84F39]">Multiple Creations.</span>
+        </h2>
+ 
+        <p class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#62574B] sm:text-base">
+          Take a closer look at sample creations made with the studio's tools. Explore funny pet junk journal pages, coloring book illustrations, comic scenes, book cover concepts, infographic designs, story prompts, and structured book content — all created to help turn your ideas into real projects.
+        </p>
+      </div>
+ 
+      <!-- SAMPLE CREATION GALLERY -->
+      <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+ 
+        <div class="group overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-1.5">
+          <div class="aspect-[4/5] overflow-hidden rounded-lg">
+            <img src="images/funny pet journal 11.png" alt="Funny pet junk journal creation" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          </div>
+          <p class="px-2 py-3 text-center text-[10px] font-bold tracking-wide text-[#62574B]">PET JUNK JOURNALS</p>
+        </div>
+ 
+        <div class="group overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-1.5">
+          <div class="aspect-[4/5] overflow-hidden rounded-lg">
+            <img src="images/coloring book.png" alt="Coloring book illustration" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          </div>
+          <p class="px-2 py-3 text-center text-[10px] font-bold tracking-wide text-[#62574B]">COLORING BOOKS</p>
+        </div>
+ 
+        <div class="group overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-1.5">
+          <div class="aspect-[4/5] overflow-hidden rounded-lg">
+            <img src="images/kids comic book.png" alt="Comic book scene" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          </div>
+          <p class="px-2 py-3 text-center text-[10px] font-bold tracking-wide text-[#62574B]">COMIC BOOKS</p>
+        </div>
+ 
+        <div class="group overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-1.5">
+          <div class="aspect-[4/5] overflow-hidden rounded-lg">
+            <img src="images/story prompts.png" alt="Story prompt sample" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          </div>
+          <p class="px-2 py-3 text-center text-[10px] font-bold tracking-wide text-[#62574B]">STORY PROMPTS</p>
+        </div>
+ 
+        <div class="group overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-1.5">
+          <div class="aspect-[4/5] overflow-hidden rounded-lg">
+            <img src="images/story book cover.png" alt="Book cover concept" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          </div>
+          <p class="px-2 py-3 text-center text-[10px] font-bold tracking-wide text-[#62574B]">BOOK COVERS</p>
+        </div>
+ 
+        <div class="group overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-1.5">
+          <div class="aspect-[4/5] overflow-hidden rounded-lg">
+            <img src="images/infograp solar.png" alt="Infographic design" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          </div>
+          <p class="px-2 py-3 text-center text-[10px] font-bold tracking-wide text-[#62574B]">INFOGRAPHICS</p>
+        </div>
+ 
+        <div class="group overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-1.5">
+          <div class="aspect-[4/5] overflow-hidden rounded-lg">
+            <img src="images/amazon kdp content.png" alt="KDP book content sample" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          </div>
+          <p class="px-2 py-3 text-center text-[10px] font-bold tracking-wide text-[#62574B]">KDP BOOK CONTENT</p>
+        </div>
+ 
+        <div class="group overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-1.5">
+          <div class="aspect-[4/5] overflow-hidden rounded-lg">
+            <img src="images/creative project.png" alt="Additional creative studio project" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          </div>
+          <p class="px-2 py-3 text-center text-[10px] font-bold tracking-wide text-[#62574B]">CREATIVE PROJECTS</p>
+        </div>
+ 
+      </div>
+    </div>
+ 
+ 
+    <!-- PART 2: SEASONAL CREATIVE IDEAS -->
+    <div class="mb-20">
+ 
+      <div class="mx-auto mb-10 max-w-3xl text-center">
+        <p class="mb-3 text-[10px] font-bold tracking-[0.22em] text-[#A84F39]">
+          ✦ SOMETHING NEW TO CREATE ✦
+        </p>
+ 
+        <h2 class="display-font text-3xl font-bold leading-tight text-[#29221F] sm:text-4xl lg:text-5xl">
+          Eight Creative Tools.
+          <span class="text-[#A84F39]">Ideas for Every Season.</span>
+        </h2>
+ 
+        <p class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#62574B] sm:text-base">
+          From seasonal coloring books and festive comic concepts to autumn-inspired junk journals, holiday book covers, educational infographics, and new story ideas, your next creative project can start with a simple theme. Explore different directions with the studio's specialized tools and develop ideas for your next printable, book, or visual project.
+        </p>
+      </div>
+ 
+ 
+      <!-- SEASONAL CARDS -->
+      <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+ 
+        <!-- WINTER -->
+        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
+          <img src="images/jan.png" alt="Winter and Valentine's Day creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
+          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">JAN–FEB</div>
+          <div class="absolute inset-x-3 bottom-4">
+            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Winter &amp; Valentine's Day</h3>
+            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Cozy Stories &amp; Sweet Creations</p>
+          </div>
+        </article>
+ 
+        <!-- SPRING -->
+        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
+          <img src="images/mar.png" alt="Spring and Easter creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
+          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">MAR–APR</div>
+          <div class="absolute inset-x-3 bottom-4">
+            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Spring &amp; Easter</h3>
+            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Fresh Colors &amp; New Beginnings</p>
+          </div>
+        </article>
+ 
+        <!-- SUMMER -->
+        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
+          <img src="images/may.png" alt="Summer adventures creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
+          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">MAY–JUN</div>
+          <div class="absolute inset-x-3 bottom-4">
+            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Summer Adventures</h3>
+            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Sunny Days &amp; Creative Fun</p>
+          </div>
+        </article>
+ 
+        <!-- BACK TO SCHOOL -->
+        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
+          <img src="images/jul 2.png" alt="Back to school creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
+          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">JUL–AUG</div>
+          <div class="absolute inset-x-3 bottom-4">
+            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Back to School</h3>
+            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Learning &amp; Imagination</p>
+          </div>
+        </article>
+ 
+        <!-- AUTUMN -->
+        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
+          <img src="images/sep.png" alt="Autumn creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
+          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">SEP</div>
+          <div class="absolute inset-x-3 bottom-4">
+            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Autumn</h3>
+            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Warm Colors &amp; Cozy Themes</p>
+          </div>
+        </article>
+ 
+        <!-- HALLOWEEN -->
+        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
+          <img src="images/oct.png" alt="Halloween creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
+          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">OCT</div>
+          <div class="absolute inset-x-3 bottom-4">
+            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Halloween</h3>
+            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Playful Spooks &amp; Funny Characters</p>
+          </div>
+        </article>
+ 
+        <!-- THANKSGIVING -->
+        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
+          <img src="images/nov.png" alt="Thanksgiving creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
+          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">NOV</div>
+          <div class="absolute inset-x-3 bottom-4">
+            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Thanksgiving</h3>
+            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Gratitude &amp; Gathering</p>
+          </div>
+        </article>
+ 
+        <!-- CHRISTMAS -->
+        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
+          <img src="images/dec.png" alt="Christmas and New Year creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
+          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">DEC</div>
+          <div class="absolute inset-x-3 bottom-4">
+            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Christmas &amp; New Year</h3>
+            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Festive Stories &amp; Holiday Creations</p>
+          </div>
+        </article>
+ 
+      </div>
+ 
+ 
+      <!-- ALL YEAR CARD -->
+      <div class="mt-4 flex flex-col items-center justify-between gap-3 rounded-xl border border-dashed border-[#A84F39] bg-[#F6ECD8] px-5 py-5 text-center sm:flex-row sm:px-7 sm:text-left">
+        <div>
+          <p class="text-[9px] font-bold tracking-[0.2em] text-[#A84F39]">ALL YEAR</p>
+          <h3 class="display-font mt-1 text-xl font-bold text-[#29221F]">Everyday Inspiration</h3>
+          <p class="mt-1 text-xs text-[#62574B]">Pets · Stories · Books · Education · More</p>
+        </div>
+        <span class="text-2xl text-[#A84F39]">✦</span>
+      </div>
+ 
+    </div>
+ 
+ 
+    <!-- PART 3: CREATIVE PROCESS -->
+    <div class="mx-auto max-w-5xl">
+ 
+      <div class="mb-9 text-center">
+        <p class="text-[10px] font-bold tracking-[0.2em] text-[#A84F39]">✦ YOUR CREATIVE WORKFLOW ✦</p>
+      </div>
+ 
+      <div class="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+ 
+        <div class="rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] px-3 py-5 text-center">
+          <span class="text-2xl">🎨</span>
+          <h3 class="mt-3 text-xs font-bold text-[#29221F] sm:text-sm">Choose a Theme</h3>
+        </div>
+ 
+        <div class="rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] px-3 py-5 text-center">
+          <span class="text-2xl">📚</span>
+          <h3 class="mt-3 text-xs font-bold text-[#29221F] sm:text-sm">Select a Project</h3>
+        </div>
+ 
+        <div class="rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] px-3 py-5 text-center">
+          <span class="text-2xl">✏️</span>
+          <h3 class="mt-3 text-xs font-bold text-[#29221F] sm:text-sm">Develop Your Idea</h3>
+        </div>
+ 
+        <div class="rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] px-3 py-5 text-center">
+          <span class="text-2xl">✨</span>
+          <h3 class="mt-3 text-xs font-bold text-[#29221F] sm:text-sm">Create With the Right Tool</h3>
+        </div>
+ 
+      </div>
+ 
+      <div class="mt-10 text-center">
+        <h2 class="display-font text-2xl font-bold leading-tight text-[#29221F] sm:text-3xl lg:text-4xl">
+          More Ideas to Explore.
+          <span class="text-[#A84F39]">More Projects to Create.</span>
+        </h2>
+ 
+        <a href="#access" class="access-btn mt-6 inline-flex items-center justify-center rounded-lg px-7 py-3.5 text-sm font-bold transition-all duration-300 hover:-translate-y-0.5">
+          Get Instant Access – $17
+        </a>
+      </div>
+ 
+    </div>
+ 
+  </div>
+</section>
+ 
+ 
+ 
+<section class="px-4 py-16 sm:px-6 sm:py-20">
+  <div class="mx-auto max-w-7xl">
+ 
+    <!-- SECTION HEADER -->
+    <div class="mx-auto mb-12 max-w-3xl text-center">
+      <p class="mb-3 text-[10px] font-bold tracking-[0.22em] text-[#A84F39] sm:text-xs">
+        ✦ INSIDE THE APP ✦
+      </p>
+ 
+      <h2 class="display-font text-3xl font-bold leading-tight text-[#29221F] sm:text-4xl lg:text-5xl">
+        Four Simple Steps.
+        <span class="text-[#A84F39]">From Idea to Creation.</span>
+      </h2>
+ 
+      <p class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#62574B] sm:text-base">
+        Choose your creative tool, enter your idea, customize the available options, and generate. Whether you're developing a junk journal, coloring book, comic, story prompt pack, book cover, infographic, or KDP book, each tool is designed for its own creative workflow.
+      </p>
+    </div>
+ 
+ 
+    <!-- FOUR STEPS -->
+    <div class="relative mx-auto grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+ 
+      <!-- STEP 1 -->
+      <article class="relative rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(41,34,31,0.07)]">
+        <div class="mb-5 flex items-center justify-between">
+          <span class="display-font text-3xl font-bold text-[#A84F39]/35">01</span>
+          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#F6ECD8] text-lg">✦</span>
+        </div>
+ 
+        <h3 class="display-font text-xl font-bold text-[#29221F]">Choose Your Tool</h3>
+        <p class="mt-3 text-sm leading-6 text-[#62574B]">
+          Start with the project you want to create. Select from eight specialized tools for funny pet junk journals, coloring books, comic books, story prompts, book covers, infographic prompts, infographic designs, and KDP book creation.
+        </p>
+      </article>
+ 
+ 
+      <!-- STEP 2 -->
+      <article class="relative rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(41,34,31,0.07)]">
+        <div class="mb-5 flex items-center justify-between">
+          <span class="display-font text-3xl font-bold text-[#A84F39]/35">02</span>
+          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#F6ECD8] text-lg">✎</span>
+        </div>
+ 
+        <h3 class="display-font text-xl font-bold text-[#29221F]">Enter Your Idea</h3>
+        <p class="mt-3 text-sm leading-6 text-[#62574B]">
+          Choose a built-in prompt idea or enter your own concept. Start with a seasonal theme, a story idea, a book topic, an illustration concept, or whatever creative direction suits your project.
+        </p>
+      </article>
+ 
+ 
+      <!-- STEP 3 -->
+      <article class="relative rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(41,34,31,0.07)]">
+        <div class="mb-5 flex items-center justify-between">
+          <span class="display-font text-3xl font-bold text-[#A84F39]/35">03</span>
+          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#F6ECD8] text-lg">⚙</span>
+        </div>
+ 
+        <h3 class="display-font text-xl font-bold text-[#29221F]">Customize Your Creation</h3>
+        <p class="mt-3 text-sm leading-6 text-[#62574B]">
+          Adjust the available settings to suit your idea and project. Depending on the tool, you can shape your theme, visual direction, content, or other supported options before generating your result.
+        </p>
+      </article>
+ 
+ 
+      <!-- STEP 4 -->
+      <article class="relative rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(41,34,31,0.07)]">
+        <div class="mb-5 flex items-center justify-between">
+          <span class="display-font text-3xl font-bold text-[#A84F39]/35">04</span>
+          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#F6ECD8] text-lg">✧</span>
+        </div>
+ 
+        <h3 class="display-font text-xl font-bold text-[#29221F]">Generate Your Result</h3>
+        <p class="mt-3 text-sm leading-6 text-[#62574B]">
+          Click Generate and let the selected tool turn your input into the prompts, designs, or structured content it supports. Use the results to develop your creative project and take the next step toward your finished work.
+        </p>
+      </article>
+ 
+    </div>
+ 
+ 
+    <!-- WORKFLOW FOOTER -->
+    <div class="mt-8 text-center">
+      <p class="text-[10px] font-bold tracking-[0.18em] text-[#A84F39]">
+        EIGHT CREATIVE TOOLS · ONE SIMPLE WORKFLOW
+      </p>
+    </div>
+ 
+ 
+    <!-- FUNNY PET JUNK JOURNAL EXAMPLE -->
+    <div class="mx-auto mt-16 max-w-5xl sm:mt-20">
+ 
+      <div class="mb-7 text-center">
+        <p class="mb-3 text-[10px] font-bold tracking-[0.22em] text-[#A84F39]">
+          ✦ SEE IT IN ACTION ✦
+        </p>
+ 
+        <h3 class="display-font text-2xl font-bold text-[#29221F] sm:text-3xl">
+          Example: Creating a Funny Pet Junk Journal
+        </h3>
+      </div>
+ 
+      <!-- GIF IMAGE -->
+      <div class="overflow-hidden rounded-2xl border border-[#D9C7A9] bg-[#FFFAF1] p-2 shadow-[0_12px_35px_rgba(41,34,31,0.08)] sm:p-3">
+        <img
+          src="YOUR-FUNNY-PET-JOURNAL-DEMO.gif"
+          alt="Animated demonstration of creating a funny pet junk journal with the creative studio"
+          class="block h-auto w-full rounded-xl object-contain"
+          loading="lazy"
+        />
+      </div>
+ 
+    </div>
+ 
+  </div>
+</section>
+ 
+ 
+ 
+<section class="px-4 py-16 sm:px-6 sm:py-20">
+  <div class="mx-auto max-w-7xl">
+ 
+    <!-- PART 1: SIMPLER CREATIVE WORKFLOW -->
+    <div class="mb-20">
+ 
+      <div class="mx-auto mb-10 max-w-3xl text-center">
+        <p class="mb-3 text-[10px] font-bold tracking-[0.22em] text-[#A84F39] sm:text-xs">
+          ✦ A SIMPLER CREATIVE WORKFLOW ✦
+        </p>
+ 
+        <h2 class="display-font text-3xl font-bold leading-tight text-[#29221F] sm:text-4xl lg:text-5xl">
+          Less Starting From Scratch.
+          <span class="text-[#A84F39]">More Time Creating.</span>
+        </h2>
+ 
+        <p class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#62574B] sm:text-base">
+          Creating books, comics, coloring pages, infographics, and printable designs manually can mean switching between tools, developing prompts, planning layouts, and organizing content. This studio brings eight specialized creative tools together in one place to help simplify your workflow.
+        </p>
+      </div>
+ 
+ 
+      <!-- COMPARISON -->
+      <div class="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-7">
+ 
+        <!-- MANUAL -->
+        <div class="overflow-hidden rounded-2xl border border-[#D9C7A9] bg-[#F6ECD8]">
+          <div class="border-b border-[#D9C7A9] px-5 py-5 sm:px-7">
+            <div class="flex items-center gap-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#E8D8C1] text-lg text-[#62574B]">↗</span>
+              <div>
+                <p class="text-[9px] font-bold tracking-[0.2em] text-[#8A725A]">THE TRADITIONAL APPROACH</p>
+                <h3 class="display-font text-xl font-bold text-[#29221F] sm:text-2xl">Doing It Manually</h3>
+              </div>
+            </div>
+          </div>
+ 
+          <div class="space-y-4 px-5 py-6 sm:px-7">
+            <div class="flex gap-3">
+              <span class="mt-0.5 text-sm text-[#A84F39]">✕</span>
+              <p class="text-sm leading-6 text-[#62574B]"><strong class="font-semibold text-[#29221F]">Start from scratch</strong> whenever you need a new creative direction or project idea.</p>
+            </div>
+ 
+            <div class="flex gap-3">
+              <span class="mt-0.5 text-sm text-[#A84F39]">✕</span>
+              <p class="text-sm leading-6 text-[#62574B]"><strong class="font-semibold text-[#29221F]">Write and refine prompts</strong> to explain the style, subject, and desired result.</p>
+            </div>
+ 
+            <div class="flex gap-3">
+              <span class="mt-0.5 text-sm text-[#A84F39]">✕</span>
+              <p class="text-sm leading-6 text-[#62574B]"><strong class="font-semibold text-[#29221F]">Plan characters, scenes, layouts, or content</strong> before developing your project.</p>
+            </div>
+ 
+            <div class="flex gap-3">
+              <span class="mt-0.5 text-sm text-[#A84F39]">✕</span>
+              <p class="text-sm leading-6 text-[#62574B]"><strong class="font-semibold text-[#29221F]">Organize your ideas and instructions</strong> across different creative tasks.</p>
+            </div>
+ 
+            <div class="flex gap-3">
+              <span class="mt-0.5 text-sm text-[#A84F39]">✕</span>
+              <p class="text-sm leading-6 text-[#62574B]"><strong class="font-semibold text-[#29221F]">Switch between separate workflows</strong> for books, illustrations, comics, and infographics.</p>
+            </div>
+          </div>
+        </div>
+ 
+ 
+        <!-- WITH THE STUDIO -->
+        <div class="overflow-hidden rounded-2xl border border-[#A84F39]/40 bg-[#FFFAF1] shadow-[0_10px_30px_rgba(41,34,31,0.05)]">
+          <div class="border-b border-[#D9C7A9] bg-[#A84F39]/[0.06] px-5 py-5 sm:px-7">
+            <div class="flex items-center gap-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#A84F39]/10 text-lg text-[#A84F39]">✦</span>
+              <div>
+                <p class="text-[9px] font-bold tracking-[0.2em] text-[#A84F39]">THE CREATIVE STUDIO</p>
+                <h3 class="display-font text-xl font-bold text-[#29221F] sm:text-2xl">Creating With the Studio</h3>
+              </div>
+            </div>
+          </div>
+ 
+          <div class="space-y-4 px-5 py-6 sm:px-7">
+            <div class="flex gap-3">
+              <span class="mt-0.5 text-sm font-bold text-[#718475]">✓</span>
+              <p class="text-sm leading-6 text-[#62574B]"><strong class="font-semibold text-[#29221F]">Explore built-in prompt ideas</strong> or start with your own concept.</p>
+            </div>
+ 
+            <div class="flex gap-3">
+              <span class="mt-0.5 text-sm font-bold text-[#718475]">✓</span>
+              <p class="text-sm leading-6 text-[#62574B]"><strong class="font-semibold text-[#29221F]">Use specialized tools</strong> designed for different creative projects.</p>
+            </div>
+ 
+            <div class="flex gap-3">
+              <span class="mt-0.5 text-sm font-bold text-[#718475]">✓</span>
+              <p class="text-sm leading-6 text-[#62574B]"><strong class="font-semibold text-[#29221F]">Develop story concepts, illustration prompts, book covers, and infographic ideas.</strong></p>
+            </div>
+ 
+            <div class="flex gap-3">
+              <span class="mt-0.5 text-sm font-bold text-[#718475]">✓</span>
+              <p class="text-sm leading-6 text-[#62574B]"><strong class="font-semibold text-[#29221F]">Generate supported designs, prompts, and structured book content</strong> from your inputs.</p>
+            </div>
+ 
+            <div class="flex gap-3">
+              <span class="mt-0.5 text-sm font-bold text-[#718475]">✓</span>
+              <p class="text-sm leading-6 text-[#62574B]"><strong class="font-semibold text-[#29221F]">Access eight creative tools in one place</strong> instead of starting every task from zero.</p>
+            </div>
+          </div>
+        </div>
+ 
+      </div>
+ 
+      <p class="mx-auto mt-6 max-w-3xl text-center text-xs leading-6 text-[#8A725A]">
+        The studio helps simplify the creative process. Final results, image quality, and visual consistency may depend on the selected tool, AI model, and any refinements needed.
+      </p>
+ 
+    </div>
+ 
+ 
+    <!-- PART 2: MORE WAYS TO USE YOUR CREATIONS -->
+    <div class="mb-20">
+ 
+      <div class="mx-auto mb-10 max-w-3xl text-center">
+        <p class="mb-3 text-[10px] font-bold tracking-[0.22em] text-[#A84F39]">
+          ✦ MORE WAYS TO USE YOUR CREATIONS ✦
+        </p>
+ 
+        <h2 class="display-font text-3xl font-bold leading-tight text-[#29221F] sm:text-4xl lg:text-5xl">
+          Create With One Tool.
+          <span class="text-[#A84F39]">Explore More Possibilities.</span>
+        </h2>
+ 
+        <p class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#62574B] sm:text-base">
+          Your ideas can go beyond a single design. Develop creative assets, organize them into projects, and explore different ways to use your results across printable products, books, and visual content.
+        </p>
+      </div>
+ 
+ 
+      <!-- USE CASE CARDS -->
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+ 
+        <!-- PRINTABLE COLLECTIONS -->
+        <article class="group overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(41,34,31,0.07)]">
+          <div class="aspect-[3/2] overflow-hidden bg-[#F6ECD8]">
+            <img src="images/printable collections.png" alt="Themed printable collection examples" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h3 class="display-font text-xl font-bold text-[#29221F]">Printable Collections</h3>
+            <p class="mt-3 text-sm leading-6 text-[#62574B]">
+              Turn coordinated illustrations, coloring pages, or decorative designs into themed printable collections for personal projects or digital product ideas.
+            </p>
+            <p class="mt-4 border-t border-[#D9C7A9] pt-3 text-[10px] font-bold tracking-[0.16em] text-[#A84F39]">PRINTABLES · ETSY</p>
+          </div>
+        </article>
+ 
+ 
+        <!-- COLORING BOOK PRODUCTS -->
+        <article class="group overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(41,34,31,0.07)]">
+          <div class="aspect-[3/2] overflow-hidden bg-[#F6ECD8]">
+            <img src="images/coloring collection.png" alt="Coloring book product examples" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h3 class="display-font text-xl font-bold text-[#29221F]">Coloring Book Products</h3>
+            <p class="mt-3 text-sm leading-6 text-[#62574B]">
+              Develop themed coloring pages into a coloring book concept, then organize the pages and prepare the files for your chosen publishing format.
+            </p>
+            <p class="mt-4 border-t border-[#D9C7A9] pt-3 text-[10px] font-bold tracking-[0.16em] text-[#A84F39]">COLORING BOOKS · KDP</p>
+          </div>
+        </article>
+ 
+ 
+        <!-- COMICS AND STORIES -->
+        <article class="group overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(41,34,31,0.07)]">
+          <div class="aspect-[3/2] overflow-hidden bg-[#F6ECD8]">
+            <img src="images/comics and story projects.png" alt="Comic and illustrated story project examples" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h3 class="display-font text-xl font-bold text-[#29221F]">Comics &amp; Story Projects</h3>
+            <p class="mt-3 text-sm leading-6 text-[#62574B]">
+              Build on character concepts, story prompts, and comic scenes to develop illustrated stories and creative storytelling projects.
+            </p>
+            <p class="mt-4 border-t border-[#D9C7A9] pt-3 text-[10px] font-bold tracking-[0.16em] text-[#A84F39]">COMICS · STORIES</p>
+          </div>
+        </article>
+ 
+ 
+        <!-- BOOKS AND JOURNALS -->
+        <article class="group overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(41,34,31,0.07)]">
+          <div class="aspect-[3/2] overflow-hidden bg-[#F6ECD8]">
+            <img src="images/Books and journals.png" alt="Books and journal project examples" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h3 class="display-font text-xl font-bold text-[#29221F]">Books &amp; Journals</h3>
+            <p class="mt-3 text-sm leading-6 text-[#62574B]">
+              Use the KDP Book Creation Studio and AI Writer to develop structured content, activities, and page concepts for books you want to prepare for publication.
+            </p>
+            <p class="mt-4 border-t border-[#D9C7A9] pt-3 text-[10px] font-bold tracking-[0.16em] text-[#A84F39]">BOOKS · JOURNALS · KDP</p>
+          </div>
+        </article>
+ 
+ 
+        <!-- INFOGRAPHICS AND VISUAL CONTENT -->
+        <article class="group overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(41,34,31,0.07)] sm:col-span-2 lg:col-span-1">
+          <div class="aspect-[3/2] overflow-hidden bg-[#F6ECD8]">
+            <img src="images/infographics and visual content.png" alt="Infographic and visual content examples" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h3 class="display-font text-xl font-bold text-[#29221F]">Infographics &amp; Visual Content</h3>
+            <p class="mt-3 text-sm leading-6 text-[#62574B]">
+              Turn topics and information into visual designs for educational content, presentations, blogs, and other communication projects.
+            </p>
+            <p class="mt-4 border-t border-[#D9C7A9] pt-3 text-[10px] font-bold tracking-[0.16em] text-[#A84F39]">INFOGRAPHICS · CONTENT CREATION</p>
+          </div>
+        </article>
+ 
+      </div>
+ 
+    </div>
+ 
+ 
+    <!-- PART 3: HONEST BREAKDOWN -->
+    <div>
+ 
+      <div class="mx-auto mb-10 max-w-3xl text-center">
+        <p class="mb-3 text-[10px] font-bold tracking-[0.22em] text-[#A84F39]">
+          ✦ THE HONEST BREAKDOWN ✦
+        </p>
+ 
+        <h2 class="display-font text-3xl font-bold leading-tight text-[#29221F] sm:text-4xl lg:text-5xl">
+          What This Studio Does.
+          <span class="text-[#A84F39]">And What It Doesn't.</span>
+        </h2>
+ 
+        <p class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#62574B] sm:text-base">
+          Know what to expect before you start creating. The studio gives you specialized creative tools to help develop ideas into prompts, designs, and structured content. Your final project may still need review, editing, formatting, or assembly.
+        </p>
+      </div>
+ 
+ 
+      <!-- FIT / NOT A FIT -->
+      <div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
+ 
+        <div class="rounded-2xl border border-[#D9C7A9] bg-[#FFFAF1] p-5 sm:p-7">
+          <div class="mb-6 flex items-center gap-3">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#718475]/10 text-lg text-[#718475]">✓</span>
+            <h3 class="display-font text-2xl font-bold text-[#29221F]">A Good Fit If You...</h3>
+          </div>
+ 
+          <div class="space-y-4">
+            <p class="flex gap-3 text-sm leading-6 text-[#62574B]"><span class="font-bold text-[#718475]">✓</span><span><strong class="text-[#29221F]">Want to create coloring books, comics, stories, book covers, or printable products.</strong></span></p>
+            <p class="flex gap-3 text-sm leading-6 text-[#62574B]"><span class="font-bold text-[#718475]">✓</span><span><strong class="text-[#29221F]">Create content for Etsy, KDP, or other publishing and creative platforms.</strong></span></p>
+            <p class="flex gap-3 text-sm leading-6 text-[#62574B]"><span class="font-bold text-[#718475]">✓</span><span><strong class="text-[#29221F]">Want several specialized creative tools in one place.</strong></span></p>
+            <p class="flex gap-3 text-sm leading-6 text-[#62574B]"><span class="font-bold text-[#718475]">✓</span><span><strong class="text-[#29221F]">Want help developing ideas into prompts, designs, and organized content.</strong></span></p>
+          </div>
+        </div>
+ 
+ 
+        <div class="rounded-2xl border border-[#D9C7A9] bg-[#F6ECD8] p-5 sm:p-7">
+          <div class="mb-6 flex items-center gap-3">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#A84F39]/10 text-lg text-[#A84F39]">×</span>
+            <h3 class="display-font text-2xl font-bold text-[#29221F]">Not a Fit If You...</h3>
+          </div>
+ 
+          <div class="space-y-4">
+            <p class="flex gap-3 text-sm leading-6 text-[#62574B]"><span class="font-bold text-[#A84F39]">×</span><span><strong class="text-[#29221F]">Expect every project to be finished and publication-ready without reviewing it.</strong></span></p>
+            <p class="flex gap-3 text-sm leading-6 text-[#62574B]"><span class="font-bold text-[#A84F39]">×</span><span><strong class="text-[#29221F]">Want guaranteed sales, publishing success, or income.</strong></span></p>
+            <p class="flex gap-3 text-sm leading-6 text-[#62574B]"><span class="font-bold text-[#A84F39]">×</span><span><strong class="text-[#29221F]">Expect every tool to produce the same type of output.</strong></span></p>
+          </div>
+        </div>
+ 
+      </div>
+ 
+ 
+      <!-- HOW IT REALLY WORKS -->
+      <div class="mt-6 rounded-2xl border border-[#D9C7A9] bg-[#FFFAF1] p-5 sm:p-8">
+ 
+        <div class="mb-7">
+          <p class="text-[9px] font-bold tracking-[0.2em] text-[#A84F39]">THE PROCESS</p>
+          <h3 class="display-font mt-2 text-2xl font-bold text-[#29221F] sm:text-3xl">How It Really Works</h3>
+        </div>
+ 
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+ 
+          <div class="flex gap-4">
+            <span class="display-font text-3xl font-bold text-[#A84F39]/40">01</span>
+            <p class="text-sm leading-6 text-[#62574B]">
+              <strong class="text-[#29221F]">Choose the relevant tool</strong> and enter your idea or select a built-in prompt idea.
+            </p>
+          </div>
+ 
+          <div class="flex gap-4">
+            <span class="display-font text-3xl font-bold text-[#A84F39]/40">02</span>
+            <p class="text-sm leading-6 text-[#62574B]">
+              <strong class="text-[#29221F]">Customize the available options</strong> and generate the prompts, designs, or content supported by that tool.
+            </p>
+          </div>
+ 
+          <div class="flex gap-4">
+            <span class="display-font text-3xl font-bold text-[#A84F39]/40">03</span>
+            <p class="text-sm leading-6 text-[#62574B]">
+              <strong class="text-[#29221F]">Review your results</strong>, refine them where necessary, and prepare your final project for its intended use.
+            </p>
+          </div>
+ 
+        </div>
+ 
+        <div class="mt-7 border-t border-[#D9C7A9] pt-5">
+          <p class="text-xs leading-6 text-[#8A725A]">
+            Your results depend on the selected tool and its workflow. Additional editing, image generation, or layout work may be needed before publishing or selling your creations.
+          </p>
+        </div>
+ 
+      </div>
+ 
+    </div>
+ 
+  </div>
+</section>
+ 
+ 
+<section id="launch-bonuses" class="px-4 py-14 sm:px-6 sm:py-20">
+  <div class="mx-auto max-w-6xl">
+ 
+    <!-- SECTION HEADER -->
+    <div class="mx-auto mb-10 max-w-3xl text-center sm:mb-12">
+      <span class="mb-4 inline-flex items-center rounded-full border border-[#D9C7A9] bg-[#FFFAF1] px-4 py-2 text-[10px] font-bold tracking-[0.2em] text-[#A84F39]">
+        🎁 LAUNCH BONUSES 🎁
+      </span>
+ 
+      <h2 class="display-font text-3xl font-bold leading-tight tracking-tight text-[#29221F] sm:text-4xl md:text-5xl">
+        Get More Creative
+        <span class="text-[#A84F39]">Possibilities</span>
+        With Your Purchase
+      </h2>
+ 
+      <p class="mx-auto mt-4 max-w-2xl text-sm leading-7 text-[#62574B] sm:text-base">
+        Your creative studio already gives you eight specialized tools. Add relevant bonus resources, prompt collections, or ready-to-use ideas to help you explore even more possibilities for your books, printables, illustrations, and visual content.
+      </p>
+ 
+      <div class="decorative-line mx-auto mt-6 w-24"></div>
+    </div>
+ 
+    <!-- BONUS GRID -->
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+ 
+      <!-- BONUS 1 -->
+      <article class="group overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] transition-all duration-300 hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_12px_30px_rgba(41,34,31,0.09)]">
+        <div class="relative overflow-hidden bg-[#F1E5D1] p-3">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#F6ECD8]">
+            <img
+              src="images/extra coloring book.png"
+              alt="Extra coloring book ideas sample"
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+          <span class="absolute left-6 top-6 rounded-md bg-[#A84F39] px-3 py-1.5 text-[9px] font-bold tracking-[0.15em] text-white">
+            BONUS #1
+          </span>
+        </div>
+ 
+        <div class="p-5 sm:p-6">
+          <span class="text-[9px] font-bold tracking-[0.18em] text-[#A84F39]">EXTRA CREATIVE INSPIRATION</span>
+          <h3 class="display-font mt-2 text-xl font-bold text-[#29221F]">
+            Extra Coloring Book Ideas
+          </h3>
+          <p class="mt-3 text-sm leading-6 text-[#62574B]">
+            Explore additional themes, characters, and scene concepts for coloring pages, activity books, and printable collections.
+          </p>
+          <div class="mt-5 border-t border-[#D9C7A9] pt-4">
+            <p class="text-[10px] font-bold tracking-wide text-[#A84F39]">
+              Coloring Books · Printables · KDP
+            </p>
+          </div>
+        </div>
+      </article>
+ 
+      <!-- BONUS 2 -->
+      <article class="group overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] transition-all duration-300 hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_12px_30px_rgba(41,34,31,0.09)]">
+        <div class="relative overflow-hidden bg-[#F1E5D1] p-3">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#F6ECD8]">
+            <img
+              src="images/bonus story.png"
+              alt="Comic and story ideas sample"
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+          <span class="absolute left-6 top-6 rounded-md bg-[#A84F39] px-3 py-1.5 text-[9px] font-bold tracking-[0.15em] text-white">
+            BONUS #2
+          </span>
+        </div>
+ 
+        <div class="p-5 sm:p-6">
+          <span class="text-[9px] font-bold tracking-[0.18em] text-[#A84F39]">STORY & CHARACTER IDEAS</span>
+          <h3 class="display-font mt-2 text-xl font-bold text-[#29221F]">
+            Comic & Story Ideas
+          </h3>
+          <p class="mt-3 text-sm leading-6 text-[#62574B]">
+            Develop new character concepts, storylines, and scene ideas for illustrated stories and comic projects.
+          </p>
+          <div class="mt-5 border-t border-[#D9C7A9] pt-4">
+            <p class="text-[10px] font-bold tracking-wide text-[#A84F39]">
+              Comics · Stories · Illustration
+            </p>
+          </div>
+        </div>
+      </article>
+ 
+      <!-- BONUS 3 -->
+      <article class="group overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] transition-all duration-300 hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_12px_30px_rgba(41,34,31,0.09)]">
+        <div class="relative overflow-hidden bg-[#F1E5D1] p-3">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#F6ECD8]">
+            <img
+              src="images/book inspo.png"
+              alt="Book cover inspiration sample"
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+          <span class="absolute left-6 top-6 rounded-md bg-[#A84F39] px-3 py-1.5 text-[9px] font-bold tracking-[0.15em] text-white">
+            BONUS #3
+          </span>
+        </div>
+ 
+        <div class="p-5 sm:p-6">
+          <span class="text-[9px] font-bold tracking-[0.18em] text-[#A84F39]">COVER DESIGN INSPIRATION</span>
+          <h3 class="display-font mt-2 text-xl font-bold text-[#29221F]">
+            Book Cover Inspiration
+          </h3>
+          <p class="mt-3 text-sm leading-6 text-[#62574B]">
+            Explore cover concepts, visual directions, and creative themes for your next book project.
+          </p>
+          <div class="mt-5 border-t border-[#D9C7A9] pt-4">
+            <p class="text-[10px] font-bold tracking-wide text-[#A84F39]">
+              Book Covers · Fiction · Nonfiction
+            </p>
+          </div>
+        </div>
+      </article>
+ 
+      <!-- BONUS 4 -->
+      <article class="group overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] transition-all duration-300 hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_12px_30px_rgba(41,34,31,0.09)]">
+        <div class="relative overflow-hidden bg-[#F1E5D1] p-3">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#F6ECD8]">
+            <img
+              src="images/info bonus 2.png"
+              alt="Infographic topic ideas sample"
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+          <span class="absolute left-6 top-6 rounded-md bg-[#A84F39] px-3 py-1.5 text-[9px] font-bold tracking-[0.15em] text-white">
+            BONUS #4
+          </span>
+        </div>
+ 
+        <div class="p-5 sm:p-6">
+          <span class="text-[9px] font-bold tracking-[0.18em] text-[#A84F39]">VISUAL CONTENT IDEAS</span>
+          <h3 class="display-font mt-2 text-xl font-bold text-[#29221F]">
+            Infographic Topic Ideas
+          </h3>
+          <p class="mt-3 text-sm leading-6 text-[#62574B]">
+            Discover new ways to organize information into educational, business, and informational visual content.
+          </p>
+          <div class="mt-5 border-t border-[#D9C7A9] pt-4">
+            <p class="text-[10px] font-bold tracking-wide text-[#A84F39]">
+              Infographics · Education · Business
+            </p>
+          </div>
+        </div>
+      </article>
+ 
+      <!-- BONUS 5 -->
+      <article class="group overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] transition-all duration-300 hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_12px_30px_rgba(41,34,31,0.09)]">
+        <div class="relative overflow-hidden bg-[#F1E5D1] p-3">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#F6ECD8]">
+            <img
+              src="images/printables.png"
+              alt="Printable product ideas sample"
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+          <span class="absolute left-6 top-6 rounded-md bg-[#A84F39] px-3 py-1.5 text-[9px] font-bold tracking-[0.15em] text-white">
+            BONUS #5
+          </span>
+        </div>
+ 
+        <div class="p-5 sm:p-6">
+          <span class="text-[9px] font-bold tracking-[0.18em] text-[#A84F39]">PRINTABLE PROJECT IDEAS</span>
+          <h3 class="display-font mt-2 text-xl font-bold text-[#29221F]">
+            Printable Product Ideas
+          </h3>
+          <p class="mt-3 text-sm leading-6 text-[#62574B]">
+            Explore themes and creative directions for journals, coloring pages, and other printable project concepts.
+          </p>
+          <div class="mt-5 border-t border-[#D9C7A9] pt-4">
+            <p class="text-[10px] font-bold tracking-wide text-[#A84F39]">
+              Printables · Journals · Etsy
+            </p>
+          </div>
+        </div>
+      </article>
+ 
+      <!-- BONUS 6 -->
+      <article class="group overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] transition-all duration-300 hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_12px_30px_rgba(41,34,31,0.09)]">
+        <div class="relative overflow-hidden bg-[#F1E5D1] p-3">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#F6ECD8]">
+            <img
+              src="images/creative story prompts.png"
+              alt="Creative story prompts sample"
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+          <span class="absolute left-6 top-6 rounded-md bg-[#A84F39] px-3 py-1.5 text-[9px] font-bold tracking-[0.15em] text-white">
+            BONUS #6
+          </span>
+        </div>
+ 
+        <div class="p-5 sm:p-6">
+          <span class="text-[9px] font-bold tracking-[0.18em] text-[#A84F39]">STORYTELLING INSPIRATION</span>
+          <h3 class="display-font mt-2 text-xl font-bold text-[#29221F]">
+            Creative Story Prompts
+          </h3>
+          <p class="mt-3 text-sm leading-6 text-[#62574B]">
+            Find fresh starting points for story concepts, character development, and illustration ideas.
+          </p>
+          <div class="mt-5 border-t border-[#D9C7A9] pt-4">
+            <p class="text-[10px] font-bold tracking-wide text-[#A84F39]">
+              Storytelling · Characters · Illustration
+            </p>
+          </div>
+        </div>
+      </article>
+ 
+    </div>
+ 
+    <!-- CLOSING NOTE -->
+    <div class="mt-10 text-center">
+      <div class="decorative-line mx-auto mb-5 w-20"></div>
+      <p class="display-font text-lg font-semibold text-[#29221F] sm:text-xl">
+        More Ideas. More Inspiration. More Creative Possibilities.
+      </p>
+      <p class="mt-2 text-xs tracking-wide text-[#8A7966]">
+        ✦ SIX EXTRA CREATIVE BONUSES INCLUDED ✦
+      </p>
+    </div>
+ 
+  </div>
+</section>
+ 
+ 
+ 
+ 
+<section id="commercial-rights" class="px-4 py-14 sm:px-6 sm:py-20">
+  <div class="mx-auto max-w-6xl">
+ 
+    <!-- HEADER -->
+    <div class="mx-auto mb-12 max-w-3xl text-center">
+      <span class="inline-flex items-center rounded-full border border-[#D9C7A9] bg-[#FFFAF1] px-4 py-2 text-[10px] font-bold tracking-[0.2em] text-[#A84F39]">
+        ✦ COMMERCIAL & PLR RIGHTS ✦
+      </span>
+ 
+      <h2 class="display-font mt-5 text-3xl font-bold leading-tight tracking-tight text-[#29221F] sm:text-4xl md:text-5xl">
+        Helix Comes With
+        <span class="text-[#A84F39]">Commercial Use & PLR Rights.</span>
+      </h2>
+ 
+      <p class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#62574B] sm:text-base">
+        Helix helps you develop creative projects across eight specialized tools. With the included rights, you can create products for your business, build your own brand, and explore commercial opportunities according to the terms of your licence.
+      </p>
+ 
+      <div class="decorative-line mx-auto mt-7 w-24"></div>
+    </div>
+ 
+    <!-- THREE RIGHTS HIGHLIGHTS -->
+    <div class="mb-12 grid gap-4 md:grid-cols-3">
+ 
+      <!-- COMMERCIAL USE -->
+      <article class="group rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_10px_25px_rgba(41,34,31,0.07)] sm:p-6">
+        <div class="mb-5 flex items-center justify-between">
+          <div class="flex h-11 w-11 items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#F6ECD8] text-xl text-[#A84F39]">
+            <span>✦</span>
+          </div>
+          <span class="text-[9px] font-bold tracking-[0.16em] text-[#A84F39]">01 / RIGHTS</span>
+        </div>
+ 
+        <h3 class="display-font text-xl font-bold text-[#29221F]">
+          Commercial Use for Your Creations
+        </h3>
+ 
+        <p class="mt-3 text-sm leading-6 text-[#62574B]">
+          Create coloring books, comics, book covers, infographics, printable designs, and other supported projects for personal or commercial use, subject to the applicable AI-provider and marketplace terms.
+        </p>
+ 
+        <div class="mt-5 border-t border-[#D9C7A9] pt-4">
+          <span class="text-[10px] font-semibold tracking-wide text-[#8A7966]">
+            CREATE · DEVELOP · SELL
+          </span>
+        </div>
+      </article>
+ 
+      <!-- YOUR BRAND -->
+      <article class="group rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_10px_25px_rgba(41,34,31,0.07)] sm:p-6">
+        <div class="mb-5 flex items-center justify-between">
+          <div class="flex h-11 w-11 items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#F6ECD8] text-xl text-[#A84F39]">
+            <span>✧</span>
+          </div>
+          <span class="text-[9px] font-bold tracking-[0.16em] text-[#A84F39]">02 / BUSINESS</span>
+        </div>
+ 
+        <h3 class="display-font text-xl font-bold text-[#29221F]">
+          Your Brand, Your Business
+        </h3>
+ 
+        <p class="mt-3 text-sm leading-6 text-[#62574B]">
+          Develop products under your own brand, choose your selling prices, and keep your earnings after applicable platform fees, costs, and taxes.
+        </p>
+ 
+        <div class="mt-5 border-t border-[#D9C7A9] pt-4">
+          <span class="text-[10px] font-semibold tracking-wide text-[#8A7966]">
+            BRAND · PRICE · GROW
+          </span>
+        </div>
+      </article>
+ 
+      <!-- PLR -->
+      <article class="group rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_10px_25px_rgba(41,34,31,0.07)] sm:p-6">
+        <div class="mb-5 flex items-center justify-between">
+          <div class="flex h-11 w-11 items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#F6ECD8] text-xl text-[#A84F39]">
+            <span>❖</span>
+          </div>
+          <span class="text-[9px] font-bold tracking-[0.16em] text-[#A84F39]">03 / PLR</span>
+        </div>
+ 
+        <h3 class="display-font text-xl font-bold text-[#29221F]">
+          Private Label Rights Included
+        </h3>
+ 
+        <p class="mt-3 text-sm leading-6 text-[#62574B]">
+          Your included PLR licence gives you the rights specifically stated in the licence agreement. Review the terms to understand whether they cover rebranding and reselling Helix itself, the materials supplied with it, or only certain included resources.
+        </p>
+ 
+        <div class="mt-5 border-t border-[#D9C7A9] pt-4">
+          <span class="text-[10px] font-semibold tracking-wide text-[#8A7966]">
+            REVIEW YOUR LICENCE TERMS
+          </span>
+        </div>
+      </article>
+ 
+    </div>
+ 
+    <!-- WHAT YOU CAN DO -->
+    <div class="overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1]">
+ 
+      <div class="border-b border-[#D9C7A9] bg-[#F1E5D1] px-5 py-5 sm:px-7">
+        <div class="flex items-center gap-3">
+          <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#718475] text-lg text-white">
+            ✓
+          </span>
+          <div>
+            <h3 class="display-font text-xl font-bold text-[#29221F] sm:text-2xl">
+              What You Can Do
+            </h3>
+            <p class="mt-1 text-xs text-[#62574B]">
+              Explore the creative and commercial possibilities available under your licence.
+            </p>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="grid gap-x-8 gap-y-5 p-5 sm:grid-cols-2 sm:p-7">
+ 
+        <div class="flex items-start gap-3">
+          <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#718475]/10 text-xs font-bold text-[#718475]">✓</span>
+          <p class="text-sm leading-6 text-[#62574B]">Use Helix for your personal creative projects.</p>
+        </div>
+ 
+        <div class="flex items-start gap-3">
+          <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#718475]/10 text-xs font-bold text-[#718475]">✓</span>
+          <p class="text-sm leading-6 text-[#62574B]">Create and sell eligible designs and digital products commercially.</p>
+        </div>
+ 
+        <div class="flex items-start gap-3">
+          <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#718475]/10 text-xs font-bold text-[#718475]">✓</span>
+          <p class="text-sm leading-6 text-[#62574B]">Develop coloring books, comics, journals, book covers, infographics, and other supported creations.</p>
+        </div>
+ 
+        <div class="flex items-start gap-3">
+          <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#718475]/10 text-xs font-bold text-[#718475]">✓</span>
+          <p class="text-sm leading-6 text-[#62574B]">Brand your own products and sell them through eligible marketplaces or your website.</p>
+        </div>
+ 
+        <div class="flex items-start gap-3">
+          <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#718475]/10 text-xs font-bold text-[#718475]">✓</span>
+          <p class="text-sm leading-6 text-[#62574B]">Combine your original creations with other materials to develop new products.</p>
+        </div>
+ 
+        <div class="flex items-start gap-3">
+          <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#718475]/10 text-xs font-bold text-[#718475]">✓</span>
+          <p class="text-sm leading-6 text-[#62574B]">Package and sell your creations individually or as collections, where permitted by the applicable terms.</p>
+        </div>
+ 
+        <div class="flex items-start gap-3 sm:col-span-2">
+          <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#718475]/10 text-xs font-bold text-[#718475]">✓</span>
+          <p class="text-sm leading-6 text-[#62574B]">Use eligible creations in commercial and print-on-demand projects, subject to the relevant provider and platform rules.</p>
+        </div>
+ 
+      </div>
+    </div>
+ 
+    <!-- IMPORTANT RESTRICTIONS -->
+    <div class="mt-6 overflow-hidden rounded-xl border border-[#D9B7A9] bg-[#FFFAF1]">
+ 
+      <div class="border-b border-[#D9B7A9] bg-[#F4E6DE] px-5 py-5 sm:px-7">
+        <div class="flex items-center gap-3">
+          <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#A84F39]/10 text-lg text-[#A84F39]">
+            !
+          </span>
+          <div>
+            <h3 class="display-font text-xl font-bold text-[#29221F] sm:text-2xl">
+              Important Restrictions
+            </h3>
+            <p class="mt-1 text-xs text-[#62574B]">
+              A few important things to understand before using or distributing your creations.
+            </p>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="grid gap-x-8 gap-y-5 p-5 sm:grid-cols-2 sm:p-7">
+ 
+        <div class="flex items-start gap-3">
+          <span class="mt-1 text-sm font-bold text-[#A84F39]">×</span>
+          <p class="text-sm leading-6 text-[#62574B]">Do not share your Helix login or provide unauthorized access to the software.</p>
+        </div>
+ 
+        <div class="flex items-start gap-3">
+          <span class="mt-1 text-sm font-bold text-[#A84F39]">×</span>
+          <p class="text-sm leading-6 text-[#62574B]">Do not redistribute or resell Helix itself unless your specific PLR licence expressly permits it.</p>
+        </div>
+ 
+        <div class="flex items-start gap-3">
+          <span class="mt-1 text-sm font-bold text-[#A84F39]">×</span>
+          <p class="text-sm leading-6 text-[#62574B]">Do not claim ownership of third-party material or AI-generated output beyond the rights you actually hold.</p>
+        </div>
+ 
+        <div class="flex items-start gap-3">
+          <span class="mt-1 text-sm font-bold text-[#A84F39]">×</span>
+          <p class="text-sm leading-6 text-[#62574B]">Follow the applicable AI-provider terms, copyright rules, and marketplace policies.</p>
+        </div>
+ 
+        <div class="flex items-start gap-3 sm:col-span-2">
+          <span class="mt-1 text-sm font-bold text-[#A84F39]">×</span>
+          <p class="text-sm leading-6 text-[#62574B]">Check your licence before distributing source files, resell rights, or PLR materials to other buyers.</p>
+        </div>
+ 
+      </div>
+    </div>
+ 
+    <!-- LICENCE NOTE -->
+    <div class="mx-auto mt-8 flex max-w-3xl items-start gap-3 rounded-lg border border-dashed border-[#C7A66A] bg-[#FFFAF1] px-5 py-4">
+      <span class="mt-0.5 text-lg text-[#A84F39]">✦</span>
+      <p class="text-xs leading-6 text-[#62574B]">
+        <strong class="text-[#29221F]">Please note:</strong>
+        Your rights depend on the actual Helix licence and the terms governing the tools and content you use.
+      </p>
+    </div>
+ 
+  </div>
+</section>
+ 
+ 
+<section id="everything-included" class="px-4 py-16 sm:px-6 sm:py-20">
+  <div class="mx-auto max-w-6xl">
+ 
+    <!-- HEADER -->
+    <div class="mx-auto mb-12 max-w-3xl text-center">
+      <span class="inline-flex items-center rounded-full border border-[#D9C7A9] bg-[#FFFAF1] px-4 py-2 text-[10px] font-bold tracking-[0.2em] text-[#A84F39]">
+        ✦ HERE'S EVERYTHING YOU GET ✦
+      </span>
+ 
+      <h2 class="display-font mt-5 text-3xl font-bold leading-tight tracking-tight text-[#29221F] sm:text-4xl md:text-5xl">
+        Helix. Eight Creative Tools
+        <span class="text-[#A84F39]">for Just $17.</span>
+      </h2>
+ 
+      <p class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#62574B] sm:text-base">
+        Get access to a creative studio designed to help you turn ideas into prompts, designs, illustrations, and structured book content — all from one web app.
+      </p>
+ 
+      <div class="decorative-line mx-auto mt-7 w-24"></div>
+    </div>
+ 
+    <!-- MAIN CONTENT -->
+    <div class="grid items-start gap-8 lg:grid-cols-[1fr_340px] lg:gap-10">
+ 
+      <!-- WHAT'S INCLUDED -->
+      <div>
+        <div class="mb-5 flex items-center justify-between gap-3">
+          <h3 class="display-font text-2xl font-bold text-[#29221F]">
+            What's Included
+          </h3>
+          <span class="rounded-full border border-[#D9C7A9] px-3 py-1.5 text-[9px] font-bold tracking-wider text-[#A84F39]">
+            8 CREATIVE TOOLS
+          </span>
+        </div>
+ 
+        <!-- TOOLS GRID -->
+        <div class="grid gap-3 sm:grid-cols-2">
+ 
+          <!-- TOOL 1 -->
+          <article class="group flex gap-3 rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#A84F39] hover:shadow-md">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#F6ECD8] text-lg text-[#A84F39]">✿</div>
+            <div>
+              <h4 class="text-sm font-bold text-[#29221F]">Funny Pet Junk Journal Generator</h4>
+              <p class="mt-1.5 text-xs leading-5 text-[#62574B]">Develop themed journal pages, decorative elements, and printable concepts.</p>
+            </div>
+          </article>
+ 
+          <!-- TOOL 2 -->
+          <article class="group flex gap-3 rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#A84F39] hover:shadow-md">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#F6ECD8] text-lg text-[#A84F39]">✎</div>
+            <div>
+              <h4 class="text-sm font-bold text-[#29221F]">Coloring Book Generator</h4>
+              <p class="mt-1.5 text-xs leading-5 text-[#62574B]">Create coloring-page concepts and illustrations for your chosen themes.</p>
+            </div>
+          </article>
+ 
+          <!-- TOOL 3 -->
+          <article class="group flex gap-3 rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#A84F39] hover:shadow-md">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#F6ECD8] text-lg text-[#A84F39]">▤</div>
+            <div>
+              <h4 class="text-sm font-bold text-[#29221F]">Comic Book Generator</h4>
+              <p class="mt-1.5 text-xs leading-5 text-[#62574B]">Develop characters, scenes, storylines, and comic concepts.</p>
+            </div>
+          </article>
+ 
+          <!-- TOOL 4 -->
+          <article class="group flex gap-3 rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#A84F39] hover:shadow-md">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#F6ECD8] text-lg text-[#A84F39]">✧</div>
+            <div>
+              <h4 class="text-sm font-bold text-[#29221F]">Story Prompt Studio</h4>
+              <p class="mt-1.5 text-xs leading-5 text-[#62574B]">Turn a simple idea into a structured writing and illustration prompt pack.</p>
+            </div>
+          </article>
+ 
+          <!-- TOOL 5 -->
+          <article class="group flex gap-3 rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#A84F39] hover:shadow-md">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#F6ECD8] text-lg text-[#A84F39]">▧</div>
+            <div>
+              <h4 class="text-sm font-bold text-[#29221F]">Book Cover Design Generator</h4>
+              <p class="mt-1.5 text-xs leading-5 text-[#62574B]">Develop creative directions for your next book cover.</p>
+            </div>
+          </article>
+ 
+          <!-- TOOL 6 -->
+          <article class="group flex gap-3 rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#A84F39] hover:shadow-md">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#F6ECD8] text-lg text-[#A84F39]">⌕</div>
+            <div>
+              <h4 class="text-sm font-bold text-[#29221F]">Infographic Prompt Generator</h4>
+              <p class="mt-1.5 text-xs leading-5 text-[#62574B]">Turn a topic into a structured prompt for visual storytelling.</p>
+            </div>
+          </article>
+ 
+          <!-- TOOL 7 -->
+          <article class="group flex gap-3 rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#A84F39] hover:shadow-md">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#F6ECD8] text-lg text-[#A84F39]">▥</div>
+            <div>
+              <h4 class="text-sm font-bold text-[#29221F]">Infographic Generator</h4>
+              <p class="mt-1.5 text-xs leading-5 text-[#62574B]">Create infographic visuals to communicate ideas and information.</p>
+            </div>
+          </article>
+ 
+          <!-- TOOL 8 -->
+          <article class="group flex gap-3 rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#A84F39] hover:shadow-md">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#F6ECD8] text-lg text-[#A84F39]">✒</div>
+            <div>
+              <h4 class="text-sm font-bold text-[#29221F]">KDP Book Creation Studio & AI Writer</h4>
+              <p class="mt-1.5 text-xs leading-5 text-[#62574B]">Develop book content, activities, page concepts, and publishing details.</p>
+            </div>
+          </article>
+ 
+        </div>
+ 
+        <!-- ADDITIONAL BENEFITS -->
+        <div class="mt-7">
+          <h3 class="display-font mb-4 text-xl font-bold text-[#29221F]">
+            And There's More...
+          </h3>
+ 
+          <div class="space-y-3">
+ 
+            <div class="flex items-start gap-3 rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-4">
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#F6ECD8] text-[#A84F39]">✧</span>
+              <div>
+                <h4 class="text-sm font-bold text-[#29221F]">Built-in prompt ideas</h4>
+                <p class="mt-1 text-xs leading-5 text-[#62574B]">Get inspiration to help you start developing your next project.</p>
+              </div>
+            </div>
+ 
+            <div class="flex items-start gap-3 rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-4">
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#F6ECD8] text-[#A84F39]">✦</span>
+              <div>
+                <h4 class="text-sm font-bold text-[#29221F]">Specialized creative workflows</h4>
+                <p class="mt-1 text-xs leading-5 text-[#62574B]">Use tools designed for different project types instead of starting every task from scratch.</p>
+              </div>
+            </div>
+ 
+            <div class="flex items-start gap-3 rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-4">
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#F6ECD8] text-[#A84F39]">❖</span>
+              <div>
+                <h4 class="text-sm font-bold text-[#29221F]">Commercial and PLR rights</h4>
+                <p class="mt-1 text-xs leading-5 text-[#62574B]">Rights included according to the terms of your Helix licence.</p>
+              </div>
+            </div>
+ 
+          </div>
+        </div>
+      </div>
+ 
+      <!-- PRICING PANEL -->
+      <aside id="access" class="overflow-hidden rounded-2xl border border-[#C7A66A] bg-[#FFFAF1] shadow-[0_12px_35px_rgba(41,34,31,0.09)] lg:sticky lg:top-8">
+ 
+        <div class="bg-[#29221F] px-6 py-5 text-center">
+          <span class="text-[10px] font-bold tracking-[0.22em] text-[#E5C995]">
+            YOUR COMPLETE CREATIVE STUDIO
+          </span>
+          <h3 class="display-font mt-2 text-2xl font-bold text-[#FFFAF1]">
+            Get Helix Today
+          </h3>
+        </div>
+ 
+        <div class="px-6 py-7 text-center">
+ 
+          <p class="text-xs font-semibold tracking-[0.15em] text-[#8A7966]">
+            LAUNCH PRICE
+          </p>
+ 
+          <div class="my-3 flex items-start justify-center text-[#A84F39]">
+            <span class="mt-3 text-3xl font-semibold">$</span>
+            <span class="display-font text-7xl font-bold leading-none tracking-tight">17</span>
+          </div>
+ 
+          <p class="text-xs font-semibold text-[#62574B]">
+            One-Time Payment · No Monthly Software Fee
+          </p>
+ 
+          <div class="my-6 border-t border-dashed border-[#D9C7A9]"></div>
+ 
+          <div class="space-y-3 text-left">
+            <div class="flex items-center gap-2.5 text-xs text-[#62574B]">
+              <span class="font-bold text-[#718475]">✓</span>
+              Eight specialized creative tools
+            </div>
+            <div class="flex items-center gap-2.5 text-xs text-[#62574B]">
+              <span class="font-bold text-[#718475]">✓</span>
+              Built-in prompt ideas
+            </div>
+            <div class="flex items-center gap-2.5 text-xs text-[#62574B]">
+              <span class="font-bold text-[#718475]">✓</span>
+              Specialized creative workflows
+            </div>
+            <div class="flex items-center gap-2.5 text-xs text-[#62574B]">
+              <span class="font-bold text-[#718475]">✓</span>
+              Commercial and PLR rights*
+            </div>
+          </div>
+ 
+          <a
+            href="https://warriorplus.com/o2/buy/hlc4g5/qyn323/j3drnq"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="access-btn mt-7 flex w-full items-center justify-center gap-2 rounded-lg px-5 py-4 text-sm font-bold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+          >
+            Get Instant Access
+            <span aria-hidden="true">→</span>
+          </a>
+ 
+          <p class="mt-4 text-[10px] leading-5 text-[#8A7966]">
+            Secure checkout via WarriorPlus. Access instructions will be provided according to your purchase details.
+          </p>
+ 
+          <div class="mt-5 flex items-center justify-center gap-2 text-[10px] font-semibold tracking-wide text-[#718475]">
+            <span>🔒</span>
+            SECURE CHECKOUT
+          </div>
+ 
+        </div>
+      </aside>
+ 
+    </div>
+ 
+    <!-- FOOTNOTE -->
+    <p class="mx-auto mt-8 max-w-3xl text-center text-[10px] leading-5 text-[#8A7966]">
+      *Commercial and PLR rights are subject to the actual Helix licence agreement and applicable AI-provider and marketplace terms.
+    </p>
+ 
+  </div>
+</section>
+ 
+ 
+ 
+ 
+<section id="faq" class="px-3 py-9 sm:px-5 sm:py-12">
+  <div class="mx-auto max-w-4xl">
+ 
+    <!-- HEADER -->
+    <div class="mx-auto mb-7 max-w-2xl text-center">
+      <span class="inline-flex items-center rounded-full border border-[#D9C7A9] bg-[#FFFAF1] px-3 py-1.5 text-[9px] font-bold tracking-[0.18em] text-[#A84F39]">
+        ✦ FREQUENTLY ASKED QUESTIONS ✦
+      </span>
+ 
+      <h2 class="display-font mt-3 text-2xl font-bold leading-tight text-[#29221F] sm:text-3xl md:text-4xl">
+        Got Questions?
+        <span class="text-[#A84F39]">We've Got Answers.</span>
+      </h2>
+ 
+      <p class="mx-auto mt-2 max-w-xl text-xs leading-6 text-[#62574B] sm:text-sm">
+        Everything you need to know about Helix, its creative tools, included rights, payment, access, and getting started.
+      </p>
+ 
+      <div class="decorative-line mx-auto mt-4 w-20"></div>
+    </div>
+ 
+    <!-- FAQ LIST -->
+    <div class="space-y-2.5">
+ 
+      <!-- ABOUT HELIX -->
+      <div class="mb-2 flex items-center gap-2">
+        <span class="text-sm text-[#A84F39]">✦</span>
+        <h3 class="display-font text-lg font-bold text-[#29221F]">About Helix</h3>
+      </div>
+ 
+      <details class="group rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-3">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-xs font-bold text-[#29221F] sm:text-sm">
+          What exactly is Helix?
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#D9C7A9] text-[#A84F39] transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <p class="mt-3 border-t border-[#D9C7A9] pt-3 text-xs leading-6 text-[#62574B] sm:text-sm">
+          Helix is a web-based creative studio that brings eight specialized tools together to help you develop prompts, illustrations, designs, and structured book content for different creative projects.
+        </p>
+      </details>
+ 
+      <details class="group rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-3">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-xs font-bold text-[#29221F] sm:text-sm">
+          What creative tools are included?
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#D9C7A9] text-[#A84F39] transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <p class="mt-3 border-t border-[#D9C7A9] pt-3 text-xs leading-6 text-[#62574B] sm:text-sm">
+          You get the Funny Pet Junk Journal Generator, Coloring Book Generator, Comic Book Generator, Story Prompt Studio, Book Cover Design Generator, Infographic Prompt Generator, Infographic Generator, and KDP Book Creation Studio & AI Writer.
+        </p>
+      </details>
+ 
+      <details class="group rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-3">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-xs font-bold text-[#29221F] sm:text-sm">
+          Do I need design or writing experience?
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#D9C7A9] text-[#A84F39] transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <p class="mt-3 border-t border-[#D9C7A9] pt-3 text-xs leading-6 text-[#62574B] sm:text-sm">
+          No advanced design or writing experience is required to get started. You can explore built-in prompt ideas, enter your own concepts, and use the available options to develop your projects. You may still need to review and refine your results.
+        </p>
+      </details>
+ 
+      <details class="group rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-3">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-xs font-bold text-[#29221F] sm:text-sm">
+          Do I need to install any software?
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#D9C7A9] text-[#A84F39] transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <p class="mt-3 border-t border-[#D9C7A9] pt-3 text-xs leading-6 text-[#62574B] sm:text-sm">
+          Helix is accessed through a web browser, so you do not need to install a desktop application. You will need a compatible device and internet connection.
+        </p>
+      </details>
+ 
+      <details class="group rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-3">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-xs font-bold text-[#29221F] sm:text-sm">
+          Do I need my own AI API key?
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#D9C7A9] text-[#A84F39] transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <p class="mt-3 border-t border-[#D9C7A9] pt-3 text-xs leading-6 text-[#62574B] sm:text-sm">
+          Helix is designed to provide access to its supported creative workflows without requiring you to supply your own API key. Individual features may depend on their configured AI services and availability.
+        </p>
+      </details>
+ 
+      <!-- CREATION AND USAGE RIGHTS -->
+      <details class="group rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-3">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-xs font-bold text-[#29221F] sm:text-sm">
+          What kinds of projects can I create?
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#D9C7A9] text-[#A84F39] transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <p class="mt-3 border-t border-[#D9C7A9] pt-3 text-xs leading-6 text-[#62574B] sm:text-sm">
+          Depending on the tool, you can develop funny pet junk journals, coloring books, comic concepts, story prompts, book covers, infographics, and structured KDP book content.
+        </p>
+      </details>
+ 
+      <details class="group rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-3">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-xs font-bold text-[#29221F] sm:text-sm">
+          Can I use my creations commercially?
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#D9C7A9] text-[#A84F39] transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <p class="mt-3 border-t border-[#D9C7A9] pt-3 text-xs leading-6 text-[#62574B] sm:text-sm">
+          Commercial use is included according to the terms of your Helix licence. Your use must also comply with applicable AI-provider terms, copyright requirements, and marketplace policies.
+        </p>
+      </details>
+ 
+      <details class="group rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-3">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-xs font-bold text-[#29221F] sm:text-sm">
+          What exactly do the Commercial and PLR rights cover?
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#D9C7A9] text-[#A84F39] transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <p class="mt-3 border-t border-[#D9C7A9] pt-3 text-xs leading-6 text-[#62574B] sm:text-sm">
+          Your rights are defined by the Helix licence agreement. Please review the agreement for the specific permissions covering commercial creations, supplied resources, rebranding, redistribution, and resale.
+        </p>
+      </details>
+ 
+      <details class="group rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-3">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-xs font-bold text-[#29221F] sm:text-sm">
+          Can I resell or rebrand Helix itself?
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#D9C7A9] text-[#A84F39] transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <p class="mt-3 border-t border-[#D9C7A9] pt-3 text-xs leading-6 text-[#62574B] sm:text-sm">
+          Only if your specific PLR licence expressly grants those permissions. Commercial rights to the products you create do not automatically grant permission to redistribute or resell the Helix software.
+        </p>
+      </details>
+ 
+      <details class="group rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-3">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-xs font-bold text-[#29221F] sm:text-sm">
+          Are the generated designs automatically ready for publishing?
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#D9C7A9] text-[#A84F39] transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <p class="mt-3 border-t border-[#D9C7A9] pt-3 text-xs leading-6 text-[#62574B] sm:text-sm">
+          Not necessarily. Results may need editing, proofreading, image refinement, formatting, or assembly before publishing or selling. Always review your content and check the requirements of your chosen platform.
+        </p>
+      </details>
+ 
+      <!-- PAYMENT AND ACCESS -->
+      <details class="group rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-3">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-xs font-bold text-[#29221F] sm:text-sm">
+          Is this a one-time payment?
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#D9C7A9] text-[#A84F39] transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <p class="mt-3 border-t border-[#D9C7A9] pt-3 text-xs leading-6 text-[#62574B] sm:text-sm">
+          Yes. The advertised launch price is $17 as a one-time payment, with no monthly software fee for the advertised offer. Any optional upgrades or third-party service charges should be reviewed separately.
+        </p>
+      </details>
+ 
+      <details class="group rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-3">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-xs font-bold text-[#29221F] sm:text-sm">
+          How do I receive access after purchasing?
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#D9C7A9] text-[#A84F39] transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <p class="mt-3 border-t border-[#D9C7A9] pt-3 text-xs leading-6 text-[#62574B] sm:text-sm">
+          After your purchase is confirmed, follow the access instructions provided with your WarriorPlus purchase. Check your purchase email, including your spam or promotions folder if necessary.
+        </p>
+      </details>
+ 
+      <details class="group rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] p-3">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-xs font-bold text-[#29221F] sm:text-sm">
+          What if I experience a technical problem?
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#D9C7A9] text-[#A84F39] transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <p class="mt-3 border-t border-[#D9C7A9] pt-3 text-xs leading-6 text-[#62574B] sm:text-sm">
+          Contact our support team at <a href="mailto:info@emventures.store" class="font-bold text-[#A84F39] underline">info@emventures.store</a>. Include a description of the issue and the email address associated with your purchase so we can help investigate.
+        </p>
+      </details>
+ 
+      <!-- REFUND POLICY AS FAQ -->
+      <details id="refund-policy" class="group scroll-mt-6 overflow-hidden rounded-lg border border-[#C7A66A] bg-[#FFFAF1]">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 bg-[#29221F] px-3 py-3.5 text-xs font-bold text-[#FFFAF1] sm:px-4 sm:text-sm">
+          <span class="min-w-0">
+            <span class="mb-1 block text-[9px] font-bold tracking-[0.16em] text-[#E5C995]">
+              🛡️ OUR PURCHASE PROTECTION
+            </span>
+            14-Day Technical Money-Back Guarantee
+          </span>
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#E5C995]/50 text-[#E5C995] transition-transform group-open:rotate-45">+</span>
+        </summary>
+ 
+        <div class="space-y-4 p-3 sm:p-4">
+ 
+          <p class="text-xs leading-6 text-[#62574B] sm:text-sm">
+            We want you to be able to access and use the Helix studio as described. If you experience an eligible technical issue that prevents you from using the product, contact our support team for assistance.
+          </p>
+ 
+          <div>
+            <h4 class="display-font text-base font-bold text-[#29221F]">
+              How the Guarantee Works
+            </h4>
+            <p class="mt-2 text-xs leading-6 text-[#62574B] sm:text-sm">
+              The 14-day technical money-back guarantee applies to eligible technical problems that prevent you from accessing or using Helix as described, subject to the applicable purchase and refund terms.
+            </p>
+            <p class="mt-2 text-xs leading-6 text-[#62574B] sm:text-sm">
+              Please contact support first so we can understand the issue and try to help resolve it.
+            </p>
+          </div>
+ 
+          <div class="rounded-lg border border-[#D9C7A9] bg-[#F6ECD8] p-3 sm:p-4">
+            <h4 class="text-sm font-bold text-[#29221F]">
+              How to Request a Refund
+            </h4>
+ 
+            <ol class="mt-3 space-y-3">
+              <li class="flex items-start gap-2.5">
+                <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#A84F39] text-[10px] font-bold text-white">1</span>
+                <p class="text-xs leading-5 text-[#62574B] sm:text-sm">
+                  Contact our support team at <a href="mailto:info@emventures.store" class="font-bold text-[#A84F39] underline">info@emventures.store</a>.
+                </p>
+              </li>
+ 
+              <li class="flex items-start gap-2.5">
+                <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#A84F39] text-[10px] font-bold text-white">2</span>
+                <p class="text-xs leading-5 text-[#62574B] sm:text-sm">
+                  Include your purchase details and explain the technical issue you experienced.
+                </p>
+              </li>
+ 
+              <li class="flex items-start gap-2.5">
+                <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#A84F39] text-[10px] font-bold text-white">3</span>
+                <p class="text-xs leading-5 text-[#62574B] sm:text-sm">
+                  Our team will review your request and provide guidance on the next steps.
+                </p>
+              </li>
+            </ol>
+          </div>
+ 
+          <div class="border-t border-[#D9C7A9] pt-3">
+            <h4 class="text-xs font-bold text-[#29221F] sm:text-sm">
+              Important Refund Information
+            </h4>
+ 
+            <ul class="mt-2 space-y-2">
+              <li class="flex items-start gap-2 text-xs leading-5 text-[#62574B]">
+                <span class="text-[#A84F39]">✦</span>
+                The guarantee period is 14 days from the purchase date.
+              </li>
+ 
+              <li class="flex items-start gap-2 text-xs leading-5 text-[#62574B]">
+                <span class="text-[#A84F39]">✦</span>
+                Technical support and refund requests should be sent to info@emventures.store.
+              </li>
+ 
+              <li class="flex items-start gap-2 text-xs leading-5 text-[#62574B]">
+                <span class="text-[#A84F39]">✦</span>
+                Eligible refunds are processed through WarriorPlus in accordance with its applicable procedures and policies.
+              </li>
+            </ul>
+          </div>
+ 
+          <div class="rounded-lg border border-dashed border-[#C7A66A] bg-white/50 p-3 text-center">
+            <p class="text-[9px] font-bold tracking-[0.14em] text-[#8A7966]">
+              NEED TECHNICAL SUPPORT OR REFUND ASSISTANCE?
+            </p>
+ 
+            <a
+              href="mailto:info@emventures.store"
+              class="mt-1 inline-block break-all text-sm font-bold text-[#A84F39] underline decoration-[#C7A66A] underline-offset-4"
+            >
+              info@emventures.store
+            </a>
+ 
+            <p class="mt-1 text-[10px] text-[#62574B]">
+              Eligible refunds are processed through WarriorPlus.
+            </p>
+          </div>
+        </div>
+      </details>
+ 
+    </div>
+ 
+    <!-- FINAL HELP -->
+    <div class="mt-7 text-center">
+      <p class="display-font text-lg font-bold text-[#29221F]">
+        Still Have Questions?
+      </p>
+ 
+      <p class="mt-1 text-xs text-[#62574B] sm:text-sm">
+        We're here to help you get started.
+      </p>
+ 
+      <a
+        href="mailto:info@emventures.store"
+        class="mt-3 inline-flex items-center justify-center gap-2 rounded-lg border border-[#A84F39] px-4 py-2.5 text-xs font-bold text-[#A84F39] transition-all duration-300 hover:bg-[#A84F39] hover:text-white sm:text-sm"
+      >
+        Contact Support
+        <span>→</span>
+      </a>
+    </div>
+ 
+  </div>
+</section>
+ 
+ 
+ 
+ 
+<footer class="border-t border-[#D9C7A9] px-4 py-7 sm:px-6">
+  <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
+ 
+    <p class="text-xs text-[#62574B]">
+      © <span id="currentYear"></span> Helix. All rights reserved.
+    </p>
+ 
+    <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-[#62574B]">
+      <a href="/terms" class="transition-colors hover:text-[#A84F39]">
+        Terms & Conditions
+      </a>
+ 
+      <a href="/privacy" class="transition-colors hover:text-[#A84F39]">
+        Privacy Policy
+      </a>
+ 
+      <a href="mailto:info@emventures.store" class="transition-colors hover:text-[#A84F39]">
+        info@emventures.store
+      </a>
+    </div>
+ 
+  </div>
+</footer>
+ 
+<script>
+  document.getElementById("currentYear").textContent =
+    new Date().getFullYear();
+</script>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  </main>
+ 
+</body>
+</html>
