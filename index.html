@@ -1,4 +1,3 @@
- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
  
   <title>Helix – Create, Design, Publish</title>
- 	
+  
   <script src="https://cdn.tailwindcss.com"></script>
  
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -219,6 +218,140 @@
     @media (prefers-reduced-motion: reduce) {
       .access-btn {
         transition: none;
+      }
+    }
+
+
+    /* MOBILE RESPONSIVENESS — layout-only overrides */
+    @media (max-width: 640px) {
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      body {
+        -webkit-text-size-adjust: 100%;
+      }
+
+      main,
+      section,
+      header,
+      footer {
+        min-width: 0;
+        max-width: 100%;
+      }
+
+      img,
+      svg,
+      video {
+        max-width: 100%;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      p,
+      a,
+      span {
+        overflow-wrap: anywhere;
+      }
+
+      .hero-title {
+        font-size: clamp(30px, 8.2vw, 38px);
+        line-height: 1.16;
+        letter-spacing: -1.1px;
+      }
+
+      /* Allow the tools heading to wrap instead of forcing page overflow. */
+      h2.whitespace-nowrap {
+        white-space: normal;
+      }
+
+      .audience-label {
+        max-width: 100%;
+        padding: 8px 9px;
+      }
+
+      .audience-label span {
+        font-size: clamp(8px, 2.15vw, 10px);
+        letter-spacing: 0.07em;
+        white-space: normal;
+        text-align: center;
+        animation: none;
+        clip-path: none;
+      }
+
+      .audience-label span::after {
+        display: none;
+      }
+
+      .showcase-frame {
+        padding: 7px;
+      }
+
+      .showcase-frame::before,
+      .showcase-frame::after {
+        width: 48px;
+        height: 13px;
+      }
+
+      .showcase-frame::before {
+        left: -12px;
+      }
+
+      .showcase-frame::after {
+        right: -12px;
+      }
+
+      .access-btn,
+      .access-button {
+        max-width: 100%;
+        white-space: normal;
+        text-align: center;
+      }
+
+      /* Keep wide comparison data readable inside its own scroll area. */
+      #subscription-comparison .overflow-x-auto {
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      #subscription-comparison table {
+        min-width: 540px;
+      }
+
+      /* Prevent grid and flex children from forcing a wider viewport. */
+      .grid,
+      .flex,
+      article,
+      aside {
+        min-width: 0;
+      }
+
+      .grid > *,
+      .flex > * {
+        min-width: 0;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero-title {
+        font-size: 29px;
+      }
+
+      .access-btn {
+        gap: 0.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        font-size: 0.8rem;
+      }
+
+      .audience-label span {
+        font-size: 8px;
       }
     }
   </style>
@@ -616,6 +749,178 @@
  
  
  
+
+<section class="bg-[#FBF6ED] py-24 px-6 md:px-12">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Sales-focused heading -->
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <span class="text-[#AD5037] uppercase tracking-[3px] text-xs font-bold">
+        Imagine What's Possible
+      </span>
+      <h2 class="text-4xl md:text-5xl font-bold text-[#29221E] mt-4">
+        Turn Your Creative Ideas Into
+        <span class="text-[#AD5037]">Publishable Products.</span>
+      </h2>
+      <p class="text-[#71665D] mt-5 leading-7">
+        From coloring books and children's stories to comics,
+        journals and more, Helix gives you the creative tools
+        to turn your ideas into complete publishing projects.
+        Your next book could start with just one idea.
+      </p>
+    </div>
+
+    <!-- Amazon listing examples -->
+    <div class="grid md:grid-cols-3 gap-6 mb-5">
+
+      <!-- Screenshot 1 -->
+      <div class="bg-white p-3 rounded-2xl shadow-sm border border-[#E9DCC8]">
+        <div class="h-64 bg-[#F4EBDD] rounded-xl overflow-hidden">
+          <img src="./images/best sellers card 1.png"
+               alt="Example of an Amazon children's coloring book listing"
+               class="w-full h-full object-contain">
+        </div>
+        <div class="px-3 py-4">
+          <p class="text-xs uppercase tracking-widest text-[#AD5037] font-bold">
+            Publishing Example
+          </p>
+          <h3 class="text-lg font-bold text-[#29221E] mt-2">
+            Children's Coloring Books
+          </h3>
+          <p class="text-sm text-[#71665D] mt-2">
+            Explore the possibilities of creating engaging coloring books for different audiences.
+          </p>
+        </div>
+      </div>
+
+      <!-- Screenshot 2 -->
+      <div class="bg-white p-3 rounded-2xl shadow-sm border border-[#E9DCC8]">
+        <div class="h-64 bg-[#F4EBDD] rounded-xl overflow-hidden">
+          <img src="./images/best sellers card 2.png"
+               alt="Example of an Amazon graphic novel listing"
+               class="w-full h-full object-contain">
+        </div>
+        <div class="px-3 py-4">
+          <p class="text-xs uppercase tracking-widest text-[#AD5037] font-bold">
+            Creative Possibilities
+          </p>
+          <h3 class="text-lg font-bold text-[#29221E] mt-2">
+            Comics & Graphic Novels
+          </h3>
+          <p class="text-sm text-[#71665D] mt-2">
+            Develop compelling characters, illustrated scenes and creative storytelling projects.
+          </p>
+        </div>
+      </div>
+
+      <!-- Screenshot 3 -->
+      <div class="bg-white p-3 rounded-2xl shadow-sm border border-[#E9DCC8]">
+        <div class="h-64 bg-[#F4EBDD] rounded-xl overflow-hidden">
+          <img src="./images/best sellers card 3.png"
+               alt="Example of an Amazon children's bedtime story book listing"
+               class="w-full h-full object-contain">
+        </div>
+        <div class="px-3 py-4">
+          <p class="text-xs uppercase tracking-widest text-[#AD5037] font-bold">
+            Product Inspiration
+          </p>
+          <h3 class="text-lg font-bold text-[#29221E] mt-2">
+            Children's Storybooks
+          </h3>
+          <p class="text-sm text-[#71665D] mt-2">
+            Create imaginative stories, illustrated book concepts and memorable reading experiences.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Transparency note -->
+    <p class="text-center text-xs text-[#8A7C70] mb-24 leading-6">
+      Note: Amazon listings shown are illustrative examples of publishing possibilities.
+      Helix provides creative tools and does not guarantee sales, bestseller rankings or publishing success.
+    </p>
+
+    <!-- Why Helix -->
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+      <div>
+        <span class="text-[#AD5037] uppercase tracking-[3px] text-xs font-bold">
+          Meet Your Creative Advantage
+        </span>
+
+        <h2 class="text-4xl md:text-5xl font-bold text-[#29221E] mt-4 leading-tight">
+          Everything You Need to
+          <span class="text-[#AD5037]">Create More With Helix.</span>
+        </h2>
+
+        <p class="text-[#71665D] leading-7 mt-5">
+          Stop struggling with scattered tools, complicated prompts
+          and endless blank pages. Helix brings your creative
+          publishing workflow together, helping you move from
+          a simple idea to a structured project with greater ease.
+        </p>
+
+        <a href="#features"
+           class="inline-flex mt-8 bg-[#AD5037] hover:bg-[#923D29]
+           text-white px-7 py-4 rounded-xl font-bold transition">
+          Discover What Helix Can Do →
+        </a>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+
+        <div class="bg-white p-6 rounded-2xl border border-[#E9DCC8]">
+          <div class="text-3xl mb-4">✦</div>
+          <h3 class="font-bold text-lg text-[#29221E]">
+            Endless Creative Possibilities
+          </h3>
+          <p class="text-sm text-[#71665D] mt-3 leading-6">
+            Explore journals, coloring books, comics,
+            children's stories and many more creative formats.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-[#E9DCC8]">
+          <div class="text-3xl mb-4">⚡</div>
+          <h3 class="font-bold text-lg text-[#29221E]">
+            Create With Less Effort
+          </h3>
+          <p class="text-sm text-[#71665D] mt-3 leading-6">
+            Generate organized creative prompts without
+            repeatedly starting from scratch.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-[#E9DCC8]">
+          <div class="text-3xl mb-4">▤</div>
+          <h3 class="font-bold text-lg text-[#29221E]">
+            An Organized Workflow
+          </h3>
+          <p class="text-sm text-[#71665D] mt-3 leading-6">
+            Develop concepts, covers, illustrations
+            and structured book content in one workspace.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-[#E9DCC8]">
+          <div class="text-3xl mb-4">◎</div>
+          <h3 class="font-bold text-lg text-[#29221E]">
+            Made for Every Creator
+          </h3>
+          <p class="text-sm text-[#71665D] mt-3 leading-6">
+            Whether you're a beginner or experienced creator,
+            Helix helps simplify your creative process.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
  
  
 
@@ -632,16 +937,12 @@
       <h2 class="display-font text-3xl font-bold leading-tight text-[#29221F] sm:text-4xl">
         Why Pay <span class="text-[#A84F39]">Every Month?</span>
       </h2>
-      <p class="mx-auto mt-4 max-w-2xl text-sm leading-7 text-[#62574B] sm:text-base">
-        Many popular AI tools charge recurring subscription fees for expanded access to text or image generation.
-        Helix gives you a guided creative workflow for a <strong>one-time $17 payment</strong>—no Helix monthly subscription.
-      </p>
+   
     </div>
  
     <div class="mt-8 overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] shadow-sm">
       <div class="border-b border-[#D9C7A9] bg-[#F1E5D1] px-4 py-4 text-center sm:px-6">
         <h3 class="display-font text-xl font-bold text-[#29221F] sm:text-2xl">Popular AI Subscription Prices</h3>
-        <p class="mt-1 text-xs text-[#62574B]">Maximum advertised paid-plan prices · monthly billing · USD · plans and limits vary</p>
       </div>
  
       <div class="overflow-x-auto">
@@ -1117,7 +1418,7 @@
   <!-- Single Supporting Product Image -->
   <div class="mx-auto mb-7 max-w-4xl overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] p-2 shadow-[0_8px_24px_rgba(41,34,31,0.07)] sm:mb-8 sm:p-3">
     <img
-      src="images/dashboard.jfif"
+      src="images/why this creative studio stands out.gif"
       alt="Preview of the Helix creative studio showing its collection of creative tools and features"
       class="block h-auto w-full rounded-lg object-contain"
       loading="lazy"
@@ -1125,8 +1426,6 @@
   </div>
  
   <div class="mx-auto grid max-w-4xl grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3">
- 
-    <!-- Feature 1 -->
     <div class="group relative flex items-center gap-3 overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-3.5 py-3 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_7px_18px_rgba(41,34,31,0.08)]">
       <span class="absolute bottom-0 left-0 h-[2px] w-0 bg-[#A84F39] transition-all duration-300 group-hover:w-full"></span>
       <span class="display-font text-lg font-bold text-[#C7A66A] transition-transform duration-300 group-hover:scale-110">01</span>
@@ -2507,7 +2806,7 @@
       <!-- GIF IMAGE -->
       <div class="overflow-hidden rounded-2xl border border-[#D9C7A9] bg-[#FFFAF1] p-2 shadow-[0_12px_35px_rgba(41,34,31,0.08)] sm:p-3">
         <img
-          src="YOUR-FUNNY-PET-JOURNAL-DEMO.gif"
+          src="images/funny pet journal demo.jpg"
           alt="Animated demonstration of creating a funny pet junk journal with the creative studio"
           class="block h-auto w-full rounded-xl object-contain"
           loading="lazy"

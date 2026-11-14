@@ -1,0 +1,798 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Helix | JV & Affiliate Partners</title>
+
+  <meta name="description" content="Partner with Helix and promote an all-in-one creative software workspace for Etsy sellers, KDP creators, and digital product entrepreneurs.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            helix: {
+              cream: '#F6ECD8',
+              ivory: '#FFFAF1',
+              terracotta: '#A84F39',
+              brown: '#29221F',
+              muted: '#62574B',
+              border: '#D9C7A9',
+              gold: '#C7A66A'
+            }
+          },
+
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+            display: ['Playfair Display', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #F6ECD8;
+      color: #29221F;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .display-font {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* PAPER TEXTURE */
+
+    .paper-texture {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.07'/%3E%3C/svg%3E");
+    }
+
+    /* NAVIGATION */
+
+    .nav-link {
+      transition: color .2s ease;
+    }
+
+    .nav-link:hover {
+      color: #A84F39;
+    }
+
+    /* HERO */
+
+    .hero-highlight {
+      position: relative;
+      display: inline;
+      z-index: 1;
+    }
+
+    .hero-highlight::after {
+      content: "";
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      width: 100%;
+      height: 35%;
+      background: #D9C7A9;
+      z-index: -1;
+      opacity: .7;
+    }
+
+    .hero-art {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      inset: 8% -2% 3% 3%;
+      background: #C7A66A;
+      opacity: .28;
+      border-radius: 42% 58% 55% 45%;
+      transform: rotate(-5deg);
+      z-index: -1;
+    }
+
+    .hero-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1.15 / 1;
+      object-fit: cover;
+      border: 8px solid #FFFAF1;
+      border-radius: 24px;
+      box-shadow: 0 20px 35px rgba(75, 53, 30, .14);
+    }
+
+    /* FLOATING LABELS */
+
+    .floating-label {
+      position: absolute;
+      background: #FFFAF1;
+      border: 1px solid #D9C7A9;
+      border-radius: 17px;
+      box-shadow: 4px 5px 0 #29221F;
+      padding: 12px 17px;
+      z-index: 5;
+      font-weight: 800;
+    }
+
+    /* BUTTONS */
+
+    .cta-button {
+      background: #A84F39;
+      transition: all .25s ease;
+      box-shadow: none;
+    }
+
+    .cta-button:hover {
+      background: #873D2B;
+      transform: translate(2px, 2px);
+      box-shadow: none;
+    }
+
+    .secondary-button {
+      background: #FFFAF1;
+      color: #29221F;
+      border: 1px solid #D9C7A9;
+      transition: all .25s ease;
+      box-shadow: none;
+    }
+
+    .secondary-button:hover {
+      background: #D9C7A9;
+      transform: translate(2px, 2px);
+      box-shadow: none;
+    }
+
+    .email-button {
+      background: #29221F;
+      transition: all .25s ease;
+      box-shadow: none;
+    }
+
+    .email-button:hover {
+      background: #62574B;
+      transform: translate(2px, 2px);
+      box-shadow: none;
+    }
+
+    /* FEATURE CARDS */
+
+    .feature-card {
+      background: #FFFAF1;
+      border: 1px solid #D9C7A9;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: #A84F39;
+      box-shadow: 0 15px 30px rgba(75, 53, 30, .12);
+    }
+
+    .feature-icon {
+      background: #F6ECD8;
+      color: #A84F39;
+    }
+
+    .decorative-line {
+      background: #D9C7A9;
+    }
+
+    @media (max-width: 640px) {
+      .floating-label {
+        padding: 8px 11px;
+        font-size: 11px;
+      }
+
+      .hero-title {
+        letter-spacing: -1.2px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-helix-cream text-helix-brown antialiased">
+
+  <!-- ======================================
+       NAVIGATION BAR
+  ======================================= -->
+
+  <nav class="sticky top-0 z-50 bg-helix-ivory border-b border-helix-border">
+
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+
+      <div class="min-h-[82px] flex items-center justify-between gap-5">
+
+        <!-- LOGO -->
+
+        <a href="#" class="flex items-center gap-3 shrink-0">
+
+          <div class="w-11 h-11 rounded-xl border border-helix-gold bg-helix-cream flex items-center justify-center">
+
+            <span class="font-display text-2xl text-helix-terracotta">
+              H
+            </span>
+
+          </div>
+
+          <div>
+
+            <h2 class="font-display font-bold text-xl md:text-2xl tracking-tight leading-none text-helix-brown">
+              Helix
+            </h2>
+
+            <p class="text-[10px] md:text-[11px] font-bold tracking-wider uppercase text-helix-muted mt-1">
+              JV & Affiliate Partners
+            </p>
+
+          </div>
+
+        </a>
+
+        <!-- NAVIGATION LINKS -->
+
+        <div class="hidden lg:flex items-center gap-8 text-sm font-bold text-helix-brown">
+
+          <a href="#product" class="nav-link">
+            Product
+          </a>
+
+          <a href="#features" class="nav-link">
+            Features
+          </a>
+
+          <a href="#product" class="nav-link">
+            How It Works
+          </a>
+
+        </div>
+
+        <!-- NAVIGATION CTA -->
+
+        <a
+          href="YOUR_AFFILIATE_LINK_URL"
+          class="cta-button text-white px-5 md:px-7 py-3.5 rounded-xl text-xs md:text-sm font-extrabold tracking-wide uppercase flex items-center gap-2 shrink-0"
+        >
+
+          Get Affiliate Link
+
+          <span aria-hidden="true">&rarr;</span>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- ======================================
+       HERO SECTION
+  ======================================= -->
+
+  <header
+    id="product"
+    class="relative overflow-hidden bg-helix-cream paper-texture"
+  >
+
+    <!-- DECORATIVE BACKGROUND -->
+
+    <div class="absolute top-0 right-0 w-80 h-80 bg-helix-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24">
+
+      <div class="grid lg:grid-cols-2 gap-14 lg:gap-12 items-center">
+
+        <!-- LEFT SIDE: HERO CONTENT -->
+
+        <div class="relative z-10">
+
+          <p class="text-xs md:text-sm font-extrabold tracking-[.17em] uppercase text-helix-terracotta mb-6">
+
+            For Etsy Sellers · KDP Creators · Junk Journal Lovers
+
+          </p>
+
+          <h1 class="hero-title font-sans font-black text-4xl sm:text-5xl md:text-6xl xl:text-[68px] leading-[1.08] tracking-tight mb-8">
+
+            <span class="hero-highlight text-helix-terracotta">
+              One Idea.
+            </span>
+
+            <br>
+
+            <span class="text-helix-brown">
+              Multiple Creative Possibilities.
+            </span>
+
+          </h1>
+
+          <p class="text-base md:text-lg leading-8 text-helix-muted max-w-xl mb-8">
+
+            Turn One Idea Into Complete Creative Projects With Just One Prompt!
+
+            Create funny pet junk journal kits, coloring books, comic books,
+            story prompts, book covers, infographics, and complete book content
+            from a single idea.
+
+          </p>
+
+          <p class="text-sm md:text-base leading-7 text-helix-muted max-w-xl mb-9">
+
+            Generate coordinated prompts, creative designs, and structured
+            book content with specialized tools — without complicated prompt
+            writing, API keys, separate AI credits, or monthly software fees.
+
+          </p>
+
+          <!-- PRIMARY CTA BUTTONS -->
+
+          <div class="flex flex-wrap items-center gap-4 mb-5">
+
+            <a
+              href="YOUR_AFFILIATE_LINK_URL"
+              class="cta-button text-white px-7 py-4 rounded-xl font-extrabold text-sm tracking-wide uppercase inline-flex items-center gap-2"
+            >
+
+              Get Affiliate Link
+
+            </a>
+
+            <a
+              href="YOUR_SALES_PAGE_URL"
+              class="secondary-button px-7 py-4 rounded-xl font-extrabold text-sm tracking-wide uppercase inline-flex items-center gap-2"
+            >
+
+              View Sales Page
+
+              <span aria-hidden="true">&rarr;</span>
+
+            </a>
+
+          </div>
+
+          <!-- EMAIL SWIPE BUTTON -->
+
+          <div class="flex flex-wrap items-center gap-4 mb-10">
+
+            <a
+              href="YOUR_EMAIL_SWIPE_URL"
+              class="email-button text-white px-7 py-3.5 rounded-xl font-extrabold text-sm tracking-wide uppercase inline-flex items-center gap-2"
+            >
+
+              Email Swipe
+
+            </a>
+
+            <span class="text-xs text-helix-muted">
+              Open a promotional email swipe to copy and customize.
+            </span>
+
+          </div>
+
+          <!-- FEATURE BADGES -->
+
+          <div class="flex flex-wrap gap-3">
+
+            <span class="bg-helix-ivory border border-helix-border rounded-xl px-4 py-3 text-xs font-bold text-helix-brown">
+              Multiple Creative Tools
+            </span>
+
+            <span class="bg-helix-ivory border border-helix-border rounded-xl px-4 py-3 text-xs font-bold text-helix-brown">
+              No Complicated Prompt Writing
+            </span>
+
+            <span class="bg-helix-ivory border border-helix-border rounded-xl px-4 py-3 text-xs font-bold text-helix-brown">
+              No API Key Required
+            </span>
+
+            <span class="bg-helix-ivory border border-helix-border rounded-xl px-4 py-3 text-xs font-bold text-helix-brown">
+              No Separate AI Credits
+            </span>
+
+            <span class="bg-helix-ivory border border-helix-border rounded-xl px-4 py-3 text-xs font-bold text-helix-brown">
+              One-Time Payment
+            </span>
+
+            <span class="bg-helix-ivory border border-helix-border rounded-xl px-4 py-3 text-xs font-bold text-helix-brown">
+              PLR Rights Included
+            </span>
+
+          </div>
+
+        </div>
+
+        <!-- RIGHT SIDE: PRODUCT SHOWCASE IMAGE -->
+
+        <div class="hero-art relative max-w-2xl mx-auto w-full lg:mt-4">
+
+          <!-- TOP FLOATING LABEL -->
+
+          <div class="floating-label -top-5 left-0 md:left-[-15px]">
+
+            <p class="text-[10px] md:text-xs uppercase tracking-wider text-helix-muted">
+              Creative Workspace
+            </p>
+
+            <p class="text-lg md:text-xl font-black text-helix-terracotta">
+              HELIX COMPLETE
+            </p>
+
+          </div>
+
+          <!-- ===================================
+               INSERT YOUR HERO IMAGE HERE
+
+               Replace the image path below with
+               your actual image file or image URL.
+
+               Example:
+               assets/helix-showcase.png
+
+          ==================================== -->
+
+          <img
+            src="images/helix jv hero.png"
+            alt="Helix Complete Creative Software Showcase"
+            class="hero-image"
+          >
+
+          <!-- BOTTOM FLOATING LABEL -->
+
+          <div class="floating-label -bottom-6 right-0 md:right-[-12px] rotate-3">
+
+            <p class="text-xs md:text-sm font-black text-helix-brown">
+              8 Creative Possibilities
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <!-- ======================================
+       FEATURES SECTION
+  ======================================= -->
+
+  <section
+    id="features"
+    class="bg-helix-cream paper-texture py-20 md:py-28 px-6"
+  >
+
+    <div class="max-w-7xl mx-auto">
+
+      <!-- SECTION HEADING -->
+
+      <div class="text-center max-w-3xl mx-auto mb-16">
+
+        <p class="text-xs font-extrabold tracking-[.25em] uppercase text-helix-terracotta mb-5">
+
+          EXPLORE THE POSSIBILITIES
+
+        </p>
+
+        <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mb-6 text-helix-brown">
+
+          What You Can Create With Helix
+
+        </h2>
+
+        <p class="text-helix-muted text-sm md:text-base leading-8">
+
+          From digital journals to publishing projects, explore multiple
+          creative possibilities using specialized tools in one workspace.
+
+        </p>
+
+      </div>
+
+      <!-- FEATURE CARDS -->
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- FEATURE 01 -->
+
+        <div class="feature-card rounded-2xl p-7 shadow-sm">
+
+          <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-display font-bold mb-6">
+            01
+          </div>
+
+          <p class="text-xs font-extrabold tracking-widest text-helix-terracotta mb-3">
+            FEATURE 01
+          </p>
+
+          <h3 class="font-display text-xl font-bold mb-3 text-helix-brown">
+            Funny Pet Junk Journals
+          </h3>
+
+          <p class="text-sm text-helix-muted leading-7">
+            Create funny pet-themed junk journal kits, coordinated
+            creative pages, and printable journal elements.
+          </p>
+
+        </div>
+
+        <!-- FEATURE 02 -->
+
+        <div class="feature-card rounded-2xl p-7 shadow-sm">
+
+          <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-display font-bold mb-6">
+            02
+          </div>
+
+          <p class="text-xs font-extrabold tracking-widest text-helix-terracotta mb-3">
+            FEATURE 02
+          </p>
+
+          <h3 class="font-display text-xl font-bold mb-3 text-helix-brown">
+            Coloring Books
+          </h3>
+
+          <p class="text-sm text-helix-muted leading-7">
+            Develop creative coloring book concepts, themed pages,
+            and illustration prompts.
+          </p>
+
+        </div>
+
+        <!-- FEATURE 03 -->
+
+        <div class="feature-card rounded-2xl p-7 shadow-sm">
+
+          <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-display font-bold mb-6">
+            03
+          </div>
+
+          <p class="text-xs font-extrabold tracking-widest text-helix-terracotta mb-3">
+            FEATURE 03
+          </p>
+
+          <h3 class="font-display text-xl font-bold mb-3 text-helix-brown">
+            Comic Books
+          </h3>
+
+          <p class="text-sm text-helix-muted leading-7">
+            Create comic concepts, characters, storylines,
+            and visual storytelling ideas.
+          </p>
+
+        </div>
+
+        <!-- FEATURE 04 -->
+
+        <div class="feature-card rounded-2xl p-7 shadow-sm">
+
+          <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-display font-bold mb-6">
+            04
+          </div>
+
+          <p class="text-xs font-extrabold tracking-widest text-helix-terracotta mb-3">
+            FEATURE 04
+          </p>
+
+          <h3 class="font-display text-xl font-bold mb-3 text-helix-brown">
+            Story Prompts
+          </h3>
+
+          <p class="text-sm text-helix-muted leading-7">
+            Generate imaginative story ideas, writing prompts,
+            and structured creative concepts.
+          </p>
+
+        </div>
+
+        <!-- FEATURE 05 -->
+
+        <div class="feature-card rounded-2xl p-7 shadow-sm">
+
+          <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-display font-bold mb-6">
+            05
+          </div>
+
+          <p class="text-xs font-extrabold tracking-widest text-helix-terracotta mb-3">
+            FEATURE 05
+          </p>
+
+          <h3 class="font-display text-xl font-bold mb-3 text-helix-brown">
+            Book Covers
+          </h3>
+
+          <p class="text-sm text-helix-muted leading-7">
+            Explore professional book cover concepts for journals,
+            coloring books, and publishing projects.
+          </p>
+
+        </div>
+
+        <!-- FEATURE 06 -->
+
+        <div class="feature-card rounded-2xl p-7 shadow-sm">
+
+          <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-display font-bold mb-6">
+            06
+          </div>
+
+          <p class="text-xs font-extrabold tracking-widest text-helix-terracotta mb-3">
+            FEATURE 06
+          </p>
+
+          <h3 class="font-display text-xl font-bold mb-3 text-helix-brown">
+            Infographics
+          </h3>
+
+          <p class="text-sm text-helix-muted leading-7">
+            Develop organized educational content and structured
+            infographic concepts.
+          </p>
+
+        </div>
+
+        <!-- FEATURE 07 -->
+
+        <div class="feature-card rounded-2xl p-7 shadow-sm">
+
+          <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-display font-bold mb-6">
+            07
+          </div>
+
+          <p class="text-xs font-extrabold tracking-widest text-helix-terracotta mb-3">
+            FEATURE 07
+          </p>
+
+          <h3 class="font-display text-xl font-bold mb-3 text-helix-brown">
+            KDP Book Content
+          </h3>
+
+          <p class="text-sm text-helix-muted leading-7">
+            Generate structured book content and creative material
+            for Amazon KDP publishing projects.
+          </p>
+
+        </div>
+
+        <!-- FEATURE 08 -->
+
+        <div class="feature-card rounded-2xl p-7 shadow-sm">
+
+          <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-display font-bold mb-6">
+            08
+          </div>
+
+          <p class="text-xs font-extrabold tracking-widest text-helix-terracotta mb-3">
+            FEATURE 08
+          </p>
+
+          <h3 class="font-display text-xl font-bold mb-3 text-helix-brown">
+            Written Content
+          </h3>
+
+          <p class="text-sm text-helix-muted leading-7">
+            Develop written creative material, organized content,
+            and structured manuscripts.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ======================================
+       FOOTER
+  ======================================= -->
+
+  <footer class="bg-helix-ivory border-t border-helix-border">
+
+    <div class="max-w-7xl mx-auto px-6 md:px-8 py-12">
+
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+
+        <!-- FOOTER BRAND -->
+
+        <a href="#" class="flex items-center gap-3">
+
+          <div class="w-11 h-11 rounded-xl border border-helix-gold bg-helix-cream flex items-center justify-center">
+
+            <span class="font-display text-2xl text-helix-terracotta">
+              H
+            </span>
+
+          </div>
+
+          <div>
+
+            <h2 class="font-display font-bold text-2xl leading-none text-helix-brown">
+              Helix
+            </h2>
+
+            <p class="text-[10px] uppercase tracking-wider text-helix-muted font-bold mt-1">
+              JV & Affiliate Partners
+            </p>
+
+          </div>
+
+        </a>
+
+        <!-- FOOTER LINKS -->
+
+        <div class="flex flex-wrap justify-center gap-6 text-sm font-semibold text-helix-muted">
+
+          <a href="#product" class="nav-link">
+            Product
+          </a>
+
+          <a href="#features" class="nav-link">
+            Features
+          </a>
+
+          <a href="YOUR_SALES_PAGE_URL" class="nav-link">
+            Sales Page
+          </a>
+
+          <a href="YOUR_AFFILIATE_LINK_URL" class="nav-link">
+            Affiliate Link
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- COPYRIGHT -->
+
+      <div class="border-t border-helix-border mt-10 pt-7 text-center">
+
+        <p class="text-xs text-helix-muted leading-6">
+          © 2026 Helix. All Rights Reserved.
+        </p>
+
+        <p class="text-xs text-helix-muted/70 mt-2">
+          Create · Design · Publish
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
