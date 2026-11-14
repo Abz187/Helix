@@ -1,18 +1,19 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
+
   <title>Helix – Create, Design, Publish</title>
-  
+
   <script src="https://cdn.tailwindcss.com"></script>
- 
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- 
+
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700;800;900&display=swap" rel="stylesheet">
- 
+
   <script>
     tailwind.config = {
       theme: {
@@ -37,147 +38,138 @@
       }
     }
   </script>
- 
+
   <style>
     * {
       box-sizing: border-box;
     }
- 
+
     html {
       scroll-behavior: smooth;
     }
- 
+
     body {
       margin: 0;
       background: #F6ECD8;
       color: #29221F;
       font-family: 'DM Sans', sans-serif;
     }
- 
+
     .display-font {
       font-family: 'Playfair Display', serif;
     }
- 
+
     .hero-underline {
       width: 100%;
       height: 20px;
       display: block;
     }
- 
+
     .step-card {
       transition: all 0.25s ease;
     }
- 
+
     .step-card:hover {
       border-color: #A84F39;
       transform: translateY(-3px);
       background: #FFFAF1;
     }
- 
+
     .access-button {
       transition: all 0.2s ease;
     }
- 
+
     .access-button:hover {
       background: #873D2B;
       transform: translateY(-1px);
     }
- 
+
     .nav-link {
       transition: color 0.2s ease;
     }
- 
+
     .nav-link:hover {
       color: #A84F39;
     }
- 
+
     @media (max-width: 640px) {
       .hero-title {
         letter-spacing: -1.2px;
       }
     }
- 
- 
-    
-/* AUDIENCE LABEL ANIMATION */
-.audience-label {
-  display: inline-flex;
-  max-width: 100%;
-  overflow: hidden;
-  padding: 9px 12px;
-  border-top: 1px solid #D9C7A9;
-  border-bottom: 1px solid #D9C7A9;
-}
- 
-.audience-label span {
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  white-space: nowrap;
-  max-width: 100%;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  color: #40372E;
-  animation: typingReveal 4.5s steps(52, end) infinite;
-}
- 
-.audience-label span::after {
-  content: '';
-  display: inline-block;
-  width: 1px;
-  height: 11px;
-  margin-left: 4px;
-  vertical-align: middle;
-  background: #A84F39;
-  animation: cursorBlink 0.8s step-end infinite;
-}
- 
-@keyframes typingReveal {
-  0% {
-    clip-path: inset(0 100% 0 0);
-  }
- 
-  70%, 90% {
-    clip-path: inset(0 0 0 0);
-  }
- 
-  100% {
-    clip-path: inset(0 0 0 0);
-  }
-}
- 
-@keyframes cursorBlink {
-  50% {
-    opacity: 0;
-  }
-}
- 
-@media (min-width: 640px) {
-  .audience-label span {
-    font-size: 11px;
-  }
-}
- 
-@media (prefers-reduced-motion: reduce) {
-  .audience-label span,
-  .audience-label span::after {
-    animation: none;
-  }
- 
-  .audience-label span {
-    clip-path: none;
-  }
-}
- 
- .showcase-frame {
+
+
+    /* AUDIENCE LABEL - TYPING EFFECT ON ALL DEVICES */
+
+    .audience-label {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 100%;
+      overflow: hidden;
+      padding: 9px 12px;
+      border-top: 1px solid #D9C7A9;
+      border-bottom: 1px solid #D9C7A9;
+    }
+
+    .audience-label span {
+      display: inline-block;
+      position: relative;
+      max-width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: #40372E;
+      animation: typingReveal 4.5s steps(52, end) infinite;
+    }
+
+    .audience-label span::after {
+      content: '';
+      display: inline-block;
+      width: 1px;
+      height: 11px;
+      margin-left: 4px;
+      vertical-align: middle;
+      background: #A84F39;
+      animation: cursorBlink 0.8s step-end infinite;
+    }
+
+    @keyframes typingReveal {
+      0% {
+        clip-path: inset(0 100% 0 0);
+      }
+
+      70%, 90% {
+        clip-path: inset(0 0 0 0);
+      }
+
+      100% {
+        clip-path: inset(0 0 0 0);
+      }
+    }
+
+    @keyframes cursorBlink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    @media (min-width: 640px) {
+      .audience-label span {
+        font-size: 11px;
+      }
+    }
+
+    .showcase-frame {
       position: relative;
       background: #FFFAF1;
       border: 1px solid #D9C7A9;
       padding: 10px;
       box-shadow: 0 15px 35px rgba(75, 53, 30, 0.12);
     }
- 
+
     .showcase-frame::before,
     .showcase-frame::after {
       content: '';
@@ -187,34 +179,34 @@
       background: rgba(199, 166, 106, 0.38);
       z-index: 2;
     }
- 
+
     .showcase-frame::before {
       top: -6px;
       left: -18px;
       transform: rotate(-30deg);
     }
- 
+
     .showcase-frame::after {
       top: -6px;
       right: -18px;
       transform: rotate(30deg);
     }
- 
+
     .access-btn {
       background: #A84F39;
       transition: all 0.25s ease;
     }
- 
+
     .access-btn:hover {
       background: #873D2B;
       transform: translateY(-3px);
       box-shadow: 0 10px 20px rgba(168, 79, 57, 0.18);
     }
- 
+
     .decorative-line {
       background: #D9C7A9;
     }
- 
+
     @media (prefers-reduced-motion: reduce) {
       .access-btn {
         transition: none;
@@ -222,8 +214,10 @@
     }
 
 
-    /* MOBILE RESPONSIVENESS — layout-only overrides */
+    /* MOBILE RESPONSIVENESS */
+
     @media (max-width: 640px) {
+
       html,
       body {
         width: 100%;
@@ -265,27 +259,27 @@
         letter-spacing: -1.1px;
       }
 
-      /* Allow the tools heading to wrap instead of forcing page overflow. */
       h2.whitespace-nowrap {
         white-space: normal;
       }
 
+      /* TYPING EFFECT - MOBILE */
+
       .audience-label {
+        width: 100%;
         max-width: 100%;
-        padding: 8px 9px;
+        padding: 8px 5px;
       }
 
       .audience-label span {
-        font-size: clamp(8px, 2.15vw, 10px);
-        letter-spacing: 0.07em;
-        white-space: normal;
-        text-align: center;
-        animation: none;
-        clip-path: none;
+        font-size: clamp(7px, 2.25vw, 10px);
+        letter-spacing: 0.035em;
+        white-space: nowrap;
+        animation: typingReveal 4.5s steps(52, end) infinite;
       }
 
       .audience-label span::after {
-        display: none;
+        display: inline-block;
       }
 
       .showcase-frame {
@@ -313,7 +307,6 @@
         text-align: center;
       }
 
-      /* Keep wide comparison data readable inside its own scroll area. */
       #subscription-comparison .overflow-x-auto {
         max-width: 100%;
         overflow-x: auto;
@@ -324,7 +317,6 @@
         min-width: 540px;
       }
 
-      /* Prevent grid and flex children from forcing a wider viewport. */
       .grid,
       .flex,
       article,
@@ -339,6 +331,7 @@
     }
 
     @media (max-width: 380px) {
+
       .hero-title {
         font-size: 29px;
       }
@@ -351,15 +344,29 @@
       }
 
       .audience-label span {
-        font-size: 8px;
+        font-size: 7px;
+        letter-spacing: 0.02em;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      .audience-label span,
+      .audience-label span::after {
+        animation: none;
+      }
+
+      .audience-label span {
+        clip-path: none;
+      }
+    }
+
   </style>
 </head>
- 
+
 <body>
- 
+
   <!-- ANNOUNCEMENT BAR -->
+
   <div class="bg-[#29221F] px-3 py-2 text-center">
     <p class="text-[9px] font-bold tracking-wide text-[#FFFAF1] sm:text-[10px]">
       ✦ SPECIAL LAUNCH OFFER
@@ -368,17 +375,20 @@
       <span class="text-[#C7A66A]">✦</span>
     </p>
   </div>
- 
- 
+
+
   <!-- NAVIGATION -->
+
   <header class="border-b border-[#E5D8C3] bg-[#FFFAF1]">
- 
+
     <div class="mx-auto flex max-w-[1250px] items-center justify-between px-5 py-3 sm:px-8 lg:px-10">
- 
+
       <!-- HELIX BRAND -->
+
       <a href="#" class="flex items-center gap-3">
- 
+
         <!-- BOOK LOGO -->
+
         <svg
           width="43"
           height="48"
@@ -393,117 +403,126 @@
             stroke-width="2"
             stroke-linejoin="round"
           />
+
           <path
             d="M24 18V46M8 17V35M40 17V35"
             stroke="#718475"
             stroke-width="1.6"
           />
+
           <path
             d="M24 3L26 9L32 11L26 13L24 19L22 13L16 11L22 9L24 3Z"
             fill="#A84F39"
           />
+
           <path
             d="M12 5L13.5 9L17 10L13.5 11.5L12 15L10.5 11.5L7 10L10.5 9L12 5Z"
             fill="#C7A66A"
           />
+
           <circle cx="37" cy="7" r="2" fill="#C7A66A"/>
         </svg>
- 
+
         <div>
           <h1 class="display-font text-[29px] font-bold leading-none tracking-tight text-[#29221F]">
             Helix
           </h1>
- 
+
           <p class="mt-1 text-[9px] font-extrabold uppercase tracking-[0.15em] text-[#A84F39]">
             Create · Design · Publish
           </p>
         </div>
- 
+
       </a>
- 
- 
+
+
       <!-- DESKTOP NAVIGATION -->
+
       <nav class="hidden items-center gap-8 lg:flex">
- 
+
         <a href="#collection" class="nav-link text-[12px] font-semibold text-[#29221F]">
           The Collection
         </a>
- 
+
         <a href="#how-it-works" class="nav-link text-[12px] font-semibold text-[#29221F]">
           How It Works
         </a>
- 
+
         <a href="#benefits" class="nav-link text-[12px] font-semibold text-[#29221F]">
           PLR Rights
         </a>
- 
+
         <a href="#faq" class="nav-link text-[12px] font-semibold text-[#29221F]">
           FAQ
         </a>
- 
+
         <a
           href="#access"
           class="access-button rounded-xl bg-[#A84F39] px-7 py-3 text-[12px] font-extrabold text-white shadow-sm"
         >
           Get Access <span class="ml-1">→</span>
         </a>
- 
+
       </nav>
- 
- 
+
+
       <!-- MOBILE ACCESS BUTTON -->
+
       <a
         href="#access"
         class="access-button rounded-lg bg-[#A84F39] px-4 py-3 text-[11px] font-bold text-white lg:hidden"
       >
         Get Access →
       </a>
- 
+
     </div>
- 
+
   </header>
- 
- 
+
+
   <!-- HERO SECTION -->
+
   <main>
- 
+
     <section class="relative overflow-hidden bg-[#F6ECD8] px-5 pb-12 pt-11 sm:px-8 sm:pb-16 sm:pt-12">
- 
+
       <div class="mx-auto max-w-[1100px] text-center">
- 
- 
+
+
         <!-- INTRODUCTION -->
+
         <p class="display-font text-[17px] font-semibold text-[#A84F39] sm:text-[22px]">
           One Idea, Multiple Creative Possibilities...
         </p>
- 
- 
+
+
         <!-- DECORATIVE DIVIDER -->
+
         <div class="mt-5 flex items-center justify-center gap-3">
- 
+
           <span class="h-px w-24 bg-[#718475]"></span>
- 
+
           <span class="text-[17px] text-[#718475]">✦</span>
- 
+
           <span class="h-px w-24 bg-[#718475]"></span>
- 
+
         </div>
- 
- 
-       
-<!-- ANIMATED AUDIENCE LABEL -->
-<div class="mt-6 flex justify-center">
- 
-  <div class="audience-label">
- 
-    <span>
-      FOR ETSY SELLERS · KDP CREATORS · JUNK JOURNAL LOVERS
-    </span>
- 
-  </div>
- 
-</div>
- 
+
+
+        <!-- ANIMATED AUDIENCE LABEL -->
+
+        <div class="mt-6 flex justify-center px-2">
+
+          <div class="audience-label">
+
+            <span>
+              FOR ETSY SELLERS · KDP CREATORS · JUNK JOURNAL LOVERS
+            </span>
+
+          </div>
+
+        </div>
+
  
  
         <!-- MAIN HEADLINE -->
