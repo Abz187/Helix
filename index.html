@@ -493,6 +493,34 @@
       }
     }
 
+    /* 18. Seasonal cards: text scales with the card so it stops covering the artwork */
+    @media (max-width: 1023px) {
+      article.group.isolate { container-type: inline-size; }
+      article.group.isolate h3 {
+        font-size: clamp(10px, 3.6vw, 20px) !important;
+        font-size: clamp(10px, 8cqw, 20px) !important;
+        line-height: 1.15 !important;
+      }
+      article.group.isolate p {
+        font-size: clamp(7px, 2.2vw, 12px) !important;
+        font-size: clamp(7px, 5.2cqw, 12px) !important;
+        line-height: 1.3 !important;
+        margin-top: 2px !important;
+      }
+      article.group.isolate > div.rounded-full {
+        font-size: clamp(6px, 1.9vw, 10px) !important;
+        font-size: clamp(6px, 4.4cqw, 10px) !important;
+        padding: 2px 7px !important;
+        left: 6px !important; top: 6px !important;
+      }
+      article.group.isolate > div.absolute.inset-x-3 { left: 8px !important; right: 8px !important; bottom: 8px !important; }
+    }
+
+    /* Subtle dark fade rising from the bottom - ALL screen sizes */
+    article.group.isolate > div.bg-gradient-to-t {
+      background: linear-gradient(to top, rgba(41,34,31,.82) 0%, rgba(41,34,31,.45) 35%, rgba(41,34,31,.12) 65%, transparent 100%) !important;
+    }
+
   </style>
 </head>
 
