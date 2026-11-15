@@ -457,7 +457,9 @@
         will-change: auto !important;
         animation-iteration-count: 1 !important;
       }
-      .audience-label span, .audience-label span::after { animation: none !important; clip-path: none !important; }
+      /* keep the typing effect running on every screen size */
+      .audience-label span { animation: typingReveal 4.5s steps(52, end) infinite !important; }
+      .audience-label span::after { animation: cursorBlink 0.8s step-end infinite !important; }
       .shadow-sm, .shadow-md, .shadow-lg, .shadow-xl, .showcase-frame { box-shadow: none !important; }
       .step-card:hover, .group:hover, .group:hover img, article img { transform: none !important; }
     }
