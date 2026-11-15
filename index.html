@@ -470,6 +470,13 @@
     html { overflow-x: visible; }
     body { overflow-x: clip; }
 
+    /* 16. Icon circles: solid colours instead of transparent ones.
+       Android Chrome mis-paints semi-transparent round shapes at 100% zoom (fine when zoomed out). */
+    .helix-inside [class*="bg-[#718475]/15"] { background-color: #E2DCC9 !important; border-color: #C1C2B0 !important; }
+    .helix-inside [class*="bg-[#A84F39]/10"] { background-color: #EEDCC8 !important; border-color: #D7AD98 !important; }
+    .helix-inside .rounded-full { overflow: visible; background-clip: padding-box; }
+    .helix-inside svg { display: block; }
+
   </style>
 </head>
 
