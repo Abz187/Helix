@@ -479,6 +479,20 @@
     .helix-inside .rounded-full { overflow: visible; background-clip: padding-box; }
     .helix-inside svg { display: block; }
 
+    /* 17. Seasonal cards: show the WHOLE image (no cropping) on phones/tablets.
+       The card now takes the image's own height; text stays overlaid at the bottom. */
+    @media (max-width: 1023px) {
+      article.group.isolate { min-height: 0 !important; }
+      article.group.isolate > img.absolute {
+        position: relative !important;
+        inset: auto !important;
+        display: block;
+        width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+      }
+    }
+
   </style>
 </head>
 
