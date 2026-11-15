@@ -445,30 +445,22 @@
     /* 12. Anchor offset */
     section[id], details[id], aside[id], div[id] { scroll-margin-top: 72px; }
 
- /* Amazon screenshot cards: remove top/bottom empty space */
-div.h-64[class*="F4EBDD"] {
-  height: auto !important;
-  background: transparent !important;
-}
-div.h-64[class*="F4EBDD"] > img {
-  width: 100%;
-  height: auto !important;
-  object-fit: contain;
-  display: block;
-}
 
+    /* 13. Amazon best-seller cards: no empty bands above/below screenshots */
+    div.h-64[class*="F4EBDD"] { height: auto !important; background: transparent !important; }
+    div.h-64[class*="F4EBDD"] > img { width: 100%; height: auto !important; object-fit: contain; display: block; }
 
-/* Amazon screenshot cards: remove top/bottom empty space */
-div.h-64[class*="F4EBDD"] {
-  height: auto !important;
-  background: transparent !important;
-}
-div.h-64[class*="F4EBDD"] > img {
-  width: 100%;
-  height: auto !important;
-  object-fit: contain;
-  display: block;
-}
+    /* 14. LIGHTER RENDERING FOR PHONES/TABLETS (stops smearing / static noise) */
+    @media (max-width: 1023px) {
+      *, *::before, *::after {
+        transition: none !important;
+        will-change: auto !important;
+        animation-iteration-count: 1 !important;
+      }
+      .audience-label span, .audience-label span::after { animation: none !important; clip-path: none !important; }
+      .shadow-sm, .shadow-md, .shadow-lg, .shadow-xl, .showcase-frame { box-shadow: none !important; }
+      .step-card:hover, .group:hover, .group:hover img, article img { transform: none !important; }
+    }
 
   </style>
 </head>
