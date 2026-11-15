@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -359,6 +358,92 @@
         clip-path: none;
       }
     }
+
+
+    /* ==========================================================
+       HELIX – RESPONSIVE SAFETY PATCH (added; nothing above changed)
+       ========================================================== */
+
+    /* 1. No sideways scrolling on ANY screen (not only <640px) */
+    html, body { max-width: 100%; overflow-x: clip; }
+    img, svg, video { max-width: 100%; height: auto; }
+    img { display: block; }
+    .step-card, .access-btn, .access-button { -webkit-tap-highlight-color: transparent; }
+
+    /* 2. Blocks sitting directly inside <main> with no container */
+    main > div {
+      width: 100%;
+      max-width: 1150px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    @media (min-width: 640px)  { main > div { padding-left: 24px; padding-right: 24px; } }
+    @media (min-width: 1024px) { main > div { padding-left: 32px; padding-right: 32px; } }
+
+    /* 3. Ultra-wide screens */
+    @media (min-width: 1600px) {
+      html { font-size: 17px; }
+    }
+
+    /* 4. Very small phones (320-380px) */
+    @media (max-width: 380px) {
+      .access-btn, .access-button { padding-left: 14px !important; padding-right: 14px !important; }
+      .hero-title { word-break: normal; }
+      #subscription-comparison table { min-width: 480px; }
+    }
+
+    /* 5. Phones: raise unreadably small text */
+    @media (max-width: 640px) {
+      [class*="text-[9px]"]  { font-size: 10px !important; }
+      [class*="text-[10px]"] { font-size: 11px !important; }
+      [class*="text-[11px]"] { font-size: 12px !important; }
+      .audience-label span   { font-size: clamp(8px, 2.4vw, 10px); letter-spacing: 0; }
+
+      a[href^="mailto"] { overflow-wrap: anywhere; word-break: break-word; }
+
+      section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+    }
+
+    /* 6. Touch targets: min 44px */
+    @media (hover: none) and (pointer: coarse) {
+      .access-btn, .access-button,
+      details > summary,
+      a[href^="mailto"].inline-flex { min-height: 44px; }
+      details > summary { padding-top: 6px; padding-bottom: 6px; }
+    }
+
+    /* 7. Touch devices: no stuck hover effects */
+    @media (hover: none) {
+      .step-card:hover, .access-btn:hover, .access-button:hover { transform: none; }
+      .group:hover { transform: none !important; }
+      .group:hover img { transform: none !important; }
+    }
+
+    /* 8. Pricing panel: sticky only when screen is tall enough */
+    @media (max-height: 760px) {
+      #access { position: static !important; }
+    }
+
+    /* 9. Tablets in portrait */
+    @media (min-width: 641px) and (max-width: 1023px) {
+      .hero-title { font-size: clamp(36px, 5.6vw, 46px); }
+    }
+
+    /* 10. Landscape phones */
+    @media (max-height: 480px) and (orientation: landscape) {
+      header .py-3 { padding-top: 6px; padding-bottom: 6px; }
+    }
+
+    /* 11. Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+
+    /* 12. Anchor offset */
+    section[id], details[id], aside[id], div[id] { scroll-margin-top: 72px; }
 
   </style>
 </head>
@@ -4159,21 +4244,6 @@
   document.getElementById("currentYear").textContent =
     new Date().getFullYear();
 </script>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
  
   </main>
  
