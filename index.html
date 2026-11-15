@@ -462,6 +462,14 @@
       .step-card:hover, .group:hover, .group:hover img, article img { transform: none !important; }
     }
 
+    /* 15. WHAT'S INSIDE icon grid: crisp icons, no smearing on phones */
+    .helix-inside svg { shape-rendering: geometricPrecision; flex: none; }
+    .helix-inside .shadow-sm { box-shadow: none !important; }
+    .helix-inside * { animation: none !important; transition: none !important; filter: none !important; }
+    /* Android Chrome smears when overflow clip is on both html and body: keep it on body only */
+    html { overflow-x: visible; }
+    body { overflow-x: clip; }
+
   </style>
 </head>
 
@@ -1122,7 +1130,7 @@
 
  
 <!-- HELIX WHAT'S INSIDE SECTION -->
-<section class="w-full overflow-hidden px-5 py-10 sm:px-8 sm:py-14">
+<section class="helix-inside w-full overflow-hidden px-5 py-10 sm:px-8 sm:py-14">
  
   <div class="mx-auto w-full max-w-[1150px]">
  
