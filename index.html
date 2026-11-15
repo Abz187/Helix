@@ -445,18 +445,17 @@
     /* 12. Anchor offset */
     section[id], details[id], aside[id], div[id] { scroll-margin-top: 72px; }
 
-    /* ANDROID PAINT-GLITCH FIX */
-html, body { overflow-x: visible !important; }
-main { overflow-x: clip; }
-
-/* stop the infinite clip-path repaint on phones */
-@media (max-width: 1023px) {
-  .audience-label span { animation: none !important; clip-path: none !important; }
-  .audience-label span::after { animation: none !important; }
+ /* Amazon screenshot cards: remove top/bottom empty space */
+div.h-64[class*="F4EBDD"] {
+  height: auto !important;
+  background: transparent !important;
 }
-
-/* give each section its own paint layer so one area can't smear into another */
-section { isolation: isolate; transform: translateZ(0); }
+div.h-64[class*="F4EBDD"] > img {
+  width: 100%;
+  height: auto !important;
+  object-fit: contain;
+  display: block;
+}
 
 
 /* Amazon screenshot cards: remove top/bottom empty space */
