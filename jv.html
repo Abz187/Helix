@@ -1,19 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Helix | JV & Affiliate Partners</title>
-
   <meta name="description" content="Partner with Helix and promote an all-in-one creative software workspace for Etsy sellers, KDP creators, and digital product entrepreneurs.">
 
   <script src="https://cdn.tailwindcss.com"></script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
   <script>
@@ -27,11 +22,11 @@
               terracotta: '#A84F39',
               brown: '#29221F',
               muted: '#62574B',
+              green: '#718475',
               border: '#D9C7A9',
               gold: '#C7A66A'
             }
           },
-
           fontFamily: {
             sans: ['DM Sans', 'sans-serif'],
             display: ['Playfair Display', 'serif']
@@ -42,90 +37,55 @@
   </script>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       background: #F6ECD8;
       color: #29221F;
       font-family: 'DM Sans', sans-serif;
+      overflow-x: clip;
     }
-
-    .display-font {
-      font-family: 'Playfair Display', serif;
-    }
-
-    /* PAPER TEXTURE */
+    img { max-width: 100%; }
+    section[id], header[id] { scroll-margin-top: 90px; }
+    .display-font { font-family: 'Playfair Display', serif; }
 
     .paper-texture {
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.07'/%3E%3C/svg%3E");
     }
 
-    /* NAVIGATION */
-
-    .nav-link {
-      transition: color .2s ease;
-    }
-
-    .nav-link:hover {
-      color: #A84F39;
-    }
+    .nav-link { transition: color .2s ease; }
+    .nav-link:hover { color: #A84F39; }
 
     /* HERO */
-
-    .hero-highlight {
-      position: relative;
-      display: inline;
-      z-index: 1;
+    .hero-underline-word {
+      background-image: linear-gradient(transparent 62%, rgba(217,199,169,.85) 62%);
+      padding: 0 .1em;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
     }
 
-    .hero-highlight::after {
-      content: "";
-      position: absolute;
-      bottom: 5px;
-      left: 0;
-      width: 100%;
-      height: 35%;
-      background: #D9C7A9;
-      z-index: -1;
-      opacity: .7;
-    }
-
-    .hero-art {
-      position: relative;
-      isolation: isolate;
-    }
-
+    .hero-art { position: relative; isolation: isolate; padding: 22px 14px 30px; }
     .hero-art::before {
       content: "";
       position: absolute;
-      inset: 8% -2% 3% 3%;
+      inset: 10% 2% 6% 4%;
       background: #C7A66A;
       opacity: .28;
       border-radius: 42% 58% 55% 45%;
       transform: rotate(-5deg);
       z-index: -1;
     }
-
     .hero-image {
       display: block;
       width: 100%;
       height: auto;
-      aspect-ratio: 1.15 / 1;
-      object-fit: cover;
+      object-fit: contain;
+      background: #E9D9BB;
       border: 8px solid #FFFAF1;
       border-radius: 24px;
       box-shadow: 0 20px 35px rgba(75, 53, 30, .14);
     }
-
-    /* FLOATING LABELS */
-
     .floating-label {
       position: absolute;
       background: #FFFAF1;
@@ -138,86 +98,80 @@
     }
 
     /* BUTTONS */
+    .cta-button { background: #A84F39; transition: all .25s ease; }
+    .cta-button:hover { background: #873D2B; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(168,79,57,.2); }
+    .secondary-button { background: #FFFAF1; color: #29221F; border: 1px solid #D9C7A9; transition: all .25s ease; }
+    .secondary-button:hover { background: #D9C7A9; transform: translateY(-2px); }
+    .email-button { background: #29221F; transition: all .25s ease; }
+    .email-button:hover { background: #62574B; transform: translateY(-2px); }
 
-    .cta-button {
-      background: #A84F39;
-      transition: all .25s ease;
-      box-shadow: none;
-    }
-
-    .cta-button:hover {
-      background: #873D2B;
-      transform: translate(2px, 2px);
-      box-shadow: none;
-    }
-
-    .secondary-button {
-      background: #FFFAF1;
-      color: #29221F;
-      border: 1px solid #D9C7A9;
-      transition: all .25s ease;
-      box-shadow: none;
-    }
-
-    .secondary-button:hover {
-      background: #D9C7A9;
-      transform: translate(2px, 2px);
-      box-shadow: none;
-    }
-
-    .email-button {
-      background: #29221F;
-      transition: all .25s ease;
-      box-shadow: none;
-    }
-
-    .email-button:hover {
-      background: #62574B;
-      transform: translate(2px, 2px);
-      box-shadow: none;
-    }
-
-    /* FEATURE CARDS */
-
-    .feature-card {
-      background: #FFFAF1;
-      border: 1px solid #D9C7A9;
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-6px);
-      border-color: #A84F39;
-      box-shadow: 0 15px 30px rgba(75, 53, 30, .12);
-    }
-
-    .feature-icon {
-      background: #F6ECD8;
-      color: #A84F39;
-    }
-
-    .decorative-line {
-      background: #D9C7A9;
-    }
+    .decorative-line { background: #D9C7A9; height: 1px; }
 
     @media (max-width: 640px) {
-      .floating-label {
-        padding: 8px 11px;
-        font-size: 11px;
-      }
+      .floating-label { padding: 8px 11px; font-size: 11px; box-shadow: 3px 4px 0 #29221F; }
+      .hero-title { letter-spacing: -1px; }
+      .hero-cta { width: 100%; justify-content: center; }
+    }
 
-      .hero-title {
-        letter-spacing: -1.2px;
-      }
+    /* On touch devices, skip hover lifts */
+    @media (hover: none) {
+      .cta-button:hover, .secondary-button:hover, .email-button:hover { transform: none; }
+      .group:hover { transform: none !important; }
+      .group:hover img { transform: none !important; }
+    }
+
+    /* ============================================================
+       SEASONAL CARDS: show the WHOLE image (no cropping) on ALL screens
+       ============================================================ */
+
+    /* Card takes the image's own height (no fixed min-height, no stretching) */
+    article.group.isolate {
+      min-height: 0 !important;
+      align-self: start;
+      container-type: inline-size;
+    }
+
+    /* Image sits in normal flow at its natural proportions: nothing is cropped */
+    article.group.isolate > img.absolute {
+      position: relative !important;
+      inset: auto !important;
+      display: block;
+      width: 100% !important;
+      height: auto !important;
+      object-fit: contain !important;
+      transform: none !important; /* no hover zoom (it crops the edges) */
+    }
+
+    /* Dark fade rising from the bottom so the text stays readable */
+    article.group.isolate > div.bg-gradient-to-t {
+      background: linear-gradient(to top, rgba(41,34,31,.82) 0%, rgba(41,34,31,.45) 35%, rgba(41,34,31,.12) 65%, transparent 100%) !important;
+    }
+
+    /* Text scales with the card width so it never covers much of the artwork */
+    article.group.isolate h3 {
+      font-size: clamp(10px, 8cqw, 20px) !important;
+      line-height: 1.15 !important;
+    }
+    article.group.isolate p {
+      font-size: clamp(7px, 5.2cqw, 12px) !important;
+      line-height: 1.3 !important;
+      margin-top: 2px !important;
+    }
+    article.group.isolate > div.rounded-full {
+      font-size: clamp(6px, 4.4cqw, 10px) !important;
+      padding: 2px 7px !important;
+      left: 6px !important;
+      top: 6px !important;
+    }
+    article.group.isolate > div.absolute.inset-x-3 {
+      left: 8px !important;
+      right: 8px !important;
+      bottom: 8px !important;
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-        transition: none !important;
-      }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
     }
   </style>
 </head>
@@ -227,572 +181,592 @@
   <!-- ======================================
        NAVIGATION BAR
   ======================================= -->
-
   <nav class="sticky top-0 z-50 bg-helix-ivory border-b border-helix-border">
-
     <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="min-h-[74px] md:min-h-[82px] flex items-center justify-between gap-4">
 
-      <div class="min-h-[82px] flex items-center justify-between gap-5">
-
-        <!-- LOGO -->
-
-        <a href="#" class="flex items-center gap-3 shrink-0">
-
+        <a href="#" class="flex items-center gap-3 shrink-0" aria-label="Helix home">
           <div class="w-11 h-11 rounded-xl border border-helix-gold bg-helix-cream flex items-center justify-center">
-
-            <span class="font-display text-2xl text-helix-terracotta">
-              H
-            </span>
-
+            <span class="font-display text-2xl text-helix-terracotta">H</span>
           </div>
-
           <div>
-
-            <h2 class="font-display font-bold text-xl md:text-2xl tracking-tight leading-none text-helix-brown">
-              Helix
-            </h2>
-
-            <p class="text-[10px] md:text-[11px] font-bold tracking-wider uppercase text-helix-muted mt-1">
-              JV & Affiliate Partners
-            </p>
-
+            <p class="font-display font-bold text-xl md:text-2xl tracking-tight leading-none text-helix-brown">Helix</p>
+            <p class="text-[10px] md:text-[11px] font-bold tracking-wider uppercase text-helix-muted mt-1">JV &amp; Affiliate Partners</p>
           </div>
-
         </a>
-
-        <!-- NAVIGATION LINKS -->
 
         <div class="hidden lg:flex items-center gap-8 text-sm font-bold text-helix-brown">
-
-          <a href="#product" class="nav-link">
-            Product
-          </a>
-
-          <a href="#features" class="nav-link">
-            Features
-          </a>
-
-          <a href="#product" class="nav-link">
-            How It Works
-          </a>
-
+          <a href="#product" class="nav-link">Overview</a>
+          <a href="#creations" class="nav-link">Sample Creations</a>
+          <a href="#tools" class="nav-link">The 8 Tools</a>
+          <a href="#seasonal" class="nav-link">Seasonal Ideas</a>
         </div>
 
-        <!-- NAVIGATION CTA -->
-
-        <a
-          href="YOUR_AFFILIATE_LINK_URL"
-          class="cta-button text-white px-5 md:px-7 py-3.5 rounded-xl text-xs md:text-sm font-extrabold tracking-wide uppercase flex items-center gap-2 shrink-0"
-        >
-
-          Get Affiliate Link
-
-          <span aria-hidden="true">&rarr;</span>
-
+        <a href="YOUR_AFFILIATE_LINK_URL"
+           class="cta-button text-white px-4 sm:px-6 md:px-7 py-3 md:py-3.5 rounded-xl text-[11px] md:text-sm font-extrabold tracking-wide uppercase flex items-center gap-2 shrink-0 whitespace-nowrap">
+          Get Affiliate Link <span aria-hidden="true">&rarr;</span>
         </a>
-
       </div>
-
     </div>
-
   </nav>
 
   <!-- ======================================
        HERO SECTION
   ======================================= -->
-
-  <header
-    id="product"
-    class="relative overflow-hidden bg-helix-cream paper-texture"
-  >
-
-    <!-- DECORATIVE BACKGROUND -->
+  <header id="product" class="relative overflow-hidden bg-helix-cream paper-texture">
 
     <div class="absolute top-0 right-0 w-80 h-80 bg-helix-gold/10 rounded-full blur-3xl pointer-events-none"></div>
 
-    <div class="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 md:px-8 py-14 md:py-20 lg:py-24">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-14 items-center">
 
-      <div class="grid lg:grid-cols-2 gap-14 lg:gap-12 items-center">
+        <!-- LEFT: CONTENT -->
+        <div class="relative z-10 min-w-0">
 
-        <!-- LEFT SIDE: HERO CONTENT -->
-
-        <div class="relative z-10">
-
-          <p class="text-xs md:text-sm font-extrabold tracking-[.17em] uppercase text-helix-terracotta mb-6">
-
+          <p class="text-[11px] sm:text-xs md:text-sm font-extrabold tracking-[.14em] uppercase text-helix-terracotta mb-5 leading-6">
             For Etsy Sellers · KDP Creators · Junk Journal Lovers
-
           </p>
 
-          <h1 class="hero-title font-sans font-black text-4xl sm:text-5xl md:text-6xl xl:text-[68px] leading-[1.08] tracking-tight mb-8">
-
-            <span class="hero-highlight text-helix-terracotta">
-              One Idea.
-            </span>
-
-            <br>
-
-            <span class="text-helix-brown">
-              Multiple Creative Possibilities.
-            </span>
-
+          <h1 class="hero-title font-sans font-black text-[34px] sm:text-5xl md:text-6xl xl:text-[64px] leading-[1.1] tracking-tight mb-6">
+            <span class="text-helix-terracotta">One Idea.</span><br>
+            <span class="hero-underline-word text-helix-brown">Multiple Creative Possibilities.</span>
           </h1>
 
-          <p class="text-base md:text-lg leading-8 text-helix-muted max-w-xl mb-8">
-
-            Turn One Idea Into Complete Creative Projects With Just One Prompt!
-
-            Create funny pet junk journal kits, coloring books, comic books,
-            story prompts, book covers, infographics, and complete book content
-            from a single idea.
-
+          <p class="text-base md:text-lg font-semibold leading-8 text-helix-brown max-w-xl mb-3">
+            Turn one idea into complete creative projects with just one prompt!
           </p>
 
-          <p class="text-sm md:text-base leading-7 text-helix-muted max-w-xl mb-9">
-
-            Generate coordinated prompts, creative designs, and structured
-            book content with specialized tools — without complicated prompt
-            writing, API keys, separate AI credits, or monthly software fees.
-
+          <p class="text-sm md:text-base leading-7 text-helix-muted max-w-xl mb-4">
+            Create funny pet junk journal kits, coloring books, comic books, story prompts, book covers, infographics, and complete book content from a single idea.
           </p>
 
-          <!-- PRIMARY CTA BUTTONS -->
+          <p class="text-sm md:text-base leading-7 text-helix-muted max-w-xl mb-8">
+            Generate coordinated prompts, creative designs, and structured book content with specialized tools — without complicated prompt writing, API keys, separate AI credits, or monthly software fees.
+          </p>
 
-          <div class="flex flex-wrap items-center gap-4 mb-5">
-
-            <a
-              href="YOUR_AFFILIATE_LINK_URL"
-              class="cta-button text-white px-7 py-4 rounded-xl font-extrabold text-sm tracking-wide uppercase inline-flex items-center gap-2"
-            >
-
-              Get Affiliate Link
-
+          <!-- PRIMARY CTAs -->
+          <div class="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3 sm:gap-4 mb-4">
+            <a href="YOUR_AFFILIATE_LINK_URL"
+               class="hero-cta cta-button text-white px-7 py-4 rounded-xl font-extrabold text-sm tracking-wide uppercase inline-flex items-center gap-2">
+              Get Affiliate Link <span aria-hidden="true">&rarr;</span>
             </a>
-
-            <a
-              href="YOUR_SALES_PAGE_URL"
-              class="secondary-button px-7 py-4 rounded-xl font-extrabold text-sm tracking-wide uppercase inline-flex items-center gap-2"
-            >
-
-              View Sales Page
-
-              <span aria-hidden="true">&rarr;</span>
-
+            <a href="YOUR_SALES_PAGE_URL"
+               class="hero-cta secondary-button px-7 py-4 rounded-xl font-extrabold text-sm tracking-wide uppercase inline-flex items-center gap-2">
+              View Sales Page <span aria-hidden="true">&rarr;</span>
             </a>
-
           </div>
 
-          <!-- EMAIL SWIPE BUTTON -->
-
-          <div class="flex flex-wrap items-center gap-4 mb-10">
-
-            <a
-              href="YOUR_EMAIL_SWIPE_URL"
-              class="email-button text-white px-7 py-3.5 rounded-xl font-extrabold text-sm tracking-wide uppercase inline-flex items-center gap-2"
-            >
-
+          <!-- EMAIL SWIPE -->
+          <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-9">
+            <a href="YOUR_EMAIL_SWIPE_URL"
+               class="hero-cta email-button text-white px-7 py-3.5 rounded-xl font-extrabold text-sm tracking-wide uppercase inline-flex items-center gap-2">
               Email Swipe
-
             </a>
-
-            <span class="text-xs text-helix-muted">
-              Open a promotional email swipe to copy and customize.
-            </span>
-
+            <span class="text-xs leading-5 text-helix-muted">Open a promotional email swipe to copy and customize.</span>
           </div>
 
-          <!-- FEATURE BADGES -->
-
-          <div class="flex flex-wrap gap-3">
-
-            <span class="bg-helix-ivory border border-helix-border rounded-xl px-4 py-3 text-xs font-bold text-helix-brown">
-              Multiple Creative Tools
-            </span>
-
-            <span class="bg-helix-ivory border border-helix-border rounded-xl px-4 py-3 text-xs font-bold text-helix-brown">
-              No Complicated Prompt Writing
-            </span>
-
-            <span class="bg-helix-ivory border border-helix-border rounded-xl px-4 py-3 text-xs font-bold text-helix-brown">
-              No API Key Required
-            </span>
-
-            <span class="bg-helix-ivory border border-helix-border rounded-xl px-4 py-3 text-xs font-bold text-helix-brown">
-              No Separate AI Credits
-            </span>
-
-            <span class="bg-helix-ivory border border-helix-border rounded-xl px-4 py-3 text-xs font-bold text-helix-brown">
-              One-Time Payment
-            </span>
-
-            <span class="bg-helix-ivory border border-helix-border rounded-xl px-4 py-3 text-xs font-bold text-helix-brown">
-              PLR Rights Included
-            </span>
-
+          <!-- BADGES -->
+          <div class="flex flex-wrap gap-2.5">
+            <span class="bg-helix-ivory border border-helix-border rounded-xl px-3.5 py-2.5 text-xs font-bold text-helix-brown">8 Creative Tools</span>
+            <span class="bg-helix-ivory border border-helix-border rounded-xl px-3.5 py-2.5 text-xs font-bold text-helix-brown">No Complicated Prompt Writing</span>
+            <span class="bg-helix-ivory border border-helix-border rounded-xl px-3.5 py-2.5 text-xs font-bold text-helix-brown">No API Key Required</span>
+            <span class="bg-helix-ivory border border-helix-border rounded-xl px-3.5 py-2.5 text-xs font-bold text-helix-brown">No Separate AI Credits</span>
+            <span class="bg-helix-ivory border border-helix-border rounded-xl px-3.5 py-2.5 text-xs font-bold text-helix-brown">One-Time Payment</span>
+            <span class="bg-helix-ivory border border-helix-border rounded-xl px-3.5 py-2.5 text-xs font-bold text-helix-brown">PLR Rights Included</span>
           </div>
-
         </div>
 
-        <!-- RIGHT SIDE: PRODUCT SHOWCASE IMAGE -->
+        <!-- RIGHT: IMAGE -->
+        <div class="hero-art max-w-2xl mx-auto w-full min-w-0">
 
-        <div class="hero-art relative max-w-2xl mx-auto w-full lg:mt-4">
-
-          <!-- TOP FLOATING LABEL -->
-
-          <div class="floating-label -top-5 left-0 md:left-[-15px]">
-
-            <p class="text-[10px] md:text-xs uppercase tracking-wider text-helix-muted">
-              Creative Workspace
-            </p>
-
-            <p class="text-lg md:text-xl font-black text-helix-terracotta">
-              HELIX COMPLETE
-            </p>
-
+          <div class="floating-label top-0 left-0">
+            <p class="text-[10px] md:text-xs uppercase tracking-wider text-helix-muted">Creative Workspace</p>
+            <p class="text-base md:text-xl font-black text-helix-terracotta">HELIX COMPLETE</p>
           </div>
 
-          <!-- ===================================
-               INSERT YOUR HERO IMAGE HERE
+          <!-- Tip: renaming the file to helix-jv-hero.png (no spaces) is safer. -->
+          <img src="images/jv helix hero.png"
+               alt="Helix Complete Creative Software Showcase"
+               class="hero-image">
 
-               Replace the image path below with
-               your actual image file or image URL.
-
-               Example:
-               assets/helix-showcase.png
-
-          ==================================== -->
-
-          <img
-            src="images/helix jv hero.png"
-            alt="Helix Complete Creative Software Showcase"
-            class="hero-image"
-          >
-
-          <!-- BOTTOM FLOATING LABEL -->
-
-          <div class="floating-label -bottom-6 right-0 md:right-[-12px] rotate-3">
-
-            <p class="text-xs md:text-sm font-black text-helix-brown">
-              8 Creative Possibilities
-            </p>
-
+          <div class="floating-label bottom-0 right-0 rotate-3">
+            <p class="text-xs md:text-sm font-black text-helix-brown">8 Creative Possibilities</p>
           </div>
-
         </div>
 
       </div>
-
     </div>
-
   </header>
 
-  <!-- ======================================
-       FEATURES SECTION
-  ======================================= -->
 
-  <section
-    id="features"
-    class="bg-helix-cream paper-texture py-20 md:py-28 px-6"
-  >
+<!-- ======================================
+     HELIX WHAT'S INSIDE SECTION
+======================================= -->
+<section id="tools" class="helix-inside w-full overflow-hidden px-5 py-10 sm:px-8 sm:py-14">
 
-    <div class="max-w-7xl mx-auto">
+  <div class="mx-auto w-full max-w-[1150px]">
 
-      <!-- SECTION HEADING -->
+    <!-- SECTION LABEL -->
+    <div class="mb-4 flex items-center justify-center gap-3">
+      <span class="h-px w-9 bg-[#C7A66A] sm:w-14"></span>
+      <span class="text-[10px] font-bold uppercase tracking-[0.22em] text-[#718475] sm:text-xs">
+        ✦ What's Inside ✦
+      </span>
+      <span class="h-px w-9 bg-[#C7A66A] sm:w-14"></span>
+    </div>
 
-      <div class="text-center max-w-3xl mx-auto mb-16">
+    <!-- MAIN HEADING -->
+    <div class="mx-auto max-w-[800px] text-center">
 
-        <p class="text-xs font-extrabold tracking-[.25em] uppercase text-helix-terracotta mb-5">
+      <h2 class="display-font whitespace-nowrap text-center text-[clamp(17px,4.5vw,48px)] font-bold leading-tight tracking-tight text-[#29221F]">
+        8 Creative Tools.
+        <span class="text-[#A84F39]"> Endless Possibilities.</span>
+      </h2>
 
-          EXPLORE THE POSSIBILITIES
+      <p class="mx-auto mt-5 max-w-[720px] text-sm leading-7 text-[#62574B] sm:text-base sm:leading-7">
+        Not just a prompt generator. A complete creative studio for books, comics, coloring pages, infographics, and more.
+      </p>
 
+      <p class="mx-auto mt-3 max-w-[720px] text-sm leading-7 text-[#62574B] sm:text-base sm:leading-7">
+        Turn one idea into coordinated prompts, creative designs, and structured book content with tools built for your projects.
+      </p>
+
+    </div>
+
+
+    <!-- FEATURE GRID -->
+    <div class="mx-auto mt-10 grid max-w-[1050px] grid-cols-2 gap-x-4 gap-y-7 sm:mt-12 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-8 lg:grid-cols-6 lg:gap-5">
+
+      <!-- FEATURE 1: CREATIVE TOOLS -->
+      <div class="flex min-w-0 flex-col items-center text-center">
+        <div class="flex h-24 w-24 items-center justify-center rounded-full border border-[#718475]/40 bg-[#718475]/15 sm:h-28 sm:w-28">
+          <svg viewBox="0 0 64 64" class="h-12 w-12 sm:h-14 sm:w-14" fill="none" stroke="#A84F39" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="8" y="12" width="48" height="34" rx="3"/>
+            <path d="M4 51h56l-5 5H9z"/>
+            <path d="M32 20c-5 0-8 4-8 8 0 3 1 5 4 7v4h8v-4c3-2 4-4 4-7 0-4-3-8-8-8z"/>
+            <path d="M29 42h6M30 45h4M32 15v-3M20 20l-2-2M44 20l2-2"/>
+          </svg>
+        </div>
+        <div class="mt-2 flex min-h-[58px] w-full items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-2 py-2 shadow-sm">
+          <p class="display-font text-[11px] font-bold uppercase leading-4 text-[#29221F] sm:text-xs">
+            8 Creative<br>Tools
+          </p>
+        </div>
+        <span class="mt-1.5 text-xs text-[#718475]">✦</span>
+      </div>
+
+      <!-- FEATURE 2: ONE IDEA -->
+      <div class="flex min-w-0 flex-col items-center text-center">
+        <div class="flex h-24 w-24 items-center justify-center rounded-full border border-[#A84F39]/40 bg-[#A84F39]/10 sm:h-28 sm:w-28">
+          <svg viewBox="0 0 64 64" class="h-12 w-12 sm:h-14 sm:w-14" fill="none" stroke="#A84F39" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M32 13v-5M18 19l-3-3M46 19l3-3M13 32H8M56 32h-5"/>
+            <path d="M32 18c-8 0-13 6-13 13 0 5 3 9 7 12v6h12v-6c4-3 7-7 7-12 0-7-5-13-13-13z"/>
+            <path d="M27 52h10M29 56h6"/>
+            <path d="M32 25v13M32 33l-5-4M32 33l5-4"/>
+          </svg>
+        </div>
+        <div class="mt-2 flex min-h-[58px] w-full items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-2 py-2 shadow-sm">
+          <p class="display-font text-[11px] font-bold uppercase leading-4 text-[#29221F] sm:text-xs">
+            One Idea<br>To Get Started
+          </p>
+        </div>
+        <span class="mt-1.5 text-xs text-[#718475]">✦</span>
+      </div>
+
+      <!-- FEATURE 3: PROMPTS & DESIGNS -->
+      <div class="flex min-w-0 flex-col items-center text-center">
+        <div class="flex h-24 w-24 items-center justify-center rounded-full border border-[#718475]/40 bg-[#718475]/15 sm:h-28 sm:w-28">
+          <svg viewBox="0 0 64 64" class="h-12 w-12 sm:h-14 sm:w-14" fill="none" stroke="#A84F39" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="10" y="8" width="38" height="48" rx="3"/>
+            <path d="M18 20h22M18 28h22M18 36h14M18 44h12" stroke="#C7A66A"/>
+            <path d="M42 43l12-19 5 3-12 19-7 4z"/>
+            <path d="M42 43l5 3M54 24l3-4 5 3-3 4"/>
+          </svg>
+        </div>
+        <div class="mt-2 flex min-h-[58px] w-full items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-2 py-2 shadow-sm">
+          <p class="display-font text-[11px] font-bold uppercase leading-4 text-[#29221F] sm:text-xs">
+            Prompts &amp;<br>Designs
+          </p>
+        </div>
+        <span class="mt-1.5 text-xs text-[#718475]">✦</span>
+      </div>
+
+      <!-- FEATURE 4: BOOKS & COMICS -->
+      <div class="flex min-w-0 flex-col items-center text-center">
+        <div class="flex h-24 w-24 items-center justify-center rounded-full border border-[#A84F39]/40 bg-[#A84F39]/10 sm:h-28 sm:w-28">
+          <svg viewBox="0 0 64 64" class="h-12 w-12 sm:h-14 sm:w-14" fill="none" stroke="#A84F39" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 17l34-9 8 5-34 10z"/>
+            <path d="M12 17v10l8 5 34-10V13"/>
+            <path d="M12 27v10l8 5 34-10V23"/>
+            <path d="M12 37v10l8 5 34-10V33"/>
+            <path d="M20 32v10M20 42v10" stroke="#C7A66A"/>
+          </svg>
+        </div>
+        <div class="mt-2 flex min-h-[58px] w-full items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-2 py-2 shadow-sm">
+          <p class="display-font text-[11px] font-bold uppercase leading-4 text-[#29221F] sm:text-xs">
+            Books &amp;<br>Comics
+          </p>
+        </div>
+        <span class="mt-1.5 text-xs text-[#718475]">✦</span>
+      </div>
+
+      <!-- FEATURE 5: COLORING & INFOGRAPHICS -->
+      <div class="flex min-w-0 flex-col items-center text-center">
+        <div class="flex h-24 w-24 items-center justify-center rounded-full border border-[#718475]/40 bg-[#718475]/15 sm:h-28 sm:w-28">
+          <svg viewBox="0 0 64 64" class="h-12 w-12 sm:h-14 sm:w-14" fill="none" stroke="#A84F39" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="10" y="8" width="32" height="45" rx="2" transform="rotate(-8 10 8)"/>
+            <path d="M24 23c0-4 3-7 7-7s7 3 7 7c0 3-2 5-7 5s-7-2-7-5z"/>
+            <path d="M31 28v13M24 34h14M31 41c-6 0-9 4-9 8M31 41c6 0 9 4 9 8"/>
+            <path d="M47 39l8 4-12 17-8-4z"/>
+            <path d="M35 56l-1 5 6-1"/>
+          </svg>
+        </div>
+        <div class="mt-2 flex min-h-[58px] w-full items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-1.5 py-2 shadow-sm">
+          <p class="display-font text-[10px] font-bold uppercase leading-4 text-[#29221F] sm:text-[11px]">
+            Coloring Pages &amp;<br>Infographics
+          </p>
+        </div>
+        <span class="mt-1.5 text-xs text-[#718475]">✦</span>
+      </div>
+
+      <!-- FEATURE 6: NO API KEY -->
+      <div class="flex min-w-0 flex-col items-center text-center">
+        <div class="flex h-24 w-24 items-center justify-center rounded-full border border-[#A84F39]/40 bg-[#A84F39]/10 sm:h-28 sm:w-28">
+          <svg viewBox="0 0 64 64" class="h-12 w-12 sm:h-14 sm:w-14" fill="none" stroke="#A84F39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="32" cy="32" r="23"/>
+            <path d="M17 47L47 17"/>
+            <circle cx="25" cy="25" r="5"/>
+            <circle cx="39" cy="39" r="5"/>
+            <path d="M25 20v-3M20 25h-3M39 34v-3M34 39h-3"/>
+          </svg>
+        </div>
+        <div class="mt-2 flex min-h-[58px] w-full items-center justify-center rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-2 py-2 shadow-sm">
+          <p class="display-font text-[11px] font-bold uppercase leading-4 text-[#29221F] sm:text-xs">
+            No API Key<br>Required
+          </p>
+        </div>
+        <span class="mt-1.5 text-xs text-[#718475]">✦</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ======================================
+     SEASONAL CREATIVE IDEAS
+======================================= -->
+<section id="seasonal" class="px-4 py-16 sm:px-6 sm:py-20">
+  <div class="mx-auto max-w-7xl">
+
+    <div class="mb-20">
+
+      <div class="mx-auto mb-10 max-w-3xl text-center">
+        <p class="mb-3 text-[10px] font-bold tracking-[0.22em] text-[#A84F39]">
+          ✦ SOMETHING NEW TO CREATE ✦
         </p>
 
-        <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mb-6 text-helix-brown">
-
-          What You Can Create With Helix
-
+        <h2 class="display-font text-3xl font-bold leading-tight text-[#29221F] sm:text-4xl lg:text-5xl">
+          Eight Creative Tools.
+          <span class="text-[#A84F39]">Ideas for Every Season.</span>
         </h2>
 
-        <p class="text-helix-muted text-sm md:text-base leading-8">
-
-          From digital journals to publishing projects, explore multiple
-          creative possibilities using specialized tools in one workspace.
-
+        <p class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#62574B] sm:text-base">
+          From seasonal coloring books and festive comic concepts to autumn-inspired junk journals, holiday book covers, educational infographics, and new story ideas, your next creative project can start with a simple theme. Explore different directions with the studio's specialized tools and develop ideas for your next printable, book, or visual project.
         </p>
+      </div>
+
+
+      <!-- SEASONAL CARDS -->
+      <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+
+        <!-- WINTER -->
+        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
+          <img src="images/jan.png" alt="Winter and Valentine's Day creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
+          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">JAN–FEB</div>
+          <div class="absolute inset-x-3 bottom-4">
+            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Winter &amp; Valentine's Day</h3>
+            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Cozy Stories &amp; Sweet Creations</p>
+          </div>
+        </article>
+
+        <!-- SPRING -->
+        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
+          <img src="images/mar.png" alt="Spring and Easter creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
+          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">MAR–APR</div>
+          <div class="absolute inset-x-3 bottom-4">
+            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Spring &amp; Easter</h3>
+            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Fresh Colors &amp; New Beginnings</p>
+          </div>
+        </article>
+
+        <!-- SUMMER -->
+        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
+          <img src="images/may.png" alt="Summer adventures creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
+          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">MAY–JUN</div>
+          <div class="absolute inset-x-3 bottom-4">
+            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Summer Adventures</h3>
+            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Sunny Days &amp; Creative Fun</p>
+          </div>
+        </article>
+
+        <!-- BACK TO SCHOOL -->
+        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
+          <img src="images/jul 2.png" alt="Back to school creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
+          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">JUL–AUG</div>
+          <div class="absolute inset-x-3 bottom-4">
+            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Back to School</h3>
+            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Learning &amp; Imagination</p>
+          </div>
+        </article>
+
+        <!-- AUTUMN -->
+        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
+          <img src="images/sep.png" alt="Autumn creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
+          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">SEP</div>
+          <div class="absolute inset-x-3 bottom-4">
+            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Autumn</h3>
+            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Warm Colors &amp; Cozy Themes</p>
+          </div>
+        </article>
+
+        <!-- HALLOWEEN -->
+        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
+          <img src="images/oct.png" alt="Halloween creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
+          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">OCT</div>
+          <div class="absolute inset-x-3 bottom-4">
+            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Halloween</h3>
+            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Playful Spooks &amp; Funny Characters</p>
+          </div>
+        </article>
+
+        <!-- THANKSGIVING -->
+        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
+          <img src="images/nov.png" alt="Thanksgiving creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
+          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">NOV</div>
+          <div class="absolute inset-x-3 bottom-4">
+            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Thanksgiving</h3>
+            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Gratitude &amp; Gathering</p>
+          </div>
+        </article>
+
+        <!-- CHRISTMAS -->
+        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
+          <img src="images/dec.png" alt="Christmas and New Year creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
+          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">DEC</div>
+          <div class="absolute inset-x-3 bottom-4">
+            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Christmas &amp; New Year</h3>
+            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Festive Stories &amp; Holiday Creations</p>
+          </div>
+        </article>
 
       </div>
 
-      <!-- FEATURE CARDS -->
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-        <!-- FEATURE 01 -->
-
-        <div class="feature-card rounded-2xl p-7 shadow-sm">
-
-          <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-display font-bold mb-6">
-            01
-          </div>
-
-          <p class="text-xs font-extrabold tracking-widest text-helix-terracotta mb-3">
-            FEATURE 01
-          </p>
-
-          <h3 class="font-display text-xl font-bold mb-3 text-helix-brown">
-            Funny Pet Junk Journals
-          </h3>
-
-          <p class="text-sm text-helix-muted leading-7">
-            Create funny pet-themed junk journal kits, coordinated
-            creative pages, and printable journal elements.
-          </p>
-
+      <!-- ALL YEAR CARD -->
+      <div class="mt-4 flex flex-col items-center justify-between gap-3 rounded-xl border border-dashed border-[#A84F39] bg-[#F6ECD8] px-5 py-5 text-center sm:flex-row sm:px-7 sm:text-left">
+        <div>
+          <p class="text-[9px] font-bold tracking-[0.2em] text-[#A84F39]">ALL YEAR</p>
+          <h3 class="display-font mt-1 text-xl font-bold text-[#29221F]">Everyday Inspiration</h3>
+          <p class="mt-1 text-xs text-[#62574B]">Pets · Stories · Books · Education · More</p>
         </div>
-
-        <!-- FEATURE 02 -->
-
-        <div class="feature-card rounded-2xl p-7 shadow-sm">
-
-          <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-display font-bold mb-6">
-            02
-          </div>
-
-          <p class="text-xs font-extrabold tracking-widest text-helix-terracotta mb-3">
-            FEATURE 02
-          </p>
-
-          <h3 class="font-display text-xl font-bold mb-3 text-helix-brown">
-            Coloring Books
-          </h3>
-
-          <p class="text-sm text-helix-muted leading-7">
-            Develop creative coloring book concepts, themed pages,
-            and illustration prompts.
-          </p>
-
-        </div>
-
-        <!-- FEATURE 03 -->
-
-        <div class="feature-card rounded-2xl p-7 shadow-sm">
-
-          <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-display font-bold mb-6">
-            03
-          </div>
-
-          <p class="text-xs font-extrabold tracking-widest text-helix-terracotta mb-3">
-            FEATURE 03
-          </p>
-
-          <h3 class="font-display text-xl font-bold mb-3 text-helix-brown">
-            Comic Books
-          </h3>
-
-          <p class="text-sm text-helix-muted leading-7">
-            Create comic concepts, characters, storylines,
-            and visual storytelling ideas.
-          </p>
-
-        </div>
-
-        <!-- FEATURE 04 -->
-
-        <div class="feature-card rounded-2xl p-7 shadow-sm">
-
-          <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-display font-bold mb-6">
-            04
-          </div>
-
-          <p class="text-xs font-extrabold tracking-widest text-helix-terracotta mb-3">
-            FEATURE 04
-          </p>
-
-          <h3 class="font-display text-xl font-bold mb-3 text-helix-brown">
-            Story Prompts
-          </h3>
-
-          <p class="text-sm text-helix-muted leading-7">
-            Generate imaginative story ideas, writing prompts,
-            and structured creative concepts.
-          </p>
-
-        </div>
-
-        <!-- FEATURE 05 -->
-
-        <div class="feature-card rounded-2xl p-7 shadow-sm">
-
-          <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-display font-bold mb-6">
-            05
-          </div>
-
-          <p class="text-xs font-extrabold tracking-widest text-helix-terracotta mb-3">
-            FEATURE 05
-          </p>
-
-          <h3 class="font-display text-xl font-bold mb-3 text-helix-brown">
-            Book Covers
-          </h3>
-
-          <p class="text-sm text-helix-muted leading-7">
-            Explore professional book cover concepts for journals,
-            coloring books, and publishing projects.
-          </p>
-
-        </div>
-
-        <!-- FEATURE 06 -->
-
-        <div class="feature-card rounded-2xl p-7 shadow-sm">
-
-          <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-display font-bold mb-6">
-            06
-          </div>
-
-          <p class="text-xs font-extrabold tracking-widest text-helix-terracotta mb-3">
-            FEATURE 06
-          </p>
-
-          <h3 class="font-display text-xl font-bold mb-3 text-helix-brown">
-            Infographics
-          </h3>
-
-          <p class="text-sm text-helix-muted leading-7">
-            Develop organized educational content and structured
-            infographic concepts.
-          </p>
-
-        </div>
-
-        <!-- FEATURE 07 -->
-
-        <div class="feature-card rounded-2xl p-7 shadow-sm">
-
-          <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-display font-bold mb-6">
-            07
-          </div>
-
-          <p class="text-xs font-extrabold tracking-widest text-helix-terracotta mb-3">
-            FEATURE 07
-          </p>
-
-          <h3 class="font-display text-xl font-bold mb-3 text-helix-brown">
-            KDP Book Content
-          </h3>
-
-          <p class="text-sm text-helix-muted leading-7">
-            Generate structured book content and creative material
-            for Amazon KDP publishing projects.
-          </p>
-
-        </div>
-
-        <!-- FEATURE 08 -->
-
-        <div class="feature-card rounded-2xl p-7 shadow-sm">
-
-          <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-display font-bold mb-6">
-            08
-          </div>
-
-          <p class="text-xs font-extrabold tracking-widest text-helix-terracotta mb-3">
-            FEATURE 08
-          </p>
-
-          <h3 class="font-display text-xl font-bold mb-3 text-helix-brown">
-            Written Content
-          </h3>
-
-          <p class="text-sm text-helix-muted leading-7">
-            Develop written creative material, organized content,
-            and structured manuscripts.
-          </p>
-
-        </div>
-
+        <span class="text-2xl text-[#A84F39]">✦</span>
       </div>
 
     </div>
 
-  </section>
+  </div>
+</section>
 
-  <!-- ======================================
-       FOOTER
-  ======================================= -->
 
-  <footer class="bg-helix-ivory border-t border-helix-border">
+<!-- ======================================
+     SAMPLE CREATIONS
+======================================= -->
+<section id="creations" class="w-full overflow-hidden px-5 py-14 sm:px-8 sm:py-20">
+  <div class="mx-auto w-full max-w-[1150px]">
 
-    <div class="max-w-7xl mx-auto px-6 md:px-8 py-12">
+    <div class="mx-auto mb-14 w-full max-w-[820px]">
+      <p class="display-font mt-5 text-center text-sm font-semibold tracking-wide text-helix-terracotta sm:text-[15px]">
+        One Idea. Multiple Creations. Endless Possibilities.
+      </p>
+    </div>
 
-      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+    <div class="mb-4 flex items-center justify-center gap-3">
+      <span class="h-px w-9 bg-helix-gold sm:w-14"></span>
+      <span class="text-[10px] font-bold uppercase tracking-[0.22em] text-helix-green sm:text-xs">✦ Created With The App ✦</span>
+      <span class="h-px w-9 bg-helix-gold sm:w-14"></span>
+    </div>
 
-        <!-- FOOTER BRAND -->
+    <div class="mx-auto max-w-[760px] text-center">
+      <h2 class="display-font text-3xl font-bold leading-tight text-helix-brown sm:text-4xl md:text-5xl">
+        Real Creations. <span class="text-helix-terracotta">Multiple Possibilities.</span>
+      </h2>
+      <p class="mx-auto mt-5 max-w-[720px] text-sm leading-7 text-helix-muted sm:text-base">
+        See what your audience can create with the studio. Sample coloring pages, comic books, book covers, infographics, junk journal designs, and book content generated with the tools.
+      </p>
+    </div>
 
-        <a href="#" class="flex items-center gap-3">
+    <div class="mt-10 grid grid-cols-1 gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
 
-          <div class="w-11 h-11 rounded-xl border border-helix-gold bg-helix-cream flex items-center justify-center">
-
-            <span class="font-display text-2xl text-helix-terracotta">
-              H
-            </span>
-
+      <article class="group min-w-0">
+        <div class="relative overflow-hidden rounded-xl border border-helix-border bg-helix-ivory p-2 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#E9D9BB]">
+            <img src="images/vintage funny pet junk journals.png" alt="Vintage funny pet junk journal sample" class="h-full w-full object-contain" loading="lazy">
           </div>
-
-          <div>
-
-            <h2 class="font-display font-bold text-2xl leading-none text-helix-brown">
-              Helix
-            </h2>
-
-            <p class="text-[10px] uppercase tracking-wider text-helix-muted font-bold mt-1">
-              JV & Affiliate Partners
-            </p>
-
-          </div>
-
-        </a>
-
-        <!-- FOOTER LINKS -->
-
-        <div class="flex flex-wrap justify-center gap-6 text-sm font-semibold text-helix-muted">
-
-          <a href="#product" class="nav-link">
-            Product
-          </a>
-
-          <a href="#features" class="nav-link">
-            Features
-          </a>
-
-          <a href="YOUR_SALES_PAGE_URL" class="nav-link">
-            Sales Page
-          </a>
-
-          <a href="YOUR_AFFILIATE_LINK_URL" class="nav-link">
-            Affiliate Link
-          </a>
-
+          <div class="absolute left-4 top-4 rounded-full border border-helix-border bg-helix-ivory/95 px-2.5 py-1"><span class="text-[9px] font-bold uppercase tracking-wider text-helix-terracotta">01</span></div>
         </div>
+        <div class="mt-3 text-center">
+          <p class="display-font text-xs font-bold text-helix-brown sm:text-sm">Funny Pet Journal</p>
+          <p class="mt-1 text-[10px] text-helix-green">Junk Journal Collection</p>
+        </div>
+      </article>
 
-      </div>
+      <article class="group min-w-0">
+        <div class="relative overflow-hidden rounded-xl border border-helix-border bg-helix-ivory p-2 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#E9D9BB]">
+            <img src="images/vintage funny pet journal page.png" alt="Vintage funny pet journal page sample" class="h-full w-full object-contain" loading="lazy">
+          </div>
+          <div class="absolute left-4 top-4 rounded-full border border-helix-border bg-helix-ivory/95 px-2.5 py-1"><span class="text-[9px] font-bold uppercase tracking-wider text-helix-terracotta">02</span></div>
+        </div>
+        <div class="mt-3 text-center">
+          <p class="display-font text-xs font-bold text-helix-brown sm:text-sm">Pet Journal Pages</p>
+          <p class="mt-1 text-[10px] text-helix-green">Vintage Paper Designs</p>
+        </div>
+      </article>
 
-      <!-- COPYRIGHT -->
+      <article class="group min-w-0">
+        <div class="relative overflow-hidden rounded-xl border border-helix-border bg-helix-ivory p-2 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#E9D9BB]">
+            <img src="images/vintage coloring book.png" alt="Vintage botanical coloring book sample" class="h-full w-full object-contain" loading="lazy">
+          </div>
+          <div class="absolute left-4 top-4 rounded-full border border-helix-border bg-helix-ivory/95 px-2.5 py-1"><span class="text-[9px] font-bold uppercase tracking-wider text-helix-terracotta">03</span></div>
+        </div>
+        <div class="mt-3 text-center">
+          <p class="display-font text-xs font-bold text-helix-brown sm:text-sm">Coloring Book</p>
+          <p class="mt-1 text-[10px] text-helix-green">Illustrated Coloring Pages</p>
+        </div>
+      </article>
 
-      <div class="border-t border-helix-border mt-10 pt-7 text-center">
+      <article class="group min-w-0">
+        <div class="relative overflow-hidden rounded-xl border border-helix-border bg-helix-ivory p-2 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#E9D9BB]">
+            <img src="images/comic.jfif" alt="Vintage comic book sample" class="h-full w-full object-contain" loading="lazy">
+          </div>
+          <div class="absolute left-4 top-4 rounded-full border border-helix-border bg-helix-ivory/95 px-2.5 py-1"><span class="text-[9px] font-bold uppercase tracking-wider text-helix-terracotta">04</span></div>
+        </div>
+        <div class="mt-3 text-center">
+          <p class="display-font text-xs font-bold text-helix-brown sm:text-sm">Comic Book</p>
+          <p class="mt-1 text-[10px] text-helix-green">Illustrated Storytelling</p>
+        </div>
+      </article>
 
-        <p class="text-xs text-helix-muted leading-6">
-          © 2026 Helix. All Rights Reserved.
-        </p>
+      <article class="group min-w-0">
+        <div class="relative overflow-hidden rounded-xl border border-helix-border bg-helix-ivory p-2 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#E9D9BB]">
+            <img src="images/story book.png" alt="Vintage story prompt sample" class="h-full w-full object-contain" loading="lazy">
+          </div>
+          <div class="absolute left-4 top-4 rounded-full border border-helix-border bg-helix-ivory/95 px-2.5 py-1"><span class="text-[9px] font-bold uppercase tracking-wider text-helix-terracotta">05</span></div>
+        </div>
+        <div class="mt-3 text-center">
+          <p class="display-font text-xs font-bold text-helix-brown sm:text-sm">Story Prompts</p>
+          <p class="mt-1 text-[10px] text-helix-green">Creative Writing Ideas</p>
+        </div>
+      </article>
 
-        <p class="text-xs text-helix-muted/70 mt-2">
-          Create · Design · Publish
-        </p>
+      <article class="group min-w-0">
+        <div class="relative overflow-hidden rounded-xl border border-helix-border bg-helix-ivory p-2 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#E9D9BB]">
+            <img src="images/book cover 11.png" alt="Vintage illustrated book cover sample" class="h-full w-full object-contain" loading="lazy">
+          </div>
+          <div class="absolute left-4 top-4 rounded-full border border-helix-border bg-helix-ivory/95 px-2.5 py-1"><span class="text-[9px] font-bold uppercase tracking-wider text-helix-terracotta">06</span></div>
+        </div>
+        <div class="mt-3 text-center">
+          <p class="display-font text-xs font-bold text-helix-brown sm:text-sm">Book Cover</p>
+          <p class="mt-1 text-[10px] text-helix-green">Editorial Cover Design</p>
+        </div>
+      </article>
 
-      </div>
+      <article class="group min-w-0">
+        <div class="relative overflow-hidden rounded-xl border border-helix-border bg-helix-ivory p-2 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#E9D9BB]">
+            <img src="images/Infographic 1.png" alt="Vintage illustrated infographic sample" class="h-full w-full object-contain" loading="lazy">
+          </div>
+          <div class="absolute left-4 top-4 rounded-full border border-helix-border bg-helix-ivory/95 px-2.5 py-1"><span class="text-[9px] font-bold uppercase tracking-wider text-helix-terracotta">07</span></div>
+        </div>
+        <div class="mt-3 text-center">
+          <p class="display-font text-xs font-bold text-helix-brown sm:text-sm">Infographic</p>
+          <p class="mt-1 text-[10px] text-helix-green">Vintage Visual Guides</p>
+        </div>
+      </article>
+
+      <article class="group min-w-0">
+        <div class="relative overflow-hidden rounded-xl border border-helix-border bg-helix-ivory p-2 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg bg-[#E9D9BB]">
+            <img src="images/kdp book content.png" alt="Vintage KDP book interior sample" class="h-full w-full object-contain" loading="lazy">
+          </div>
+          <div class="absolute left-4 top-4 rounded-full border border-helix-border bg-helix-ivory/95 px-2.5 py-1"><span class="text-[9px] font-bold uppercase tracking-wider text-helix-terracotta">08</span></div>
+        </div>
+        <div class="mt-3 text-center">
+          <p class="display-font text-xs font-bold text-helix-brown sm:text-sm">KDP Book Content</p>
+          <p class="mt-1 text-[10px] text-helix-green">Ready-to-Structure Pages</p>
+        </div>
+      </article>
 
     </div>
 
-  </footer>
+    <div class="mt-12 text-center">
+      <p class="text-[9px] font-bold tracking-[0.18em] text-[#8A725A] sm:text-[10px]">✦ BOOKS · COMICS · PRINTABLES · STORIES · INFOGRAPHICS · CREATIVE CONTENT ✦</p>
+      <a href="YOUR_AFFILIATE_LINK_URL"
+         class="cta-button mt-6 inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 text-sm font-extrabold uppercase tracking-wide text-white">
+        Get Affiliate Link <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ======================================
+     FOOTER
+======================================= -->
+<footer class="bg-helix-ivory border-t border-helix-border">
+  <div class="max-w-7xl mx-auto px-6 md:px-8 py-12">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-xl border border-helix-gold bg-helix-cream flex items-center justify-center">
+          <span class="font-display text-2xl text-helix-terracotta">H</span>
+        </div>
+        <div>
+          <p class="font-display font-bold text-2xl leading-none text-helix-brown">Helix</p>
+          <p class="text-[10px] uppercase tracking-wider text-helix-muted font-bold mt-1">JV &amp; Affiliate Partners</p>
+        </div>
+      </a>
+
+      <div class="flex flex-wrap justify-center gap-6 text-sm font-semibold text-helix-muted">
+        <a href="#product" class="nav-link">Overview</a>
+        <a href="#creations" class="nav-link">Sample Creations</a>
+        <a href="#tools" class="nav-link">The 8 Tools</a>
+        <a href="YOUR_SALES_PAGE_URL" class="nav-link">Sales Page</a>
+        <a href="YOUR_AFFILIATE_LINK_URL" class="nav-link">Affiliate Link</a>
+      </div>
+    </div>
+
+    <div class="border-t border-helix-border mt-10 pt-7 text-center">
+      <p class="text-xs text-helix-muted leading-6">© 2026 Helix. All Rights Reserved.</p>
+      <p class="text-xs text-helix-muted/70 mt-2">Create · Design · Publish</p>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
