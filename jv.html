@@ -173,6 +173,16 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { transition: none !important; }
     }
+
+    /* WHAT'S INSIDE icon grid: crisp icons, no glitching when zooming out */
+    .helix-inside svg { shape-rendering: geometricPrecision; flex: none; display: block; }
+    .helix-inside .shadow-sm { box-shadow: none !important; }
+    .helix-inside * { animation: none !important; transition: none !important; filter: none !important; }
+
+    /* Solid colours instead of transparent ones for the icon circles */
+    .helix-inside [class*="bg-[#718475]/15"] { background-color: #E2DCC9 !important; border-color: #C1C2B0 !important; }
+    .helix-inside [class*="bg-[#A84F39]/10"] { background-color: #EEDCC8 !important; border-color: #D7AD98 !important; }
+    .helix-inside .rounded-full { overflow: visible; background-clip: padding-box; }
   </style>
 </head>
 
@@ -185,14 +195,17 @@
     <div class="max-w-7xl mx-auto px-5 md:px-8">
       <div class="min-h-[74px] md:min-h-[82px] flex items-center justify-between gap-4">
 
-        <a href="#" class="flex items-center gap-3 shrink-0" aria-label="Helix home">
-          <div class="w-11 h-11 rounded-xl border border-helix-gold bg-helix-cream flex items-center justify-center">
-            <span class="font-display text-2xl text-helix-terracotta">H</span>
-          </div>
-          <div>
-            <p class="font-display font-bold text-xl md:text-2xl tracking-tight leading-none text-helix-brown">Helix</p>
-            <p class="text-[10px] md:text-[11px] font-bold tracking-wider uppercase text-helix-muted mt-1">JV &amp; Affiliate Partners</p>
-          </div>
+        <a href="#" class="flex min-w-0 shrink-0 items-center gap-2 sm:gap-3" aria-label="Helix home">
+          <svg viewBox="0 0 48 52" fill="none" xmlns="http://www.w3.org/2000/svg"
+               class="h-9 w-auto shrink-0 sm:h-11 lg:h-12" aria-hidden="true">
+            <path d="M24 18C17 8 8 10 5 12V40C12 36 19 39 24 47C29 39 36 36 43 40V12C40 10 31 8 24 18Z"
+                  stroke="#718475" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M24 18V46M8 17V35M40 17V35" stroke="#718475" stroke-width="1.6"/>
+            <path d="M24 3L26 9L32 11L26 13L24 19L22 13L16 11L22 9L24 3Z" fill="#A84F39"/>
+            <path d="M12 5L13.5 9L17 10L13.5 11.5L12 15L10.5 11.5L7 10L10.5 9L12 5Z" fill="#C7A66A"/>
+            <circle cx="37" cy="7" r="2" fill="#C7A66A"/>
+          </svg>
+          <span class="display-font text-[24px] font-bold leading-none tracking-tight text-[#29221F] sm:text-[29px]">Helix</span>
         </a>
 
 
@@ -832,7 +845,6 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
       <span class="text-lg text-[#A84F39] opacity-60 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">↗</span>
     </div>
 
-    <!-- Feature 2 -->
     <div class="group relative flex items-center gap-3 overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-3.5 py-3 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_7px_18px_rgba(41,34,31,0.08)]">
       <span class="absolute bottom-0 left-0 h-[2px] w-0 bg-[#A84F39] transition-all duration-300 group-hover:w-full"></span>
       <span class="display-font text-lg font-bold text-[#C7A66A] transition-transform duration-300 group-hover:scale-110">02</span>
@@ -848,7 +860,6 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
       <span class="text-lg text-[#A84F39] opacity-60 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">↗</span>
     </div>
 
-    <!-- Feature 3 -->
     <div class="group relative flex items-center gap-3 overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-3.5 py-3 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_7px_18px_rgba(41,34,31,0.08)]">
       <span class="absolute bottom-0 left-0 h-[2px] w-0 bg-[#A84F39] transition-all duration-300 group-hover:w-full"></span>
       <span class="display-font text-lg font-bold text-[#C7A66A] transition-transform duration-300 group-hover:scale-110">03</span>
@@ -864,7 +875,6 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
       <span class="text-lg text-[#A84F39] opacity-60 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">↗</span>
     </div>
 
-    <!-- Feature 4 -->
     <div class="group relative flex items-center gap-3 overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-3.5 py-3 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_7px_18px_rgba(41,34,31,0.08)]">
       <span class="absolute bottom-0 left-0 h-[2px] w-0 bg-[#A84F39] transition-all duration-300 group-hover:w-full"></span>
       <span class="display-font text-lg font-bold text-[#C7A66A] transition-transform duration-300 group-hover:scale-110">04</span>
@@ -880,7 +890,6 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
       <span class="text-lg text-[#A84F39] opacity-60 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">↗</span>
     </div>
 
-    <!-- Feature 5: One Column -->
     <div class="group relative flex items-center gap-3 overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-3.5 py-3 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_7px_18px_rgba(41,34,31,0.08)]">
       <span class="absolute bottom-0 left-0 h-[2px] w-0 bg-[#A84F39] transition-all duration-300 group-hover:w-full"></span>
       <span class="display-font text-lg font-bold text-[#C7A66A] transition-transform duration-300 group-hover:scale-110">05</span>
@@ -896,7 +905,6 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
       <span class="text-lg text-[#A84F39] opacity-60 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">↗</span>
     </div>
 
-    <!-- Feature 6: Beside Feature 5 -->
     <div class="group relative flex items-center gap-3 overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-3.5 py-3 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_7px_18px_rgba(41,34,31,0.08)]">
       <span class="absolute bottom-0 left-0 h-[2px] w-0 bg-[#A84F39] transition-all duration-300 group-hover:w-full"></span>
       <span class="display-font text-lg font-bold text-[#C7A66A] transition-transform duration-300 group-hover:scale-110">06</span>
@@ -912,7 +920,6 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
       <span class="text-lg text-[#A84F39] opacity-60 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">↗</span>
     </div>
 
-    <!-- Feature 7: Full Width Below Features 5 and 6 -->
     <div class="group relative flex items-center gap-3 overflow-hidden rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-3.5 py-3 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#A84F39] hover:shadow-[0_7px_18px_rgba(41,34,31,0.08)] sm:col-span-2">
       <span class="absolute bottom-0 left-0 h-[2px] w-0 bg-[#A84F39] transition-all duration-300 group-hover:w-full"></span>
       <span class="display-font text-lg font-bold text-[#C7A66A] transition-transform duration-300 group-hover:scale-110">07</span>
@@ -1017,7 +1024,6 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
           <img src="./images/amazon best sellers 1.png" alt="Example of an Amazon children's coloring book listing" class="block h-auto w-full object-contain">
         </div>
         <div class="px-3 py-4">
-      
           <h3 class="mt-2 text-lg font-bold text-[#29221E]">Children's Coloring Books</h3>
         </div>
       </div>
@@ -1027,7 +1033,6 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
           <img src="./images/amazon best sellers 2.png" alt="Example of an Amazon graphic novel listing" class="block h-auto w-full object-contain">
         </div>
         <div class="px-3 py-4">
-     
           <h3 class="mt-2 text-lg font-bold text-[#29221E]">Comics &amp; Graphic Novels</h3>
         </div>
       </div>
@@ -1037,7 +1042,6 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
           <img src="./images/amazon best sellers 3.png" alt="Example of an Amazon children's bedtime story book listing" class="block h-auto w-full object-contain">
         </div>
         <div class="px-3 py-4">
-         
           <h3 class="mt-2 text-lg font-bold text-[#29221E]">Children's Storybooks</h3>
         </div>
       </div>
@@ -1047,7 +1051,6 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
           <img src="./images/amazon best sellers 4.png" alt="Example of an Amazon best-selling book listing" class="block h-auto w-full object-contain">
         </div>
         <div class="px-3 py-4">
-         
           <h3 class="mt-2 text-lg font-bold text-[#29221E]">Journals &amp; Activity Books</h3>
         </div>
       </div>
@@ -1583,7 +1586,6 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
       <!-- SEASONAL CARDS -->
       <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
 
-        <!-- WINTER -->
         <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
           <img src="images/jan.png" alt="Winter and Valentine's Day creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
           <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
@@ -1594,7 +1596,6 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
           </div>
         </article>
 
-        <!-- SPRING -->
         <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
           <img src="images/mar.png" alt="Spring and Easter creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
           <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
@@ -1605,7 +1606,6 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
           </div>
         </article>
 
-        <!-- SUMMER -->
         <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
           <img src="images/may.png" alt="Summer adventures creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
           <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
@@ -1616,7 +1616,6 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
           </div>
         </article>
 
-        <!-- BACK TO SCHOOL -->
         <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
           <img src="images/jul 2.png" alt="Back to school creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
           <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
@@ -1627,7 +1626,6 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
           </div>
         </article>
 
-        <!-- AUTUMN -->
         <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
           <img src="images/sep.png" alt="Autumn creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
           <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
@@ -1638,7 +1636,6 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
           </div>
         </article>
 
-        <!-- HALLOWEEN -->
         <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
           <img src="images/oct.png" alt="Halloween creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
           <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
@@ -1649,7 +1646,6 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
           </div>
         </article>
 
-        <!-- THANKSGIVING -->
         <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
           <img src="images/nov.png" alt="Thanksgiving creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
           <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
@@ -1660,7 +1656,6 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
           </div>
         </article>
 
-        <!-- CHRISTMAS -->
         <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
           <img src="images/dec.png" alt="Christmas and New Year creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
           <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
