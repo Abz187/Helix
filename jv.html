@@ -210,7 +210,7 @@
 
 
         <a href="YOUR_AFFILIATE_LINK_URL"
-           class="cta-button text-white px-4 sm:px-6 md:px-7 py-3 md:py-3.5 rounded-xl text-[11px] md:text-sm font-extrabold tracking-wide uppercase flex items-center gap-2 shrink-0 whitespace-nowrap">
+           class="cta-button text-white px-3 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg text-[9px] sm:text-[11px] md:text-xs font-extrabold tracking-normal sm:tracking-wide uppercase flex items-center gap-1.5 shrink-0 whitespace-nowrap">
           Get Affiliate Link <span aria-hidden="true">&rarr;</span>
         </a>
       </div>
@@ -285,11 +285,6 @@
 
         <!-- RIGHT: IMAGE -->
         <div class="hero-art max-w-2xl mx-auto w-full min-w-0">
-
-          <div class="floating-label top-0 left-0">
-            <p class="text-[10px] md:text-xs uppercase tracking-wider text-helix-muted">Creative Workspace</p>
-            <p class="text-base md:text-xl font-black text-helix-terracotta">HELIX COMPLETE</p>
-          </div>
 
           <!-- Tip: renaming the file to helix-jv-hero.png (no spaces) is safer. -->
           <img src="images/jv helix hero.png"
@@ -385,29 +380,6 @@
           <strong class="text-[#29221F]">Launch &amp; contest end:</strong> Tuesday, Dec 15, 2026 · 11:00 PM EDT <span class="text-[#C7A66A]">(5-day launch)</span>
         </p>
 
-        <!-- COUNTDOWN -->
-        <div class="mt-8">
-          <p class="mb-3 text-center text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#A84F39]">✦ Countdown To Launch ✦</p>
-          <div id="launch-countdown" class="mx-auto grid max-w-[520px] grid-cols-4 gap-2.5 sm:gap-3">
-            <div class="rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-1 py-3 text-center shadow-sm">
-              <p id="cd-days" class="display-font text-2xl font-bold text-[#A84F39] sm:text-3xl">--</p>
-              <p class="mt-0.5 text-[9px] font-bold uppercase tracking-wider text-[#62574B]">Days</p>
-            </div>
-            <div class="rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-1 py-3 text-center shadow-sm">
-              <p id="cd-hours" class="display-font text-2xl font-bold text-[#A84F39] sm:text-3xl">--</p>
-              <p class="mt-0.5 text-[9px] font-bold uppercase tracking-wider text-[#62574B]">Hours</p>
-            </div>
-            <div class="rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-1 py-3 text-center shadow-sm">
-              <p id="cd-mins" class="display-font text-2xl font-bold text-[#A84F39] sm:text-3xl">--</p>
-              <p class="mt-0.5 text-[9px] font-bold uppercase tracking-wider text-[#62574B]">Mins</p>
-            </div>
-            <div class="rounded-lg border border-[#D9C7A9] bg-[#FFFAF1] px-1 py-3 text-center shadow-sm">
-              <p id="cd-secs" class="display-font text-2xl font-bold text-[#A84F39] sm:text-3xl">--</p>
-              <p class="mt-0.5 text-[9px] font-bold uppercase tracking-wider text-[#62574B]">Secs</p>
-            </div>
-          </div>
-        </div>
-
         <!-- STATS STRIP -->
         <div class="mx-auto mt-8 grid max-w-[640px] grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-3">
           <div class="rounded-lg border border-[#D9C7A9] bg-[#F6ECD8] px-2 py-3 text-center">
@@ -415,7 +387,7 @@
             <p class="mt-0.5 text-[9px] font-bold uppercase tracking-wider text-[#62574B]">Front-end price</p>
           </div>
           <div class="rounded-lg border border-[#D9C7A9] bg-[#F6ECD8] px-2 py-3 text-center">
-            <p class="display-font text-2xl font-bold text-[#29221F]">$465</p>
+            <p class="display-font text-2xl font-bold text-[#29221F]">$137</p>
             <p class="mt-0.5 text-[9px] font-bold uppercase tracking-wider text-[#62574B]">Full funnel value</p>
           </div>
           <div class="rounded-lg border border-[#D9C7A9] bg-[#F6ECD8] px-2 py-3 text-center">
@@ -452,38 +424,6 @@
   </div>
 </section>
 
-<script>
-  (function () {
-    // Dec 10, 2026, 10:00 AM US Eastern.
-    // In December Eastern time is UTC-5 (EST), so 10:00 = 15:00 UTC.
-    // If you want to treat it as UTC-4 (EDT), change 15 to 14.
-    var target = Date.UTC(2026, 11, 10, 15, 0, 0);
-    var els = {
-      d: document.getElementById('cd-days'),
-      h: document.getElementById('cd-hours'),
-      m: document.getElementById('cd-mins'),
-      s: document.getElementById('cd-secs')
-    };
-    if (!els.d) return;
-    function pad(n) { return n < 10 ? '0' + n : '' + n; }
-    function tick() {
-      var diff = target - Date.now();
-      if (diff <= 0) {
-        document.getElementById('launch-countdown').innerHTML =
-          '<p class="col-span-4 display-font text-center text-2xl font-bold text-[#A84F39]">We Are Live!</p>';
-        clearInterval(timer);
-        return;
-      }
-      var s = Math.floor(diff / 1000);
-      els.d.textContent = pad(Math.floor(s / 86400));
-      els.h.textContent = pad(Math.floor((s % 86400) / 3600));
-      els.m.textContent = pad(Math.floor((s % 3600) / 60));
-      els.s.textContent = pad(s % 60);
-    }
-    var timer = setInterval(tick, 1000);
-    tick();
-  })();
-</script>
 
   
 <!-- ======================================
@@ -507,14 +447,14 @@
       </p>
     </div>
 
-    <!-- PODIUM (edit the $XX amounts) -->
+    <!-- PODIUM -->
     <div class="mx-auto mt-10 grid max-w-[900px] grid-cols-1 items-end gap-4 sm:grid-cols-3 sm:gap-5">
 
       <!-- 2nd -->
       <div class="order-2 rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] px-5 py-7 text-center shadow-sm sm:order-1">
         <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-[#C7A66A] bg-[#F6ECD8]"><span class="display-font text-xl font-bold text-[#A84F39]">2</span></div>
         <p class="mt-3 text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#62574B]">Second Place</p>
-        <p class="display-font mt-1 text-4xl font-bold text-[#29221F]">$XX</p>
+        <p class="display-font mt-1 text-4xl font-bold text-[#29221F]">$50</p>
       </div>
 
       <!-- 1st -->
@@ -522,14 +462,14 @@
         <div class="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-[#A84F39] via-[#C7A66A] to-[#718475]"></div>
         <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full border-2 border-[#C7A66A] bg-[#29221F]"><span class="display-font text-2xl font-bold text-[#C7A66A]">1</span></div>
         <p class="mt-3 text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#A84F39]">✦ First Place ✦</p>
-        <p class="display-font mt-1 text-5xl font-bold text-[#A84F39]">$XX</p>
+        <p class="display-font mt-1 text-5xl font-bold text-[#A84F39]">$100</p>
       </div>
 
       <!-- 3rd -->
       <div class="order-3 rounded-xl border border-[#D9C7A9] bg-[#FFFAF1] px-5 py-7 text-center shadow-sm">
         <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-[#C7A66A] bg-[#F6ECD8]"><span class="display-font text-xl font-bold text-[#A84F39]">3</span></div>
         <p class="mt-3 text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#62574B]">Third Place</p>
-        <p class="display-font mt-1 text-4xl font-bold text-[#29221F]">$XX</p>
+        <p class="display-font mt-1 text-4xl font-bold text-[#29221F]">$25</p>
       </div>
 
     </div>
@@ -620,7 +560,7 @@
         </table>
       </div>
       <div class="border-t-2 border-[#A84F39] bg-[#F6ECD8] px-4 py-4 text-center sm:px-6">
-        <p class="text-[11px] font-extrabold uppercase tracking-wider text-[#29221F]">Total funnel value: <span class="display-font text-lg text-[#A84F39]">$465</span></p>
+        <p class="text-[11px] font-extrabold uppercase tracking-wider text-[#29221F]">Total funnel value: <span class="display-font text-lg text-[#A84F39]">$137</span></p>
       </div>
     </div>
 
@@ -652,7 +592,7 @@
         Done-For-You <span class="text-[#A84F39]">Email Swipes</span>
       </h2>
       <p class="mx-auto mt-4 max-w-[620px] text-sm leading-7 text-[#62574B] sm:text-base">
-        Five emails: tease, launch, the pet junk journal angle, the objection killer and the close, each with 3 subject lines. Replace <strong>[YOUR LINK]</strong>, <strong>[FIRST NAME]</strong> and <strong>[YOUR NAME]</strong>.
+        Five emails: tease, launch, the pet junk journal angle, the objection killer and the close, each with a subject line. Replace <strong>[YOUR LINK]</strong>, <strong>[FIRST NAME]</strong> and <strong>[YOUR NAME]</strong>.
       </p>
     </div>
 
@@ -662,10 +602,7 @@
           <h3 class="display-font text-sm font-bold text-[#29221F] sm:text-base">Swipe 1 · Prelaunch tease</h3>
           <button type="button" class="swipe-copy cta-button shrink-0 rounded-lg px-4 py-2 text-[10px] font-extrabold uppercase tracking-wider text-white">Copy</button>
         </div>
-        <pre class="swipe-text whitespace-pre-wrap break-words px-4 py-5 font-sans text-xs leading-6 text-[#40372E] sm:px-6 sm:text-sm sm:leading-7">Subject line options:
-• something new for coloring books, comics &amp; journals is coming
-• a one-click comic prompt tool, opening Dec 10
-• what if one idea became a whole book?
+        <pre class="swipe-text whitespace-pre-wrap break-words px-4 py-5 font-sans text-xs leading-6 text-[#40372E] sm:px-6 sm:text-sm sm:leading-7">Subject line: something new for coloring books, comics &amp; journals is coming
 
 Hi [FIRST NAME],
 
@@ -686,10 +623,7 @@ Keep an eye on your inbox.
           <h3 class="display-font text-sm font-bold text-[#29221F] sm:text-base">Swipe 2 · Launch day</h3>
           <button type="button" class="swipe-copy cta-button shrink-0 rounded-lg px-4 py-2 text-[10px] font-extrabold uppercase tracking-wider text-white">Copy</button>
         </div>
-        <pre class="swipe-text whitespace-pre-wrap break-words px-4 py-5 font-sans text-xs leading-6 text-[#40372E] sm:px-6 sm:text-sm sm:leading-7">Subject line options:
-• [LIVE] Helix is open: comics, coloring books &amp; more
-• it's here: the one-time-payment creative studio
-• Helix just opened (one-time payment)
+        <pre class="swipe-text whitespace-pre-wrap break-words px-4 py-5 font-sans text-xs leading-6 text-[#40372E] sm:px-6 sm:text-sm sm:leading-7">Subject line: [LIVE] Helix is open: comics, coloring books &amp; more
 
 Hi [FIRST NAME],
 
@@ -718,10 +652,7 @@ P.S. Helix is a one-time payment, so there's no subscription to cancel later.</p
           <h3 class="display-font text-sm font-bold text-[#29221F] sm:text-base">Swipe 3 · Funny pet junk journals</h3>
           <button type="button" class="swipe-copy cta-button shrink-0 rounded-lg px-4 py-2 text-[10px] font-extrabold uppercase tracking-wider text-white">Copy</button>
         </div>
-        <pre class="swipe-text whitespace-pre-wrap break-words px-4 py-5 font-sans text-xs leading-6 text-[#40372E] sm:px-6 sm:text-sm sm:leading-7">Subject line options:
-• funny pet junk journals, made in minutes
-• the quirky niche that people love to flip through
-• pets + junk journals = ?
+        <pre class="swipe-text whitespace-pre-wrap break-words px-4 py-5 font-sans text-xs leading-6 text-[#40372E] sm:px-6 sm:text-sm sm:leading-7">Subject line: funny pet junk journals, made in minutes
 
 Hi [FIRST NAME],
 
@@ -740,10 +671,7 @@ So whether you sell printables, publish books or just love making creative thing
           <h3 class="display-font text-sm font-bold text-[#29221F] sm:text-base">Swipe 4 · Objection killer</h3>
           <button type="button" class="swipe-copy cta-button shrink-0 rounded-lg px-4 py-2 text-[10px] font-extrabold uppercase tracking-wider text-white">Copy</button>
         </div>
-        <pre class="swipe-text whitespace-pre-wrap break-words px-4 py-5 font-sans text-xs leading-6 text-[#40372E] sm:px-6 sm:text-sm sm:leading-7">Subject line options:
-• no design skills? no problem
-• "I'm not good at prompts"
-• skip the blank page
+        <pre class="swipe-text whitespace-pre-wrap break-words px-4 py-5 font-sans text-xs leading-6 text-[#40372E] sm:px-6 sm:text-sm sm:leading-7">Subject line: no design skills? no problem
 
 Hi [FIRST NAME],
 
@@ -765,10 +693,7 @@ And because it's a one-time payment, you're not signing up for another monthly b
           <h3 class="display-font text-sm font-bold text-[#29221F] sm:text-base">Swipe 5 · Last call</h3>
           <button type="button" class="swipe-copy cta-button shrink-0 rounded-lg px-4 py-2 text-[10px] font-extrabold uppercase tracking-wider text-white">Copy</button>
         </div>
-        <pre class="swipe-text whitespace-pre-wrap break-words px-4 py-5 font-sans text-xs leading-6 text-[#40372E] sm:px-6 sm:text-sm sm:leading-7">Subject line options:
-• closing tonight: Helix
-• last call for the Helix launch
-• final hours: Helix launch price
+        <pre class="swipe-text whitespace-pre-wrap break-words px-4 py-5 font-sans text-xs leading-6 text-[#40372E] sm:px-6 sm:text-sm sm:leading-7">Subject line: closing tonight: Helix
 
 Hi [FIRST NAME],
 
@@ -997,7 +922,7 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
 
     <div class="mt-6 text-center">
       <a href="YOUR_AFFILIATE_LINK_URL" class="cta-button inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 text-sm font-extrabold uppercase tracking-wide text-white">
-        Get Helix for $17 — Pay Once <span aria-hidden="true">&rarr;</span>
+        Grab Your Affiliate Links <span aria-hidden="true">&rarr;</span>
       </a>
     </div>
   </div>
@@ -1564,125 +1489,7 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
 
 <section class="px-4 py-16 sm:px-6 sm:py-20">
 
- <!-- PART 2: SEASONAL CREATIVE IDEAS -->
-    <div class="mb-20">
-
-      <div class="mx-auto mb-10 max-w-3xl text-center">
-        <p class="mb-3 text-[10px] font-bold tracking-[0.22em] text-[#A84F39]">
-          ✦ SOMETHING NEW TO CREATE ✦
-        </p>
-
-        <h2 class="display-font text-3xl font-bold leading-tight text-[#29221F] sm:text-4xl lg:text-5xl">
-          Eight Creative Tools.
-          <span class="text-[#A84F39]">Ideas for Every Season.</span>
-        </h2>
-
-        <p class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#62574B] sm:text-base">
-          From seasonal coloring books and festive comic concepts to autumn-inspired junk journals, holiday book covers, educational infographics, and new story ideas, your next creative project can start with a simple theme. Explore different directions with the studio's specialized tools and develop ideas for your next printable, book, or visual project.
-        </p>
-      </div>
-
-
-      <!-- SEASONAL CARDS -->
-      <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
-
-        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
-          <img src="images/jan.png" alt="Winter and Valentine's Day creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
-          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
-          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">JAN–FEB</div>
-          <div class="absolute inset-x-3 bottom-4">
-            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Winter &amp; Valentine's Day</h3>
-            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Cozy Stories &amp; Sweet Creations</p>
-          </div>
-        </article>
-
-        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
-          <img src="images/mar.png" alt="Spring and Easter creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
-          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
-          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">MAR–APR</div>
-          <div class="absolute inset-x-3 bottom-4">
-            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Spring &amp; Easter</h3>
-            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Fresh Colors &amp; New Beginnings</p>
-          </div>
-        </article>
-
-        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
-          <img src="images/may.png" alt="Summer adventures creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
-          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
-          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">MAY–JUN</div>
-          <div class="absolute inset-x-3 bottom-4">
-            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Summer Adventures</h3>
-            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Sunny Days &amp; Creative Fun</p>
-          </div>
-        </article>
-
-        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
-          <img src="images/jul 2.png" alt="Back to school creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
-          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
-          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">JUL–AUG</div>
-          <div class="absolute inset-x-3 bottom-4">
-            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Back to School</h3>
-            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Learning &amp; Imagination</p>
-          </div>
-        </article>
-
-        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
-          <img src="images/sep.png" alt="Autumn creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
-          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
-          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">SEP</div>
-          <div class="absolute inset-x-3 bottom-4">
-            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Autumn</h3>
-            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Warm Colors &amp; Cozy Themes</p>
-          </div>
-        </article>
-
-        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
-          <img src="images/oct.png" alt="Halloween creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
-          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
-          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">OCT</div>
-          <div class="absolute inset-x-3 bottom-4">
-            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Halloween</h3>
-            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Playful Spooks &amp; Funny Characters</p>
-          </div>
-        </article>
-
-        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
-          <img src="images/nov.png" alt="Thanksgiving creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
-          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
-          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">NOV</div>
-          <div class="absolute inset-x-3 bottom-4">
-            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Thanksgiving</h3>
-            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Gratitude &amp; Gathering</p>
-          </div>
-        </article>
-
-        <article class="group relative isolate min-h-[210px] overflow-hidden rounded-xl border border-[#D9C7A9] bg-[#29221F] sm:min-h-[250px]">
-          <img src="images/dec.png" alt="Christmas and New Year creative theme" class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
-          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#29221F]/95 via-[#29221F]/35 to-transparent"></div>
-          <div class="absolute left-3 top-3 rounded-full bg-[#FFFAF1]/90 px-2.5 py-1 text-[9px] font-bold text-[#A84F39]">DEC</div>
-          <div class="absolute inset-x-3 bottom-4">
-            <h3 class="display-font text-lg font-bold leading-tight text-[#FFFAF1] sm:text-xl">Christmas &amp; New Year</h3>
-            <p class="mt-1.5 text-[10px] leading-5 text-[#F6ECD8] sm:text-xs">Festive Stories &amp; Holiday Creations</p>
-          </div>
-        </article>
-
-      </div>
-
-
-      <!-- ALL YEAR CARD -->
-      <div class="mt-4 flex flex-col items-center justify-between gap-3 rounded-xl border border-dashed border-[#A84F39] bg-[#F6ECD8] px-5 py-5 text-center sm:flex-row sm:px-7 sm:text-left">
-        <div>
-          <p class="text-[9px] font-bold tracking-[0.2em] text-[#A84F39]">ALL YEAR</p>
-          <h3 class="display-font mt-1 text-xl font-bold text-[#29221F]">Everyday Inspiration</h3>
-          <p class="mt-1 text-xs text-[#62574B]">Pets · Stories · Books · Education · More</p>
-        </div>
-        <span class="text-2xl text-[#A84F39]">✦</span>
-      </div>
-
-    </div>
-
-
-    <!-- PART 3: CREATIVE PROCESS -->
+ <!-- PART 3: CREATIVE PROCESS -->
     <div class="mx-auto max-w-5xl">
 
       <div class="mb-9 text-center">
@@ -1719,8 +1526,9 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
           <span class="text-[#A84F39]">More Projects to Create.</span>
         </h2>
 
-        <a href="#access" class="access-btn mt-6 inline-flex items-center justify-center rounded-lg px-7 py-3.5 text-sm font-bold transition-all duration-300 hover:-translate-y-0.5">
-          Get Instant Access – $17
+        <a href="YOUR_AFFILIATE_LINK_URL"
+           class="cta-button mt-6 inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 text-sm font-extrabold uppercase tracking-wide text-white">
+          Grab Your Affiliate Links <span aria-hidden="true">&rarr;</span>
         </a>
       </div>
 
@@ -1750,6 +1558,9 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
 
     <!-- CONTACT -->
     <div class="border-t border-helix-border mt-10 pt-8 text-center">
+      <div class="mx-auto mb-5 h-24 w-24 overflow-hidden rounded-full border-2 border-helix-gold bg-helix-cream">
+        <img src="images/dev image.jpeg" alt="Your JV partner" class="h-full w-full object-cover" loading="lazy">
+      </div>
       <p class="text-[10px] font-extrabold uppercase tracking-[0.22em] text-helix-terracotta">✦ Questions? Review Access? Get In Touch ✦</p>
 
       <div class="mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
