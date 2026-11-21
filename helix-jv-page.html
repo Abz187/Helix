@@ -257,7 +257,7 @@
                class="hero-cta cta-button text-white px-7 py-4 rounded-xl font-extrabold text-sm tracking-wide uppercase inline-flex items-center gap-2">
               Get Affiliate Link <span aria-hidden="true">&rarr;</span>
             </a>
-            <a href="YOUR_SALES_PAGE_URL"
+            <a href="index.html"
                class="hero-cta secondary-button px-7 py-4 rounded-xl font-extrabold text-sm tracking-wide uppercase inline-flex items-center gap-2">
               View Sales Page <span aria-hidden="true">&rarr;</span>
             </a>
@@ -1577,7 +1577,7 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
         <strong>Affiliate / earnings disclaimer:</strong> nothing on this page is a promise of income. Affiliate earnings depend on your own promotion, list and market. By promoting this offer you agree to the WarriorPlus Terms of Service and all applicable advertising rules.
       </p>
       <div class="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[11px] font-semibold text-helix-muted">
-        <a href="YOUR_SALES_PAGE_URL" class="nav-link">Sales Page</a>
+        <a href="index.html" class="nav-link">Sales Page</a>
         <a href="YOUR_AFFILIATE_LINK_URL" class="nav-link">Affiliate Link</a>
         <a href="YOUR_PRIVACY_POLICY_URL" class="nav-link">Privacy Policy</a>
         <a href="YOUR_TERMS_REFUNDS_URL" class="nav-link">Terms &amp; Refunds</a>
@@ -1589,6 +1589,19 @@ If you've been thinking about a simple, one-time-payment way to create comics, c
     </div>
   </div>
 </footer>
+
+<!-- Email Swipe button: smooth scroll to the swipes section -->
+<script>
+  document.querySelectorAll('a[href="#swipes"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var target = document.getElementById('swipes');
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.replaceState(null, '', '#swipes');
+    });
+  });
+</script>
 
 </body>
 </html>
